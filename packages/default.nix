@@ -10,5 +10,6 @@
     waybar
     firefox
     #ghostty
+    discordchatexporter-cli
   ];
 }
