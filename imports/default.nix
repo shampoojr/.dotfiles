@@ -9,7 +9,7 @@
     ../hyprland
     ../packages
     ../shell
-#    ../waybar
+    ../waybar
 #    ../hyprpanel
   ];
 }
