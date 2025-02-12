@@ -41,7 +41,7 @@
           inherit pkgs;
 
           modules = [
-            ./home
+            ./home.nix
           ];
         };
 
