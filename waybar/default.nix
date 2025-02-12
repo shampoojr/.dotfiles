@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.waybar = {
-    enable = true;
+#    enable = true;
 
     settings = {
       waybar = {
