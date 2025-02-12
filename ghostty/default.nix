@@ -8,7 +8,7 @@
     settings = {
       keybind = "ctrl+shift+R=reload_config";
 
-      font-family = "Symbols Nerd Font";
+      font-family = "'Symbols Nerd Font'";
       font-size = 15;
       font-style-bold = true;
       font-style-italic = false;
@@ -22,10 +22,10 @@
 
       window-decoration = false;
       window-theme = "ghostty";
-      window-width = 120;
-      window-height = 35;
-      window-padding-x = 10;
-      window-padding-y = 10;
+      #window-width = 120;
+      #window-height = 35;
+      #window-padding-x = 10;
+      #window-padding-y = 10;
 
       background = "000000";
       foreground = "ffffff";
