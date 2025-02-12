@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
+ # imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
   
   programs.hyprpanel = {
 
@@ -17,7 +17,7 @@
     # Add '/nix/store/.../hyprpanel' to your
     # Hyprland config 'exec-once'.
     # Default: false
-    hyprland.enable = true;
+    #hyprland.enable = true;
 
     # Fix the overwrite issue with HyprPanel.
     # See below for more information.

@@ -10,6 +10,6 @@
     ../packages
     ../shell
 #    ../waybar
-    ../hyprpanel
+#    ../hyprpanel
   ];
 }
