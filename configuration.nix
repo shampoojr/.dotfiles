@@ -214,7 +214,7 @@
       hyprpicker
       hyprpaper
       dunst
-      waybar
+      #waybar
       eww
       #ghostty
       hyprshot

@@ -9,6 +9,6 @@
     ../hyprland
     ../packages
     ../shell
-    # ../waybar
+    ../waybar
   ];
 }
