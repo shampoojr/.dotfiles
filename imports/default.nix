@@ -10,6 +10,8 @@
     ../packages
     ../shell
     ../waybar
-#    ../hyprpanel
+    ../tmux
+    ../neovim
+    ../fzf
   ];
 }

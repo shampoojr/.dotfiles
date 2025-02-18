@@ -12,7 +12,4 @@
     #ghostty
   ];
 
-  programs.tmux.enable = true;
-
-
 }

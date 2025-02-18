@@ -3,15 +3,19 @@
   zsh,
   home-manager,
   pkgs,
+  imports,
   ...
 }:
 {
-  imports = [
-    #./tmux.nix
-  ];
+
   programs = {
 
-        tmux = {
+    # fzf = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
+
+    tmux = {
       enable = true;
       clock24 = true;
       shell = "zsh";
@@ -33,21 +37,25 @@
       '';
     };
 
-
     zsh = {
       enable = true;
 
       enableCompletion = true;
+      autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
+        flake = "all --flake . ~/.dotfiles";
         ls = "eza";
         update = "sudo nixos-rebuild switch";
         hm = "home-manager switch";
         all = "update && hm";
       };
 
-      initExtra = "fastfetch";
+      initExtra = ''
+        if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+          tmux attach-session -t default || tmux new-session -s default
+        fi'';
 
       zplug = {
         enable = true;
