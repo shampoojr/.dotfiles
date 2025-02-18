@@ -83,14 +83,15 @@ in
       ];
 
       general = {
-        border_size = 2;
-        no_border_on_floating = false;
+        border_size = 1;
+        no_border_on_floating = true;
         gaps_in = 5;
         gaps_out = 10;
         gaps_workspaces = 0;
 
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        #"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(595959ff)";
 
         layout = "master";
         no_focus_fallback = true;

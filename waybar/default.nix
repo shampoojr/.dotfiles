@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   programs.waybar = {
-#    enable = true;
+    enable = true;
 
     settings = {
       waybar = {
@@ -41,6 +41,7 @@
           "bat" = "BAT0";
           "format" = "{capacity}% {icon}";
           "format-charging" = "{capacity}% {icon}󱐋";
+          "format-plugged" = "{capacity}% {icon}󱐋";
           "format-icons" = [
             "󰁺"
             "󰁻"

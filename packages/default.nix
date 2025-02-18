@@ -11,4 +11,8 @@
     firefox
     #ghostty
   ];
+
+  programs.tmux.enable = true;
+
+
 }
