@@ -5,7 +5,7 @@
     kitty
     vscode
     librewolf
-    orca-slicer
+    #orca-slicer
     dconf
     waybar
     firefox
