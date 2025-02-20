@@ -11,6 +11,7 @@ fpath = "~/.dotfiles";
 in
 {
   imports = [
+    ./cava
     ./eza
     ./fzf
     ./neovim
