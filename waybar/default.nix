@@ -29,7 +29,7 @@
         modules-center = [ ];
 
         modules-right = [
-          "tray"
+          #"tray"
           "network"
           "backlight"
           "battery"
@@ -37,12 +37,22 @@
           "clock"
         ];
 
+        "workspaces" = {
+          
+        };
+
         "battery" = {
           "bat" = "BAT0";
           "format" = "{capacity}% {icon}";
           "format-charging" = "{capacity}% {icon}󱐋";
           "format-plugged" = "{capacity}% {icon}󱐋";
-          "format-icons" = [
+          "format-icons" = {
+            #"plugged" = [
+              #"󱐋"
+            #];
+
+
+            "default" = [
             "󰁺"
             "󰁻"
             "󰁼"
@@ -53,44 +63,57 @@
             "󰂁"
             "󰂂"
             "󰁹"
-          ];
+            ];
+          };
         };
+
+        "backlight" = {
+          "format" = "{percent}% {icon}";
+          "format-icons" = ["" "" "" "" "" "" "" "" "" "" "" "" ""];
+        };
+
+            "network" = {
+            "format-wifi"= "";
+            "format-ethernet"="";
+            "format-disconnected"= "";
+            "tooltip-format-disconnected"= "Error";
+            "tooltip-format-wifi"= "{essid} ({signalStrength}%) ";
+            "tooltip-format-ethernet"= "{ifname} 🖧 ";
+            "on-click"= "kitty nmtui";
+        };
+
+      	"pulseaudio"= {
+		"format"= "{volume:2}% {icon}";
+		"format-bluetooth"= "{volume}% {icon}";
+		"format-muted"= "";
+		"format-icons"= {
+			"headphones"= "";
+			"default"= [
+        ""
+				""
+				""
+			];
+		};
+		"scroll-step"= "5";
+		"on-click-right"= "pavucontrol";
+	};
+
       };
     };
 
     style =
       let
-        rosewater = "#f5e0dc";
-        flamingo = "#f2cdcd";
-        pink = "#f5c2e7";
-        mauve = "#cba6f7";
-        red = "#f38ba8";
-        maroon = "#eba0ac";
-        peach = "#fab387";
-        yellow = "#f9e2af";
-        green = "#a6e3a1";
-        teal = "#94e2d5";
-        sky = "#89dceb";
-        sapphire = "#74c7ec";
-        blue = "#89b4fa";
-        lavender = "#b4befe";
-        text = "#cdd6f4";
-        subtext1 = "#bac2de";
-        subtext0 = "#a6adc8";
-        overlay2 = "#9399b2";
-        overlay1 = "#7f849c";
-        overlay0 = "#6c7086";
-        surface2 = "#585b70";
-        surface1 = "#45475a";
-        surface0 = "#313244";
+        text = "#FFFFFF";
+        active = "#FFFFFF";
+        inactive = "#FFFFFF";
+        hover = "#5F5F5F";
+        empty = "#FFFFFF";
         base = "#000000";
-        mantle = "#000000";
-        crust = "#000000";
       in
       ''
         * {
           min-height: 0px;
-          font-family: "Nerd Font Symbols";
+          font-weight: bolder;
         }
 
         window#waybar {
@@ -104,6 +127,98 @@
           box-shadow: 0px 0px 3px 0px ${base};
         }
 
+        tooltip {
+          background-color: ${base};
+          border-radius: 10px;
+        }
+
+        #workspaces {
+          font-size: 0px;
+          background: transparent;
+          margin-top: 3px;
+          margin-bottom: 3px;
+          padding: 10px 0px;
+        }
+
+        #workspaces button {
+          padding: 0px;
+          margin: 0px 5px;
+          min-width: 10px;
+          border-radius: 10px;
+          background: ${inactive};
+          transition: all 0.3s ease-in-out;
+        }
+
+        #workspaces button.empty {
+          background: ${empty};
+        }
+
+        #workspaces button.active {
+          background: ${active};
+          min-width: 40px;
+          background-size: 400% 400%;
+        }
+
+        #workspaces button:hover {
+          background: ${hover};
+          min-width: 40px;
+          background-size: 400% 400%;
+        }
+
+        #window,
+        #battery,
+        #backlight,
+        #network,
+        #pulseaudio,
+        #clock {
+          font-weight: bolder;
+          font-family: "Symbols Nerd Font";
+          font-size: 13px;
+        }
+
+        #custom-showtray {
+          font-family: "FiraCode Nerd Font";
+          font-size: 14px;
+          color: ${text};
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+
+        #tray {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+
+        #backlight {
+        color: ${text};
+        padding-left: 2px;
+        padding-right: 2px;
+        }
+
+        #network {
+          color: ${text};
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+
+        #pulseaudio {
+          color: ${text};
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+
+        #battery {
+        color: ${text};
+        padding-left: 2px;
+        padding-right: 2px;
+        }
+
+        #clock {
+          color: ${text};
+          margin-right: 2px;
+          padding-left: 2px;
+          padding-right: 2px;
+        }
       '';
   };
 }

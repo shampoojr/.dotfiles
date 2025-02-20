@@ -1,7 +1,6 @@
 { imports, ... }:
 {
   imports = [
-    ../eza
     ../ghostty
     ../git
     ../gtk
@@ -10,8 +9,5 @@
     ../packages
     ../shell
     ../waybar
-    ../tmux
-    ../neovim
-    ../fzf
   ];
 }

@@ -10,6 +10,12 @@
 fpath = "~/.dotfiles";
 in
 {
+  imports = [
+    ./eza
+    ./fzf
+    ./neovim
+    ./tmux
+  ];
 
   programs = {
 
