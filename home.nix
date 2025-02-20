@@ -1,22 +1,11 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./imports
-  ];
-
-  home.username = "shampoojr";
+  home.file = { };
   home.homeDirectory = "/home/shampoojr";
+  home.sessionVariables = { };
   home.stateVersion = "24.11";
-
+  home.username = "shampoojr";
+  imports = [ ./imports ];
   nixpkgs.config.allowUnfree = true;
-
-  home.file = {
-
-  };
-
-  home.sessionVariables = {
-
-  };
-
   programs.home-manager.enable = true;
 }
