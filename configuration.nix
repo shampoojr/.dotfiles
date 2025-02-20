@@ -8,8 +8,8 @@
   hardware.openrazer.enable = true;
 
   # I dont really know how this works
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
   # This has broke me so may times
   security.polkit.enable = true;

@@ -5,9 +5,10 @@
   pkgs,
   imports,
   ...
-}:let
+}:
+let
 
-fpath = "~/.dotfiles";
+  fpath = "~/.dotfiles";
 in
 {
   imports = [

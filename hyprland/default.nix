@@ -1,11 +1,10 @@
 { config, hypr, ... }:
 let
 
-base = "";
-text = "";
-primary = "";
-secondary = "";
-
+  base = "";
+  text = "";
+  primary = "";
+  secondary = "";
 
 in
 {

@@ -1,4 +1,5 @@
-{...}:{
+{ ... }:
+{
   programs.eza = {
     enable = true;
     icons = "auto";
@@ -7,7 +8,8 @@
       "-a"
       "-l"
       "-R"
-      "-L" "2"
+      "-L"
+      "2"
     ];
   };
 }

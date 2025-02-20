@@ -17,6 +17,9 @@ let
   shift = "SHIFT";
   control = "CONTROL";
   alt = "ALT";
+  mouse = "mouse:";
+  right = "${mouse}273";
+  left = "${mouse}272";
 
 in
 {
@@ -87,8 +90,8 @@ in
     ];
 
     bindm = [
-      "${mod}, mouse:272, movewindow"
-      "${mod}, mouse:273, resizewindow"
+      "${mod}, ${left}, movewindow"
+      "${mod}, ${right}, resizewindow"
     ];
 
     bindle = [

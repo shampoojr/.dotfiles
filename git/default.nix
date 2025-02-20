@@ -6,7 +6,7 @@
     userEmail = "shampoojr@outlook.com";
     extraConfig = {
       init.defaultBranch = "main";
-      safe.directory = "/etc/nixos"; 
+      safe.directory = "/etc/nixos";
     };
   };
 }

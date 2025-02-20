@@ -22,7 +22,6 @@
         fixed-center = true;
 
         modules-left = [
-          "custom/menu"
           "hyprland/workspaces"
         ];
 
@@ -38,75 +37,89 @@
         ];
 
         "workspaces" = {
-          
+
         };
 
         "battery" = {
           "bat" = "BAT0";
+          "interval" = "1";
           "format" = "{capacity}% {icon}";
           "format-charging" = "{capacity}% {icon}󱐋";
-          "format-plugged" = "{capacity}% {icon}󱐋";
           "format-icons" = {
-            #"plugged" = [
-              #"󱐋"
+            #"charging" = [
+            #""
             #];
 
-
             "default" = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
+              "󰁺"
+              "󰁻"
+              "󰁼"
+              "󰁽"
+              "󰁾"
+              "󰁿"
+              "󰂀"
+              "󰂁"
+              "󰂂"
+              "󰁹"
             ];
           };
         };
 
         "backlight" = {
           "format" = "{percent}% {icon}";
-          "format-icons" = ["" "" "" "" "" "" "" "" "" "" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
 
-            "network" = {
-            "format-wifi"= "";
-            "format-ethernet"="";
-            "format-disconnected"= "";
-            "tooltip-format-disconnected"= "Error";
-            "tooltip-format-wifi"= "{essid} ({signalStrength}%) ";
-            "tooltip-format-ethernet"= "{ifname} 🖧 ";
-            "on-click"= "kitty nmtui";
+        "network" = {
+          "format-wifi" = "";
+          "format-ethernet" = "";
+          "format-disconnected" = "";
+          "tooltip-format-disconnected" = "Error";
+          "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+          "tooltip-format-ethernet" = "{ifname} 🖧 ";
+          "on-click" = "kitty nmtui";
         };
 
-      	"pulseaudio"= {
-		"format"= "{volume:2}% {icon}";
-		"format-bluetooth"= "{volume}% {icon}";
-		"format-muted"= "";
-		"format-icons"= {
-			"headphones"= "";
-			"default"= [
-        ""
-				""
-				""
-			];
-		};
-		"scroll-step"= "5";
-		"on-click-right"= "pavucontrol";
-	};
+        "pulseaudio" = {
+          "format" = "{volume:2}% {icon}";
+          "format-bluetooth" = "{volume}% {icon}";
+          "format-muted" = "";
+          "format-icons" = {
+            "headphones" = "";
+            "default" = [
+              ""
+              ""
+              ""
+            ];
+          };
+          "scroll-step" = "5";
+          "on-click-right" = "pavucontrol";
+        };
 
       };
     };
 
     style =
       let
+        fs = "18";
         text = "#FFFFFF";
         active = "#FFFFFF";
-        inactive = "#FFFFFF";
-        hover = "#5F5F5F";
+        inactive = "#dbdbdb";
+        hover = "#ededed";
         empty = "#FFFFFF";
         base = "#000000";
       in
@@ -173,12 +186,12 @@
         #clock {
           font-weight: bolder;
           font-family: "Symbols Nerd Font";
-          font-size: 13px;
+          font-size: ${fs}px;
         }
 
         #custom-showtray {
           font-family: "FiraCode Nerd Font";
-          font-size: 14px;
+          font-size: ${fs}px;
           color: ${text};
           padding-left: 2px;
           padding-right: 2px;
