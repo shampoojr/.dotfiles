@@ -3,42 +3,21 @@
   programs = {
     fzf = {
       enable = true;
-
-      enableZshIntegration = true;
-
-      defaultOptions = [
-
-      ];
-
-      defaultCommand = [
-        "fd --type f"
-      ];
-
-      historyWidgetOptions = [
-
-      ];
-
-      changeDirWidgetOptions = [
-
-      ];
-
-      changeDirWidgetCommand = [
-
-      ];
-
-      fileWidgetOptions = [
-
-      ];
-
-      fileDirWidgetCommand = [
-
-      ];
+      
+      #changeDirWidgetCommand = [];
+      #changeDirWidgetOptions = [];
+      #defaultCommand = [];
+      #defaultOptions = [];
+      #enableZshIntegration = true;
+      #fileWidgetCommand = [];
+      #fileWidgetOptions = [];
+      #historyWidgetOptions = [];
 
       tmux = {
         enableShellIntegration = true;
 
         shellIntegrationOptions = [
-          "-r 40%"
+          "-h 30%"
         ];
       };
     };

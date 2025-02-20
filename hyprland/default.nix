@@ -2,9 +2,9 @@
 let
 
   base = "";
-  text = "";
   primary = "";
   secondary = "";
+  text = "";
 
 in
 {
@@ -36,42 +36,42 @@ in
     settings = {
 
       exec-once = [
-        #systemctl --user start hyprpolkitagent
         "dunst"
-        "waybar"
-        "lxqt-policykit-agent"
         "hyprpaper"
+        "lxqt-policykit-agent"
         "nm-applet --indicator"
+        "waybar"
+        #systemctl --user start hyprpolkitagent
       ];
 
       input = {
-        kb_model = "";
+        accel_profile = "";
+        emulate_discrete_scroll = 1;
+        float_switch_override_focus = 1;
+        focus_on_close = 0;
+        follow_mouse = 1;
+        force_no_accel = false;
+        kb_file = "";
         kb_layout = "no";
-        kb_variant = "";
+        kb_model = "";
         kb_options = "";
         kb_rules = "";
-        kb_file = "";
-        numlock_by_default = false;
-        resolve_binds_by_sym = false;
-        repeat_rate = 25;
-        repeat_delay = 600;
-        sensitivity = 0;
-        accel_profile = "";
-        force_no_accel = false;
+        kb_variant = "";
         left_handed = false;
-        scroll_points = "";
-        scroll_method = "";
+        mouse_refocus = true;
+        natural_scroll = false;
+        numlock_by_default = false;
+        off_window_axis_events = 1;
+        repeat_delay = 600;
+        repeat_rate = 25;
+        resolve_binds_by_sym = false;
         scroll_button = 0;
         scroll_button_lock = 0;
         scroll_factor = 1;
-        natural_scroll = false;
-        follow_mouse = 1;
-        mouse_refocus = true;
-        focus_on_close = 0;
-        float_switch_override_focus = 1;
+        scroll_method = "";
+        scroll_points = "";
+        sensitivity = 0;
         special_fallthrough = false;
-        off_window_axis_events = 1;
-        emulate_discrete_scroll = 1;
       };
 
       monitor = ",1920x1080,0x0,1";
@@ -82,23 +82,23 @@ in
       ];
 
       general = {
+
+        "col.active_border" = "rgba(595959ff)";
+        "col.inactive_border" = "rgba(595959aa)";
+        #"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+
+        allow_tearing = false;
         border_size = 1;
-        no_border_on_floating = true;
+        extend_border_grab_area = 0;
         gaps_in = 5;
         gaps_out = 10;
         gaps_workspaces = 0;
-
-        #"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
-        "col.active_border" = "rgba(595959ff)";
-
-        layout = "master";
-        no_focus_fallback = true;
-        resize_on_border = true;
-        extend_border_grab_area = 0;
         hover_icon_on_border = true;
-        allow_tearing = false;
+        layout = "master";
+        no_border_on_floating = true;
+        no_focus_fallback = true;
         resize_corner = 0;
+        resize_on_border = true;
 
         snap = {
           enabled = false;
@@ -133,20 +133,20 @@ in
         };
 
         blur = {
+          brightness = 0.8172;
+          contrast = 0.8916;
           enabled = true;
-          size = 2;
-          passes = 5;
           ignore_opacity = false;
           new_optimizations = true;
-          xray = false;
           noise = 0.0117;
-          contrast = 0.8916;
-          brightness = 0.8172;
-          vibrancy = 0.1696;
-          vibrancy_darkness = 0;
-          special = false;
+          passes = 5;
           popups = false;
           popups_ignorealpha = 0.2;
+          size = 2;
+          special = false;
+          vibrancy = 0.1696;
+          vibrancy_darkness = 0;
+          xray = false;
         };
       };
 
@@ -154,27 +154,27 @@ in
         enabled = true;
 
         bezier = [
-          "easeOutQuint,0.23,1,0.32,1"
-          "easeInOutCubic,0.65,0.05,0.36,1"
-          "linear,0,0,1,1"
           "almostLinear,0.5,0.5,0.75,1.0"
+          "easeInOutCubic,0.65,0.05,0.36,1"
+          "easeOutQuint,0.23,1,0.32,1"
+          "linear,0,0,1,1"
           "quick,0.15,0,0.1,1"
         ];
 
         animation = [
-          "global, 1, 10, default"
           "border, 1, 5.39, easeOutQuint"
-          "windows, 1, 4.79, easeOutQuint"
-          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
-          "windowsOut, 1, 1.49, linear, popin 87%"
-          "fadeIn, 1, 1.73, almostLinear"
-          "fadeOut, 1, 1.46, almostLinear"
           "fade, 1, 3.03, quick"
+          "fadeIn, 1, 1.73, almostLinear"
+          "fadeLayersIn, 1, 1.79, almostLinear"
+          "fadeLayersOut, 1, 1.39, almostLinear"
+          "fadeOut, 1, 1.46, almostLinear"
+          "global, 1, 10, default"
           "layers, 1, 3.81, easeOutQuint"
           "layersIn, 1, 4, easeOutQuint, fade"
           "layersOut, 1, 1.5, linear, fade"
-          "fadeLayersIn, 1, 1.79, almostLinear"
-          "fadeLayersOut, 1, 1.39, almostLinear"
+          "windows, 1, 4.79, easeOutQuint"
+          "windowsIn, 1, 4.1, easeOutQuint, popin 87%"
+          "windowsOut, 1, 1.49, linear, popin 87%"
           "workspaces, 1, 1.94, almostLinear, fade"
           "workspacesIn, 1, 1.21, almostLinear, fade"
           "workspacesOut, 1, 1.94, almostLinear, fade"
@@ -182,74 +182,74 @@ in
       };
 
       master = {
-        allow_small_split = false;
-        special_scale_factor = 0.5;
-        mfact = 0.5;
-        new_status = "master";
-        new_on_top = false;
-        new_on_active = "none";
-        orientation = "left";
-        inherit_fullscreen = true;
         # always_center_master = false;
-        smart_resizing = true;
+        allow_small_split = false;
         drop_at_cursor = true;
+        inherit_fullscreen = true;
+        mfact = 0.5;
+        new_on_active = "none";
+        new_on_top = false;
+        new_status = "master";
+        orientation = "left";
+        smart_resizing = true;
+        special_scale_factor = 0.5;
       };
 
       dwindle = {
-        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # You probably want this
+        pseudotile = true; # Master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
       };
 
       misc = {
-        force_default_wallpaper = 1; # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. =(
-        disable_splash_rendering = true;
+        #"background_color" = "${base}";
         #"col.splash" = "${text}";
-        font_family = "FiraCode Nerd Font Bold";
-        splash_font_family = "FiraCode Nerd Font Bold";
-        vfr = true;
-        vrr = 0;
-        mouse_move_enables_dpms = false;
-        key_press_enables_dpms = false;
+        allow_session_lock_restore = false;
         always_follow_on_dnd = true;
-        layers_hog_keyboard_focus = true;
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
+        close_special_on_empty = true;
         disable_autoreload = false;
+        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. =(
+        disable_splash_rendering = true;
+        disable_xdg_env_checks = false;
         enable_swallow = false;
-        swallow_regex = "";
-        swallow_exception_regex = "";
+        exit_window_retains_fullscreen = false;
         focus_on_activate = false;
+        font_family = "FiraCode Nerd Font Bold";
+        force_default_wallpaper = 1; # Set to 0 or 1 to disable the anime mascot wallpapers
+        initial_workspace_tracking = 1;
+        key_press_enables_dpms = false;
+        layers_hog_keyboard_focus = true;
+        middle_click_paste = true;
+        mouse_move_enables_dpms = false;
         mouse_move_focuses_monitor = true;
+        new_window_takes_over_fullscreen = 0;
         render_ahead_of_time = false;
         render_ahead_safezone = 1;
-        allow_session_lock_restore = false;
-        #"background_color" = "${base}";
-        close_special_on_empty = true;
-        new_window_takes_over_fullscreen = 0;
-        exit_window_retains_fullscreen = false;
-        initial_workspace_tracking = 1;
-        middle_click_paste = true;
         render_unfocused_fps = 15;
-        disable_xdg_env_checks = false;
+        splash_font_family = "FiraCode Nerd Font Bold";
+        swallow_exception_regex = "";
+        swallow_regex = "";
+        vfr = true;
+        vrr = 0;
       };
 
       cursor = {
-        sync_gsettings_theme = true;
-        no_hardware_cursors = 2;
-        no_break_fs_vrr = false;
-        min_refresh_rate = 24;
-        hotspot_padding = 1;
-        inactive_timeout = 0;
-        no_warps = false;
-        persistent_warps = false;
-        warp_on_change_workspace = 0;
         default_monitor = "";
-        zoom_factor = 1.0;
-        zoom_rigid = false;
         enable_hyprcursor = true;
         hide_on_key_press = false;
         hide_on_touch = true;
+        hotspot_padding = 1;
+        inactive_timeout = 0;
+        min_refresh_rate = 24;
+        no_break_fs_vrr = false;
+        no_hardware_cursors = 2;
+        no_warps = false;
+        persistent_warps = false;
+        sync_gsettings_theme = true;
+        warp_on_change_workspace = 0;
+        zoom_factor = 1.0;
+        zoom_rigid = false;
       };
 
       windowrule = [

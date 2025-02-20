@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
   ];
 
-  hardware.openrazer.enable = true;
+
 
   # I dont really know how this works
   system.autoUpgrade.enable = true;
@@ -145,25 +145,25 @@
 
     # System packages
     systemPackages = with pkgs; [
-      hyprutils
-      hyprpolkitagent
-      pavucontrol
-      wl-clipboard
-      libnotify
       brightnessctl
-      playerctl
-      grim
-      slurp
       git
+      grim
+      hyprpolkitagent
+      hyprutils
+      libnotify
       lshw
+      lxqt.lxqt-policykit
+      networkmanagerapplet
+      openrazer-daemon
+      pavucontrol
+      playerctl
+      slurp
+      wl-clipboard
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-kde
       xdg-desktop-portal-wlr
-      lxqt.lxqt-policykit
-      networkmanagerapplet
-      openrazer-daemon
     ];
   };
 
@@ -197,6 +197,8 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   # services.blueman.enable = true; #DO NOT ENABLE
+    
+  hardware.openrazer.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
@@ -211,29 +213,26 @@
 
     # User packages
     packages = with pkgs; [
-      hyprpicker
-      hyprpaper
-      dunst
-      #waybar
-      eww
-      #ghostty
-      hyprshot
-      loupe
-      ponysay
-      nixfmt-rfc-style
-      thunderbird
-      fastfetch
-      unzip
-      polychromatic
-      eza
-      kitty
-      vscode
       btop
-      zoxide
-      oh-my-posh
       discord
-      rofi
+      dunst
+      eww
+      eza
+      fastfetch
+      hyprpaper
+      hyprpicker
+      hyprshot
+      kitty
+      loupe
+      nixfmt-rfc-style
+      oh-my-posh
+      polychromatic
+      ponysay
       prismlauncher
+      rofi
+      thunderbird
+      unzip
+      zoxide
     ];
   };
 
