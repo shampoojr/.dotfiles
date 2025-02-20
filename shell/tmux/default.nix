@@ -19,8 +19,6 @@
         tmuxPlugins.better-mouse-mode
       ];
 
-      enableShellIntegration = true;
-
       extraConfig = ''
 
       '';
