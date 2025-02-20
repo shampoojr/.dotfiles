@@ -5,11 +5,11 @@
     ./hardware-configuration.nix
   ];
 
-
+  hardware.openrazer.enable = true;
 
   # I dont really know how this works
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
+    system.autoUpgrade.enable = true;
+    system.autoUpgrade.allowReboot = true;
 
   # This has broke me so may times
   security.polkit.enable = true;
@@ -133,14 +133,14 @@
 
     # Exclude enviroment packages
     plasma6.excludePackages = with pkgs.kdePackages; [
+      dolphin
       elisa
       gwenview
       kate
       khelpcenter
       konsole
-      okular
-      dolphin
       kwallet
+      okular
     ];
 
     # System packages
@@ -175,6 +175,7 @@
     enable = true;
   };
 
+
   # Thunar | the better file manager
   programs.thunar = {
     enable = true;
@@ -197,8 +198,6 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   # services.blueman.enable = true; #DO NOT ENABLE
-    
-  hardware.openrazer.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
@@ -217,15 +216,12 @@
       discord
       dunst
       eww
-      eza
       fastfetch
       hyprpaper
       hyprpicker
       hyprshot
-      kitty
       loupe
       nixfmt-rfc-style
-      oh-my-posh
       polychromatic
       ponysay
       prismlauncher
