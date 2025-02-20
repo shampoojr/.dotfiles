@@ -5,21 +5,21 @@
 
     settings = {
       waybar = {
-        layer = "top";
-        position = "top";
-        reload_style_on_change = true;
-        height = 45;
-        width = 1920;
-        margin-top = 5;
-        margin-left = 0;
-        margin-right = 0;
-        margin-bottom = 0;
-        spacing = 10;
-        name = "waybar";
-        mode = "dock";
-        start_hidden = false;
         exclusive = true;
         fixed-center = true;
+        height = 45;
+        layer = "top";
+        margin-bottom = 0;
+        margin-left = 0;
+        margin-right = 0;
+        margin-top = 5;
+        mode = "dock";
+        name = "waybar";
+        position = "top";
+        reload_style_on_change = true;
+        spacing = 10;
+        start_hidden = false;
+        width = 1920;
 
         modules-left = [
           "hyprland/workspaces"
@@ -115,13 +115,13 @@
 
     style =
       let
-        fs = "18";
-        text = "#FFFFFF";
         active = "#FFFFFF";
-        inactive = "#dbdbdb";
-        hover = "#ededed";
-        empty = "#FFFFFF";
         base = "#000000";
+        empty = "#FFFFFF";
+        fs = "18";
+        hover = "#ededed";
+        inactive = "#dbdbdb";
+        text = "#FFFFFF";
       in
       ''
         * {

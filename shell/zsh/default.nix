@@ -1,20 +1,22 @@
-{pkgs, config, ...}:{
-  
-      zsh = {
+{ pkgs, config, ... }:
+{
+
+  programs = {
+    zsh = {
       enable = true;
 
-      enableCompletion = true;
       autosuggestion.enable = true;
+      enableCompletion = true;
       syntaxHighlighting.enable = true;
 
       shellAliases = {
+        all = "update && hm";
         flake = "all --flake .";
         hflake = "hm --flake .";
-        sflake = "update --flake .";
-        ls = "eza";
-        update = "sudo nixos-rebuild switch";
         hm = "home-manager switch";
-        all = "update && hm";
+        ls = "eza";
+        sflake = "update --flake .";
+        update = "sudo nixos-rebuild switch";
       };
 
       initExtra = ''
@@ -30,4 +32,5 @@
         #plugins = [];
       };
     };
+  };
 }

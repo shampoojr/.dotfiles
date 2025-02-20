@@ -9,5 +9,6 @@
     ../packages
     ../shell
     ../waybar
+    ../kitty
   ];
 }
