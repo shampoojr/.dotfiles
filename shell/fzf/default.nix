@@ -3,19 +3,42 @@
   programs = {
     fzf = {
       enable = true;
+
       enableZshIntegration = true;
+
       defaultOptions = [
-        "--height 40% --tmux right,40% --layout reverse --border top"
+
+      ];
+
+      defaultCommand = [
+        "fd --type f"
       ];
 
       historyWidgetOptions = [
-        "--height 40% --tmux right,40% --layout reverse --border top"
+
+      ];
+
+      changeDirWidgetOptions = [
+
+      ];
+
+      changeDirWidgetCommand = [
+
+      ];
+
+      fileWidgetOptions = [
+
+      ];
+
+      fileDirWidgetCommand = [
+
       ];
 
       tmux = {
         enableShellIntegration = true;
+
         shellIntegrationOptions = [
-          "right,40%,100%"
+          "-r 40%"
         ];
       };
     };
