@@ -29,7 +29,9 @@ in
       syntaxHighlighting.enable = true;
 
       shellAliases = {
-        flake = "all --flake";
+        flake = "all --flake .";
+        hflake = "hm --flake .";
+        sflake = "update --flake .";
         ls = "eza";
         update = "sudo nixos-rebuild switch";
         hm = "home-manager switch";
@@ -37,9 +39,6 @@ in
       };
 
       initExtra = ''
-        if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-            tmux attach-session -t default || tmux new-session -s default
-        fi
 
         if [[ -o interactive ]]; then
             fastfetch
