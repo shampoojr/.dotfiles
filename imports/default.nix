@@ -10,5 +10,6 @@
     ../shell
     ../waybar
     ../kitty
+    ../browser
   ];
 }
