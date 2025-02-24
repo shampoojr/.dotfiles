@@ -11,5 +11,6 @@
     ../waybar
     ../kitty
     ../browser
+    ../editor
   ];
 }

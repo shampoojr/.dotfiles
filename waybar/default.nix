@@ -91,7 +91,7 @@
           "tooltip-format-disconnected" = "Error";
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
           "tooltip-format-ethernet" = "{ifname} 🖧 ";
-          "on-click" = "kitty nmtui";
+          "on-click" = "nm-connection-editor";
         };
 
         "pulseaudio" = {

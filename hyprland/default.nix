@@ -253,7 +253,9 @@ in
       };
 
       windowrule = [
-        "noblur, ^(Code)$"
+        "float, ^(.blueman-manager-wrapped)$"
+        "float, ^(nm-connection-editor)$"
+        "float, ^(org.pulseaudio.pavucontrol)$"
       ];
 
       windowrulev2 = [

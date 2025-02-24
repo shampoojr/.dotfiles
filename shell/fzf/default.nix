@@ -3,21 +3,20 @@
   programs = {
     fzf = {
       enable = true;
-      
+
       #changeDirWidgetCommand = [];
       #changeDirWidgetOptions = [];
       #defaultCommand = [];
       #defaultOptions = [];
-      #enableZshIntegration = true;
+      enableZshIntegration = true;
       #fileWidgetCommand = [];
       #fileWidgetOptions = [];
       #historyWidgetOptions = [];
 
       tmux = {
         enableShellIntegration = true;
-
         shellIntegrationOptions = [
-          "-h 30%"
+          "-r 30%"
         ];
       };
     };
