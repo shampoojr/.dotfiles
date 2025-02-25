@@ -45,7 +45,7 @@
 
   # When I have time ill change this
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -164,6 +164,7 @@
       xdg-desktop-portal-hyprland
       xdg-desktop-portal-kde
       xdg-desktop-portal-wlr
+      nix-index
     ];
   };
 
@@ -195,9 +196,9 @@
   services.flatpak.enable = true;
 
   # Bluetooth | works half of the time
-  #hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
   #hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-   services.blueman.enable = true; #DO NOT ENABLE
+  services.blueman.enable = true; #DO NOT ENABLE
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
@@ -212,6 +213,7 @@
 
     # User packages
     packages = with pkgs; [
+      spotify
       btop
       discord
       dunst

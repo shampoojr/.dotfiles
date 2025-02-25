@@ -12,5 +12,6 @@
     ../kitty
     ../browser
     ../editor
+    ../spotify
   ];
 }
