@@ -52,7 +52,7 @@
         };
       };
 
-      spicetify-nix.lib.mkSpicetify {
+      spicetify-nix.lib.mkSpicetify = {
         modules = [
           ./spotify/spicetify.nix
         ];
