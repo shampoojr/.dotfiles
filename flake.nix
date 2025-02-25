@@ -26,6 +26,7 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
     in
 
     {
@@ -39,7 +40,6 @@
       };
 
       homeConfigurations = {
-
         shampoojr = home-manager.lib.homeManagerConfiguration {
           modules = [
             ./home.nix
@@ -51,5 +51,14 @@
           inherit inputs;
         };
       };
-    };
+
+      spicetify-nix.lib.mkSpicetify {
+        modules = [
+          ./spotify/spicetify.nix
+        ];
+        inherit pkgs;
+      };
+
+
+
 }
