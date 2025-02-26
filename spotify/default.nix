@@ -13,6 +13,7 @@
     enable = true;
     enabledExtensions = with spicePkgs.extensions; [
       hidePodcasts
+      volumePercentage
       beautifulLyrics
       shuffle # shuffle+ (special characters are sanitized out of extension names)
     ];
