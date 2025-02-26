@@ -1,29 +1,27 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  spicetify-nix,
+  inputs,
+  spicePkgs,
+  ...
+}:
+let
+
+in
 {
 
-  programs.spicetify =
-    let
-      spicetify = spicetify-nix.lib.mkSpicetify pkgs {
-       enabledExtensions = with spicePkgs.extensions; [
-         hidePodcasts
-         shuffle # shuffle+ (special characters are sanitized out of extension names)
-       ];
-       enabledCustomApps = with spicePkgs.apps; [
-         newReleases
-         ncsVisualizer
-       ];
-       enabledSnippets = with spicePkgs.snippets; [
-         rotatingCoverart
-         pointer
-       ];
+  programs.spicetify.dontInstall = true;
 
-       theme = spicePkgs.themes.catppuccin;
-       colorScheme = "mocha";
-      };
-    in
-    {
-      enable = true;
+  programs.spicetify = {
+    enable = true;
+    #config options
+    enabledExtensions = with spicePkgs.extensions; [
+      hidePodcasts
+    #  shuffle # shuffle+ (special characters are sanitized out of extension names)
+    ];
+         theme = spicePkgs.themes.ziro;
+     #colorScheme = "ziro";
+  };
 
-
-    };
 }

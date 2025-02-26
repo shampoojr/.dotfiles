@@ -1,8 +1,8 @@
 { pkgs, config, ... }:
 {
-  home.packages = with pkgs; [
-    dconf
-    spotify
-  ];
+  home.packages = [
+pkgs.dconf
+config.programs.spicetify.spicedSpotify
+];
 
 }

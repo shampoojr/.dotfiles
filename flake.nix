@@ -2,11 +2,11 @@
   inputs = {
     # Nix Version
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    #nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home-manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
-    #home-manager-unstable.url = "github:nix-community/home-manager/master";
+    home-manager-unstable.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Spicetify
@@ -19,6 +19,7 @@
       self,
       nixpkgs,
       home-manager,
+      spicetify-nix,
       ...
     }@inputs:
 
@@ -26,7 +27,7 @@
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
     in
 
     {
@@ -41,6 +42,10 @@
 
       homeConfigurations = {
         shampoojr = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
+            inherit spicePkgs;
+            inherit spicetify-nix;
+          };
           modules = [
             ./home.nix
           ];
@@ -51,23 +56,5 @@
           inherit inputs;
         };
       };
-
-      spicetify-nix.lib.mkSpicetify = {
-        modules = [
-          ./spotify/spicetify.nix
-        ];
-        inherit pkgs;
-
-           programs.spicetify = {
-     enable = true;
-     enabledExtensions = with spicePkgs.extensions; [
-       adblockify
-       hidePodcasts
-       shuffle # shuffle+ (special characters are sanitized out of extension names)
-     ];
-     theme = spicePkgs.themes.catppuccin;
-     colorScheme = "mocha";
-   };
-      };
-};
+    };
 }
