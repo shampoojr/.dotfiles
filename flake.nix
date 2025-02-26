@@ -12,22 +12,28 @@
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    #nixvim.url = "github:nix-community/nixvim";
+    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+    nixvim.url = "github:nix-community/nixvim/nixos-24.11";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
     {
-      self,
-      nixpkgs,
       home-manager,
+      nixpkgs,
+      nixvim,
+      self,
       spicetify-nix,
       ...
     }@inputs:
 
     let
       lib = nixpkgs.lib;
-      system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+      system = "x86_64-linux";
     in
 
     {

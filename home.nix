@@ -5,7 +5,8 @@
   home.sessionVariables = { };
   home.stateVersion = "24.11";
   home.username = "shampoojr";
-  imports = [ ./imports
+  imports = [ 
+  ./imports
   spicetify-nix.homeManagerModules.default
 ];
   nixpkgs.config.allowUnfree = true;
