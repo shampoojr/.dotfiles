@@ -13,5 +13,6 @@
     ../browser
     ../editor
     ../spotify
+    ../obs
   ];
 }

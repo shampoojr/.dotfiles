@@ -25,7 +25,9 @@
           "hyprland/workspaces"
         ];
 
-        modules-center = [ ];
+        modules-center = [
+          "cava" 
+        ];
 
         modules-right = [
           #"tray"
@@ -38,6 +40,12 @@
 
         "workspaces" = {
 
+        };
+
+        "hyprland/window" = {
+          "rewrite" = {
+            "LibreWolf" = "Librewolf";
+          };
         };
 
         "battery" = {
@@ -62,6 +70,44 @@
               "󰂂"
               "󰁹"
             ];
+          };
+        };
+
+        "cava" = {
+#        "cava_config"= "$HOME/.config/cava/config";
+          "orientation" = "bottom";
+          "framerate" = 120;
+          "autosens" = 1;
+          "sensitivity" = "100";
+          "sample_rate" = 44100;
+          "sample_bits" = 16;
+          "channel" = 2;
+          "autoconnect" = 2;
+          "bars" = 70;
+          "bar_spacing" = "5";
+          "lower_cutoff_freq" = "50";
+          "higher_cutoff_freq" = "10000";
+          "method" = "pulse";
+          "source" = "auto";
+          "stereo" = true;
+          "reverse" = false;
+          "bar_delimiter" = 0;
+          "monstercat" = true;
+          "waves" = false;
+          "noise_reduction" = "0.77";
+          "input_delay" = 0;
+          "format-icons" = [
+            "▁"
+            "▂"
+            "▃"
+            "▄"
+            "▅"
+            "▆"
+            "▇"
+            "█"
+          ];
+          "actions" = {
+            "on-click-right" = "mode";
           };
         };
 

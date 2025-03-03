@@ -37,11 +37,12 @@ in
 
       exec-once = [
         "dunst"
+        #"polkit-kde-agent-1"
         "hyprpaper"
-        "lxqt-policykit-agent"
+        #"lxqt-policykit-agent"
         "nm-applet --indicator"
         "waybar"
-        #systemctl --user start hyprpolkitagent
+        "systemctl --user start hyprpolkitagent"
       ];
 
       input = {
@@ -256,6 +257,9 @@ in
         "float, ^(.blueman-manager-wrapped)$"
         "float, ^(nm-connection-editor)$"
         "float, ^(org.pulseaudio.pavucontrol)$"
+        "float, title:lxqt-policykit-agent"
+        "center,title:lxqt-policykit-agent"
+        "size 500 500,title:lxqt-policykit-agent"
       ];
 
       windowrulev2 = [
