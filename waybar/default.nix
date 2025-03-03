@@ -26,7 +26,7 @@
         ];
 
         modules-center = [
-          "cava" 
+          "cava"
         ];
 
         modules-right = [
@@ -74,7 +74,7 @@
         };
 
         "cava" = {
-#        "cava_config"= "$HOME/.config/cava/config";
+          #        "cava_config"= "$HOME/.config/cava/config";
           "orientation" = "bottom";
           "framerate" = 120;
           "autosens" = 1;
