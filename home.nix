@@ -7,6 +7,7 @@
   home.username = "shampoojr";
   imports = [ 
   ./imports
+  <nixvim>.homeManagerModules.nixvim
   spicetify-nix.homeManagerModules.default
 ];
   nixpkgs.config.allowUnfree = true;

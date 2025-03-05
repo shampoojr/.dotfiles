@@ -4,11 +4,12 @@
 
   ];
   programs = {
-    neovim = {
-      enable = true;
-    };
-    # nixvim = {
-    #   enable = true;
-    # };
+
+    #neovim = {
+    #  enable = true;
+    #};
+     nixvim = {
+       enable = true;
+     };
   };
 }
