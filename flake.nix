@@ -54,6 +54,7 @@
           };
           modules = [
             ./home.nix
+            <nixvim>.homeManagerModules.nixvim
           ];
           inherit pkgs;
         };
