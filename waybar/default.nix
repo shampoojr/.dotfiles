@@ -26,7 +26,8 @@
         ];
 
         modules-center = [
-          "cava"
+          #"cava"
+          custom/spotify
         ];
 
         modules-right = [
@@ -38,7 +39,21 @@
           "clock"
         ];
 
-        "workspaces" = {
+        "hyprland/workspaces" = {
+          "persistent-workspaces" = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+          };
+
+          "custom/spotify" = {
+            "exec" = "/usr/bin/python3 $HOME/.dotfiles/waybar/mediaplayer.py --player spotify";
+            "format" = "{}  ";
+            "return-type" = "json";
+            "on-click" = "playerctl play-pause";
+            "on-scroll-up" = "playerctl next";
+            "on-scroll-down" = "playerctl previous";
+          };
 
         };
 
