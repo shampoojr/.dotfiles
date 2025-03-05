@@ -6,6 +6,7 @@
 }:
 let
   inherit (flake) inputs;
+
 in
 {
   imports = [
@@ -13,10 +14,8 @@ in
     spicetify-nix.homeManagerModules.default
   ];
 
-  programs.spicetify =
-    let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-    in
+  programs.spicetify = let
+  in
     {
       dontInstall = true;
       enable = true;

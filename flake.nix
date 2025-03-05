@@ -36,6 +36,7 @@
       home-manager,
       nixpkgs,
       nixvim,
+      spicePkgs,
       self,
       spicetify-nix,
       ...
@@ -44,7 +45,7 @@
     let
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
-      #spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       system = "x86_64-linux";
     in
 
