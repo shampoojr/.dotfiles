@@ -1,10 +1,8 @@
 {
+  inputs,
   pkgs,
   flake,
-  spicetify-nix,
-  system,
   spicePkgs,
-  spicetify,
   ...
 }:
 let
