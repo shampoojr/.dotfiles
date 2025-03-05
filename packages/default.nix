@@ -8,6 +8,7 @@
     pkgs.dconf
     config.programs.spicetify.spicedSpotify
     pkgs.gh
+    #inputs.nixvim-config.packages.${system}.default 
   ];
 
 }

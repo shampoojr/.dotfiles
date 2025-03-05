@@ -8,8 +8,8 @@
     #neovim = {
     #  enable = true;
     #};
-     nixvim = {
-       enable = true;
-     };
+    #  nixvim = {
+    #   enable = true;
+    #  };
   };
 }

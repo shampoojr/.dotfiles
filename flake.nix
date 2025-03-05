@@ -9,6 +9,8 @@
     home-manager-unstable.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +23,7 @@
 
   outputs =
     {
+      flake-parts,
       home-manager,
       nixpkgs,
       nixvim,
@@ -37,14 +40,17 @@
     in
 
     {
+
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        shampoojr = lib.nixosSystem {
           inherit system;
           modules = [
             ./configuration.nix
           ];
         };
       };
+
+      #
 
       homeConfigurations = {
         shampoojr = home-manager.lib.homeManagerConfiguration {
@@ -54,7 +60,6 @@
           };
           modules = [
             ./home.nix
-            <nixvim>.homeManagerModules.nixvim
           ];
           inherit pkgs;
         };
@@ -63,5 +68,7 @@
           inherit inputs;
         };
       };
+
+      #
     };
 }
