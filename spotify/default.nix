@@ -1,11 +1,11 @@
 {
-  config,
   pkgs,
-  spicetify-nix,
-  inputs,
-  spicePkgs,
+  flake,
   ...
 }:
+let
+inherit (flake) inputs;
+in
 {
   programs.spicetify.dontInstall = true;
 
