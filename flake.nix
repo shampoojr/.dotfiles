@@ -36,7 +36,6 @@
       home-manager,
       nixpkgs,
       nixvim,
-      spicePkgs,
       self,
       spicetify-nix,
       ...
@@ -66,6 +65,7 @@
         shampoojr = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
             inherit inputs;
+            inherit spicePkgs;
           };
           modules = [
             ./home.nix

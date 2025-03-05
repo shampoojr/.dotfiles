@@ -1,6 +1,7 @@
 { imports, ... }:
 {
   imports = [
+    ./wflakes.nix
     ../ghostty
     ../git
     ../gtk

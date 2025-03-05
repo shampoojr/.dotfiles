@@ -19,7 +19,7 @@
       clipboard-paste-protection = false;
       confirm-close-surface = false;
       mouse-hide-while-typing = true;
-      gtk.titlebar = false;
+      gtk-titlebar = false;
 
       #window-height = 35;
       #window-padding-x = 10;

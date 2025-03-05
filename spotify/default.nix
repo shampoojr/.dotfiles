@@ -2,20 +2,19 @@
   pkgs,
   flake,
   spicetify-nix,
+  system,
+  spicePkgs,
+  spicetify,
   ...
 }:
 let
   inherit (flake) inputs;
-
 in
 {
-  imports = [
-    inputs.spicetify-nix.nixosModules.default
-    spicetify-nix.homeManagerModules.default
-  ];
+  programs.spicetify = let 
 
-  programs.spicetify = let
-  in
+    in
+  
     {
       dontInstall = true;
       enable = true;
