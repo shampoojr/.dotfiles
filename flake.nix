@@ -30,88 +30,54 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  # outputs =
-  #   {
-  #     flake-parts,
-  #     home-manager,
-  #     nixpkgs,
-  #     nixvim,
-  #     self,
-  #     spicetify-nix,
-  #     ...
-  #   }@inputs:
-
-  #   let
-  #     lib = nixpkgs.lib;
-  #     pkgs = nixpkgs.legacyPackages.${system};
-  #     spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
-  #     system = "x86_64-linux";
-  #   in
-
-  #   {
-
-  #     nixosConfigurations = {
-  #       shampoojr = lib.nixosSystem {
-  #         inherit system;
-  #         modules = [
-  #           ./configuration.nix
-  #         ];
-  #       };
-  #     };
-
-  #     #
-
-  #     homeConfigurations = {
-  #       shampoojr = home-manager.lib.homeManagerConfiguration {
-  #         extraSpecialArgs = {
-  #           inherit spicePkgs;
-  #           inherit spicetify-nix;
-  #         };
-  #         modules = [
-  #           ./home.nix
-  #         ];
-  #         inherit pkgs;
-  #       };
-  #       specialArgs = {
-  #         inherit system;
-  #         inherit inputs;
-  #       };
-  #     };
-
-  #     #
-  #   };
-
   outputs =
-    inputs@{ self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
-      imports = (
-        with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
-      );
+    inputs@{
+      flake-parts,
+      home-manager,
+      nixpkgs,
+      nixvim,
+      self,
+      spicetify-nix,
+      ...
+    }:
 
-      perSystem =
-        { lib, system, ... }:
-        {
-          # Make our overlay available to the devShell
-          # "Flake parts does not yet come with an endorsed module that initializes the pkgs argument.""
-          # So we must do this manually; https://flake.parts/overlays#consuming-an-overlay
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            overlays = lib.attrValues self.overlays;
-            config.allowUnfree = true;
-          };
+    let
+      lib = nixpkgs.lib;
+      pkgs = nixpkgs.legacyPackages.${system};
+      #spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+      system = "x86_64-linux";
+    in
+
+    {
+
+      nixosConfigurations = {
+        shampoojr = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+          ];
         };
-
-      # https://omnix.page/om/ci.html
-      flake.om.ci.default.ROOT = {
-        dir = ".";
-        steps.flake-check.enable = false; # Doesn't make sense to check nixos config on darwin!
-        steps.custom = { };
       };
+
+      #
+
+      homeConfigurations = {
+        shampoojr = home-manager.lib.homeManagerConfiguration {
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+          modules = [
+            ./home.nix
+          ];
+          inherit pkgs;
+        };
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+        };
+      };
+
+      #
     };
 
 }

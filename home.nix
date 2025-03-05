@@ -1,4 +1,4 @@
-{ config, pkgs, spicetify-nix, ... }:
+{ config, pkgs, inputs, ... }:
 {
   home.file = { };
   home.homeDirectory = "/home/shampoojr";
@@ -7,7 +7,7 @@
   home.username = "shampoojr";
   imports = [ 
   ./imports
-  spicetify-nix.homeManagerModules.default
+    inputs.spicetify-nix.homeManagerModules.default
 ];
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
