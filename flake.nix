@@ -17,7 +17,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Flake parts
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    #flake-parts.url = "github:hercules-ci/flake-parts";
 
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -32,7 +32,6 @@
 
   outputs =
     inputs@{
-      flake-parts,
       home-manager,
       nixpkgs,
       nixvim,
