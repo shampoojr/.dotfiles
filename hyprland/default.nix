@@ -262,7 +262,12 @@ in
         "size 500 500,title:lxqt-policykit-agent"
       ];
 
+      workspace = [
+      "name:music, on-created-empty: Spotify"
+      ];
+
       windowrulev2 = [
+        "workspace music, class:Spotify"
       ];
 
     };

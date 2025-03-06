@@ -1,6 +1,5 @@
 { ... }:
 let
-
   editor = "code";
   fileManager = "thunar";
   terminal = "ghostty";
@@ -38,6 +37,10 @@ in
       window_direction_monitor_fallback = true;
     };
 
+    #gestures = [
+    #  "workspace_swipe"
+    #];
+
     bind = [
 
       "${mod}, E, exec, ${fileManager}"
@@ -45,7 +48,7 @@ in
       "${mod}, W, exec, ${browser}"
       "${mod}, return, exec, ${terminal}"
       "${mod}, C, exec, ${editor}"
-      "${mod}, F, fullscreen"
+      "${mod}, F, exec, hyprctl dispatch fullscreenstate 3 0"
       "${mod}, space, togglefloating"
       "${modShift}, Q, killactive"
 
@@ -77,6 +80,9 @@ in
       "${modShift}, 8, movetoworkspace, 8"
       "${modShift}, 9, movetoworkspace, 9"
       "${modShift}, 0, movetoworkspace, 10"
+
+      "${mod}, +, workspace, +1"
+      "${mod}, -, workspace, -1"
 
       "${mod}, S, togglespecialworkspace, magic"
       "${modShift}, S, movetoworkspace, special=magic"

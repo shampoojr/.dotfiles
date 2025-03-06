@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+
   ];
 
   hardware.openrazer.enable = true;
@@ -44,7 +45,7 @@
   };
 
   # When I have time ill change this
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "shampoojr"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
@@ -145,6 +146,8 @@
 
     # System packages
     systemPackages = with pkgs; [
+      python313
+      kdePackages.polkit-kde-agent-1
       brightnessctl
       git
       grim
@@ -168,30 +171,20 @@
     ];
   };
 
-  # Direnv need more reading to know what to do with this
-  programs.direnv.enable = true;
+  # IDK what this is
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   # Steam | why cant i pkgs!??
   programs.steam = {
     enable = true;
   };
 
-
   # Thunar | the better file manager
   programs.thunar = {
     enable = true;
   };
-
-  # IDK what this is
-  programs.xfconf.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
-
-  # Java just for minecraft
-  programs.java = {
-    enable = true;
-  };
-
   # Flatpak
   services.flatpak.enable = true;
 
@@ -213,7 +206,6 @@
 
     # User packages
     packages = with pkgs; [
-      spotify
       btop
       discord
       dunst
@@ -230,7 +222,7 @@
       rofi
       thunderbird
       unzip
-      zoxide
+(mpv.override {scripts = [mpvScripts.mpris];})
     ];
   };
 

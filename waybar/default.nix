@@ -12,7 +12,7 @@
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        margin-top = 5;
+        margin-top = 0;
         mode = "dock";
         name = "waybar";
         position = "top";
@@ -23,11 +23,12 @@
 
         modules-left = [
           "hyprland/workspaces"
+          "cava"
         ];
 
         modules-center = [
           #"cava"
-          custom/spotify
+          "mpris"
         ];
 
         modules-right = [
@@ -46,16 +47,24 @@
             "3" = [ ];
           };
 
-          "custom/spotify" = {
-            "exec" = "/usr/bin/python3 $HOME/.dotfiles/waybar/mediaplayer.py --player spotify";
-            "format" = "{}  ";
-            "return-type" = "json";
-            "on-click" = "playerctl play-pause";
-            "on-scroll-up" = "playerctl next";
-            "on-scroll-down" = "playerctl previous";
-          };
 
         };
+
+          "mpris" = {
+            "format" = " {dynamic} {status_icon}";
+            "interval" = 1;
+            "dynamic-len" = 40;
+            "status-icons" = {
+              "playing" = "▶";
+              "paused" = "⏸";
+              "stopped" = "";
+            };
+            "dynamic-order" = [
+              "title"
+              "artist"
+            ];
+            "ignored-players" = [ "firefox" "librewolf" ];
+          };
 
         "hyprland/window" = {
           "rewrite" = {
@@ -98,7 +107,7 @@
           "sample_bits" = 16;
           "channel" = 2;
           "autoconnect" = 2;
-          "bars" = 70;
+          "bars" = 14;
           "bar_spacing" = "5";
           "lower_cutoff_freq" = "50";
           "higher_cutoff_freq" = "10000";
@@ -188,6 +197,7 @@
         * {
           min-height: 0px;
           font-weight: bolder;
+          font-family: "Symbols Nerd Font";
         }
 
         window#waybar {
@@ -195,10 +205,10 @@
         }
 
         window#waybar > box {
-          border-radius: 10px;
+          border-radius: 0px;
           margin: 4px 4px 4px 4px;
           background-color: ${base};
-          box-shadow: 0px 0px 3px 0px ${base};
+          box-shadow: 0px 0px 0px 0px ${base};
         }
 
         tooltip {
@@ -212,6 +222,8 @@
           margin-top: 3px;
           margin-bottom: 3px;
           padding: 10px 0px;
+          padding-left: 10px;
+          padding-right: 10px;
         }
 
         #workspaces button {
@@ -291,7 +303,7 @@
           color: ${text};
           margin-right: 2px;
           padding-left: 2px;
-          padding-right: 2px;
+          padding-right: 10px;
         }
       '';
   };
