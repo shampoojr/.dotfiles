@@ -195,6 +195,9 @@
       in
       ''
         * {
+          padding: 0;
+          margin: 0;
+          border: 0;
           min-height: 0px;
           font-weight: bolder;
           font-family: "Symbols Nerd Font";
@@ -206,7 +209,7 @@
 
         window#waybar > box {
           border-radius: 0px;
-          margin: 4px 4px 4px 4px;
+          margin: 0px 0px 3px 0px;
           background-color: ${base};
           box-shadow: 0px 0px 0px 0px ${base};
         }
@@ -219,8 +222,7 @@
         #workspaces {
           font-size: 0px;
           background: transparent;
-          margin-top: 3px;
-          margin-bottom: 3px;
+          margin: 5px 5px 5px 1px;
           padding: 10px 0px;
           padding-left: 10px;
           padding-right: 10px;
