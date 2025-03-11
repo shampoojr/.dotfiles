@@ -16,14 +16,13 @@
       };
     };
   };
- 
 
   gtk = {
     enable = true;
 
     iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
+      package = pkgs.morewaita-icon-theme;
+      name = "MoreWaita";
     };
 
     theme = {
@@ -41,6 +40,5 @@
       size = 11;
     };
   };
-
 
 }

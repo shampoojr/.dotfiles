@@ -1,8 +1,9 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, inputs, system, ... }:let
+in{
 
   imports = [
     ./programs.nix
+
   ];
   home.packages =
     (with pkgs; [
@@ -12,10 +13,14 @@
       uv
       playerctl
       freecad
-      #inputs.nixvim-config.packages.${system}.default
+
     ])
     ++ (with config.programs; [
       spicetify.spicedSpotify
+    ]) 
+    # With flake
+    ++ (with inputs; [
+      zen-browser.packages."${system}".default
     ]);
 
 }

@@ -18,6 +18,9 @@
 
     # Flake parts
     #flake-parts.url = "github:hercules-ci/flake-parts";
+    
+    # Zen browser
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Spicetify
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -32,6 +35,7 @@
 
   outputs =
     inputs@{
+      zen-browser,
       home-manager,
       nixpkgs,
       nixvim,
@@ -63,6 +67,7 @@
       homeConfigurations = {
         shampoojr = home-manager.lib.homeManagerConfiguration {
           extraSpecialArgs = {
+            inherit system;
             inherit inputs;
             inherit spicePkgs;
           };
