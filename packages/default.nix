@@ -20,7 +20,6 @@ in{
     ]) 
     # With flake
     ++ (with inputs; [
-      zen-browser.packages."${system}".default
     ]);
 
 }
