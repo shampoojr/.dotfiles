@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  imports = [
-    inputs.spicetify-nix.homeManagerModules.default
+  imports = with inputs; [
+    spicetify-nix.homeManagerModules.default
   ];
 }
