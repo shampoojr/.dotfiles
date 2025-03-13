@@ -26,5 +26,6 @@
     zoxide = {
       enable = true;
     };
+    
   };
 }

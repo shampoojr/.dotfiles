@@ -38,6 +38,7 @@ in
     ++ (with config.programs; [
       spicetify.spicedSpotify
     ])
+    
     # With flake
     ++ (with inputs; [
       zen-browser.packages."${system}".default

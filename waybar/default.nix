@@ -47,24 +47,26 @@
             "3" = [ ];
           };
 
-
         };
 
-          "mpris" = {
-            "format" = " {dynamic} {status_icon}";
-            "interval" = 1;
-            "dynamic-len" = 40;
-            "status-icons" = {
-              "playing" = "▶";
-              "paused" = "⏸";
-              "stopped" = "";
-            };
-            "dynamic-order" = [
-              "title"
-              "artist"
-            ];
-            "ignored-players" = [ "firefox" "librewolf" ];
+        "mpris" = {
+          "format" = " {dynamic} {status_icon}";
+          "interval" = 1;
+          "dynamic-len" = 40;
+          "status-icons" = {
+            "playing" = "▶";
+            "paused" = "⏸";
+            "stopped" = "";
           };
+          "dynamic-order" = [
+            "title"
+            "artist"
+          ];
+          "ignored-players" = [
+            "firefox"
+            "librewolf"
+          ];
+        };
 
         "hyprland/window" = {
           "rewrite" = {

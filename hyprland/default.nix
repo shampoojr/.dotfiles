@@ -263,7 +263,7 @@ in
       ];
 
       workspace = [
-      "name:music, on-created-empty: Spotify"
+        "name:music, on-created-empty: Spotify"
       ];
 
       windowrulev2 = [
