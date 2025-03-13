@@ -5,7 +5,7 @@
   home.sessionVariables = { };
   home.stateVersion = "24.11";
   home.username = "shampoojr";
-  imports = [./imports];
+  imports = [./home-manager/imports];
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
 }
