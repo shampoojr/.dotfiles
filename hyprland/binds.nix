@@ -3,7 +3,7 @@ let
   editor = "code";
   fileManager = "thunar";
   terminal = "ghostty";
-  browser = "librewolf";
+  browser = "zen";
   menu = "~/.config/rofi/scripts/launcher_t3";
 
   audio = "XF86Audio";

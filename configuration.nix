@@ -1,4 +1,10 @@
-{ config, lib, inputs, pkgs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -9,8 +15,8 @@
   hardware.openrazer.enable = true;
 
   # I dont really know how this works
-    system.autoUpgrade.enable = true;
-    system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.allowReboot = true;
 
   # This has broke me so may times
   security.polkit.enable = true;
@@ -120,8 +126,8 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly"]; })
+    #(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     #    nerd-fonts.fira-code
     font-awesome
   ];
@@ -146,6 +152,7 @@
 
     # System packages
     systemPackages = with pkgs; [
+      morewaita-icon-theme
       python313
       kdePackages.polkit-kde-agent-1
       brightnessctl
@@ -191,7 +198,7 @@
   # Bluetooth | works half of the time
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   #hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true; #DO NOT ENABLE
+  services.blueman.enable = true; # DO NOT ENABLE
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
@@ -222,7 +229,7 @@
       rofi
       thunderbird
       unzip
-(mpv.override {scripts = [mpvScripts.mpris];})
+      (mpv.override { scripts = [ mpvScripts.mpris ]; })
     ];
   };
 

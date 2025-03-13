@@ -11,11 +11,11 @@
 
       shellAliases = {
         all = "update && hm";
-        flake = "all --flake .";
+        flake = "sflake && hflake";
         hflake = "hm --flake .";
         hm = "home-manager switch";
         ls = "eza";
-        sflake = "update --flake .";
+        sflake = "update --flake .#shampoojr";
         update = "sudo nixos-rebuild switch";
       };
 
