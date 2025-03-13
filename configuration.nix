@@ -190,9 +190,9 @@
   services.tumbler.enable = true;
 
   # Steam | why cant i pkgs!??
-  programs.steam = {
-    enable = true;
-  };
+  # programs.steam = {
+  #   enable = true;
+  # };
 
   # Thunar | the better file manager
   programs.thunar = {

@@ -1,11 +1,11 @@
 {config, pkgs, ...}:{
   programs = {
 
-    java = {
+    direnv={
       enable = true;
     };
 
-    direnv={
+    java = {
       enable = true;
     };
   };

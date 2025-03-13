@@ -16,23 +16,23 @@ in
 
   home.packages =
     (with pkgs; [
-      dconf
-      mpdris2
-      gh
-      uv
-      playerctl
-      freecad
-      ponysay
-      neo-cowsay
+      asciiquarium
       btop
-      hyprpaper
-      hyprpicker
-      hyprshot
-      rofi
+      dconf
       dunst
       eww
       fastfetch
-      asciiquarium
+      freecad
+      gh
+      hyprpaper
+      hyprpicker
+      hyprshot
+      mpdris2
+      neo-cowsay
+      playerctl
+      ponysay
+      rofi
+      uv
     ])
 
     ++ (with config.programs; [
