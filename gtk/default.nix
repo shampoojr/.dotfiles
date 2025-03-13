@@ -21,8 +21,8 @@
     enable = true;
 
     iconTheme = {
-      package = pkgs.morewaita-icon-theme;
-      name = "MoreWaita";
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
     };
 
     theme = {

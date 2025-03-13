@@ -126,7 +126,14 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly"]; })
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "NerdFontsSymbolsOnly"
+        "Meslo"
+      ];
+    })
+    fira-code-symbols
     #(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     #    nerd-fonts.fira-code
     font-awesome
@@ -152,7 +159,6 @@
 
     # System packages
     systemPackages = with pkgs; [
-      morewaita-icon-theme
       python313
       kdePackages.polkit-kde-agent-1
       brightnessctl
@@ -213,20 +219,11 @@
 
     # User packages
     packages = with pkgs; [
-      btop
       discord
-      dunst
-      eww
-      fastfetch
-      hyprpaper
-      hyprpicker
-      hyprshot
       loupe
       nixfmt-rfc-style
       polychromatic
-      ponysay
       prismlauncher
-      rofi
       thunderbird
       unzip
       (mpv.override { scripts = [ mpvScripts.mpris ]; })

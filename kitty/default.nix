@@ -1,7 +1,7 @@
 {pkgs, config, ...}:{
   programs = {
     kitty = {
-      enable = false;
+      enable = true;
     };
   };
 }

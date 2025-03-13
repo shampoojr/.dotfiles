@@ -9,8 +9,8 @@
       keybind = "ctrl+shift+R=reload_config";
 
       bold-is-bright = true;
-      font-family = "'Symbols Nerd Font'";
-      font-size = 15;
+      font-family = "'Fira Code Symbols''FiraCode Nerd Font'";
+      font-size = 12;
       font-style = true;
       font-style-bold = true;
       font-style-bold-italic = false;
@@ -31,7 +31,7 @@
       background = "000000";
       background-opacity = 0.4;
       foreground = "ffffff";
-      minimum-contrast = 2;
+      minimum-contrast = 1;
       theme = "iTerm2 Default";
     };
 
