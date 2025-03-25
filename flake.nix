@@ -18,7 +18,10 @@
 
     # Flake parts
     #flake-parts.url = "github:hercules-ci/flake-parts";
-    
+
+    # Rustup
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
     # Zen browser
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
@@ -41,6 +44,7 @@
       nixvim,
       self,
       spicetify-nix,
+      rust-overlay,
       ...
     }:
 
@@ -49,40 +53,57 @@
       pkgs = nixpkgs.legacyPackages.${system};
       spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       system = "x86_64-linux";
+
     in
 
-    {
-
-      nixosConfigurations = {
-        shampoojr = lib.nixosSystem {
-          inherit system;
-          modules = [
-            ./configuration.nix
-          ];
-        };
+    { pkgs, config, ... }:
+    let
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ rust-overlay.overlays.default ];
       };
+      toolchain = pkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          toolchain
+        ];
+      };
+    }
 
-      #
+      {
 
-      homeConfigurations = {
-        shampoojr = home-manager.lib.homeManagerConfiguration {
-          extraSpecialArgs = {
+        nixosConfigurations = {
+          shampoojr = lib.nixosSystem {
+            inherit system;
+            modules = [
+              ./configuration.nix
+            ];
+          };
+        };
+
+        #
+
+        homeConfigurations = {
+          shampoojr = home-manager.lib.homeManagerConfiguration {
+            extraSpecialArgs = {
+              inherit system;
+              inherit inputs;
+              inherit spicePkgs;
+            };
+            modules = [
+              ./home.nix
+            ];
+            inherit pkgs;
+          };
+          specialArgs = {
             inherit system;
             inherit inputs;
-            inherit spicePkgs;
           };
-          modules = [
-            ./home.nix
-          ];
-          inherit pkgs;
         };
-        specialArgs = {
-          inherit system;
-          inherit inputs;
-        };
-      };
 
-      #
-    };
+        #
+      };
 
 }
