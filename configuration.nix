@@ -9,7 +9,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-
+    ./shell/shell.nix
   ];
 
   hardware.openrazer.enable = true;
@@ -159,9 +159,9 @@
 
     # System packages
     systemPackages = with pkgs; [
-      rustup 
+      #rustup 
       gcc
-      zed-editor
+      #zed-editor
       nodejs
       python313
       kdePackages.polkit-kde-agent-1
