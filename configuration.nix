@@ -159,6 +159,10 @@
 
     # System packages
     systemPackages = with pkgs; [
+      rustup 
+      gcc
+      zed-editor
+      nodejs
       python313
       kdePackages.polkit-kde-agent-1
       brightnessctl
