@@ -53,25 +53,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
       system = "x86_64-linux";
-
     in
-
-    { pkgs, config, ... }:
-    let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ rust-overlay.overlays.default ];
-      };
-      toolchain = pkgs.rust-bin.fromRustupToolchainFile ./toolchain.toml;
-    in
-    {
-      devShells.${system}.default = pkgs.mkShell {
-        packages = [
-          toolchain
-        ];
-      };
-    }
-
       {
 
         nixosConfigurations = {
@@ -106,4 +88,7 @@
         #
       };
 
+
 }
+
+
