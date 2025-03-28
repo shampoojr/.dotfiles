@@ -77,13 +77,13 @@
       };
 
       lsp = {
-        # rust-analyzer = {
+        rust-analyzer = {
 
-        #   binary = {
-        #     #                        path = lib.getExe pkgs.rust-analyzer;
-        #     path_lookup = true;
-        #   };
-        # };
+          binary = {
+            #                        path = lib.getExe pkgs.rust-analyzer;
+            path_lookup = true;
+          };
+        };
         nix = {
           binary = {
             path_lookup = true;

@@ -15,6 +15,6 @@
     ../editor
     ../spotify
     ../obs
-#    ../zed
+    ../zed
   ];
 }
