@@ -32,7 +32,7 @@
         ];
 
         modules-right = [
-          #"tray"
+          "tray"
           "network"
           "backlight"
           "battery"
