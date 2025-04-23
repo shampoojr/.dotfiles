@@ -11,7 +11,6 @@ in
 
   imports = [
     ./programs.nix
-
   ];
 
   home.packages =
