@@ -158,6 +158,8 @@
 
     # System packages
     systemPackages = with pkgs; [
+      dmenu
+      networkmanager_dmenu
       gcc
       nodejs
       python313
@@ -191,9 +193,9 @@
   services.tumbler.enable = true;
 
   # Steam | why cant i pkgs!??
-  # programs.steam = {
-  #   enable = true;
-  # };
+  programs.steam = {
+    enable = true;
+  };
 
   # Thunar | the better file manager
   programs.thunar = {

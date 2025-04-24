@@ -16,6 +16,5 @@
     ../spotify
     ../obs
     ../emacs
-    #../zed
   ];
 }

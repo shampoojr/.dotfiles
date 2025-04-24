@@ -163,7 +163,7 @@
           "tooltip-format-disconnected" = "Error";
           "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
           "tooltip-format-ethernet" = "{ifname} 🖧 ";
-          "on-click" = "nm-connection-editor";
+          "on-click" = "sh ~/.config/rofi/Scripts/network.sh";
         };
 
         "pulseaudio" = {

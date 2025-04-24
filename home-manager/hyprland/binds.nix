@@ -4,7 +4,7 @@ let
   fileManager = "thunar";
   terminal = "ghostty";
   browser = "zen";
-  menu = "~/.config/rofi/scripts/launcher_t3";
+  menu = "rofi -show drun";
 
   audio = "XF86Audio";
   mon = "XF86MonBrightness";

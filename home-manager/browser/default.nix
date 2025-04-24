@@ -1,11 +1,11 @@
 { pkgs, config, ... }:
 {
 programs.librewolf = {
-enable = true;
+enable = false;
 };
 
 programs.firefox = {
-enable=true;
+enable=false;
 };
 
 }

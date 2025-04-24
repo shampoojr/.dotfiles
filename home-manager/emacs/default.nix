@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   programs.emacs = {
-    enable = true;
+    enable = false;
     extraConfig = ''
 (require 'package)
 (add-to-list 'package-archives
