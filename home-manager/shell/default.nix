@@ -12,7 +12,7 @@
     ./eza
     ./fzf
     ./neovim
-    ./fetch
+    ./fastfetch
     ./tmux
     ./zsh
   ];

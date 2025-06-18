@@ -21,7 +21,13 @@
   security.polkit.enable = true;
 
   # Bootloader.
-  boot.loader = {
+  boot = {
+
+    kernelPackages = pkgs.linuxPackages_zen;
+
+
+
+    loader = {
 
     # Systemd bootloader
     # systemd-boot.enable = true;
@@ -48,9 +54,10 @@
       '';
     };
   };
+  };
 
   # When I have time ill change this
-  networking.hostName = "shampoojr"; # Define your hostname.
+  #networking.hostName = "shampoojr"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
@@ -124,18 +131,15 @@
   users.defaultUserShell = pkgs.zsh;
 
   # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "NerdFontsSymbolsOnly"
-        "Meslo"
-      ];
-    })
-    fira-code-symbols
+  fonts.packages = with pkgs.nerd-fonts; [
+        fira-code
+        #NerdFontsSymbolsOnly
+        #Meslo
+      
+    #fira-code-symbols
     #(nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
     #    nerd-fonts.fira-code
-    font-awesome
+    #font-awesome
   ];
 
   # Enviroment
@@ -158,6 +162,7 @@
 
     # System packages
     systemPackages = with pkgs; [
+      wirelesstools
       dmenu
       networkmanager_dmenu
       gcc
@@ -181,9 +186,16 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-kde
       xdg-desktop-portal-wlr
       nix-index
+      qutebrowser
+      w3m
+      lolcat
+      cbonsai
+      pv
+      figlet
+      toilet
+      pokeget-rs
     ];
   };
 

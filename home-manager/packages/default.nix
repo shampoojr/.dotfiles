@@ -21,7 +21,6 @@ in
       dconf
       dunst
       eww
-      fastfetch
       freecad
       gh
       hyprpaper

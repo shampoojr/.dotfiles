@@ -29,7 +29,7 @@
       window-theme = "ghostty";
 
       background = "000000";
-      background-opacity = 0.4;
+      background-opacity = 1;
       foreground = "ffffff";
       minimum-contrast = 1;
       theme = "iTerm2 Default";
