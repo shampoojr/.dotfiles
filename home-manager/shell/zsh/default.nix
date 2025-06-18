@@ -23,7 +23,7 @@
       initExtra = ''
 
         if [[ -o interactive ]]; then
-            fastfetch
+            ponysay --pony rainbowsalute  -- shampoojr is coolest | fastfetch --file-raw -
         fi
 
       '';

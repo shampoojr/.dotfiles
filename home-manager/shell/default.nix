@@ -12,6 +12,7 @@
     ./eza
     ./fzf
     ./neovim
+    ./fetch
     ./tmux
     ./zsh
   ];
