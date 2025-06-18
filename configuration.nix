@@ -11,7 +11,7 @@
     ./hardware-configuration.nix
   ];
 
-  hardware.openrazer.enable = true;
+  #hardware.openrazer.enable = true;
 
   # I dont really know how this works
   system.autoUpgrade.enable = true;
@@ -178,7 +178,7 @@
       lshw
       lxqt.lxqt-policykit
       networkmanagerapplet
-      openrazer-daemon
+      #openrazer-daemon
       pavucontrol
       playerctl
       slurp
@@ -227,7 +227,7 @@
     isNormalUser = true;
     description = "shampoojr";
     extraGroups = [
-      "openrazer"
+      #"openrazer"
       "networkmanager"
       "wheel"
     ];
