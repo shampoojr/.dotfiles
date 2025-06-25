@@ -166,6 +166,7 @@
       dmenu
       networkmanager_dmenu
       gcc
+      gnumake
       nodejs
       python313
       kdePackages.polkit-kde-agent-1

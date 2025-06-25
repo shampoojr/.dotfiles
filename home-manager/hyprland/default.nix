@@ -254,9 +254,9 @@ in
       };
 
       windowrule = [
-        "float, ^(.blueman-manager-wrapped)$"
-        "float, ^(nm-connection-editor)$"
-        "float, ^(org.pulseaudio.pavucontrol)$"
+        # "float, ^(.blueman-manager-wrapped)$"
+        # "float, ^(nm-connection-editor)$"
+        # "float, ^(org.pulseaudio.pavucontrol)$"
         "float, title:lxqt-policykit-agent"
         "center,title:lxqt-policykit-agent"
         "size 500 500,title:lxqt-policykit-agent"
@@ -268,6 +268,9 @@ in
 
       windowrulev2 = [
         "workspace music, class:Spotify"
+        "float, class:nm-connection-editor"
+        "float, class:org.pulseaudio.pavucontrol"
+        "float, class:.blueman-manager-wrapped"
       ];
 
     };

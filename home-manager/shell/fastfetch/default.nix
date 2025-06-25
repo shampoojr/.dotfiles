@@ -3,9 +3,14 @@ programs.fastfetch = {
   enable = true;
   settings = {
 
+
     logo = {
-     # type = "command-raw";
-     # source = "pokeget random --hide-name";
+      #type = "command-raw";
+      #source = "cowsay hello";
+      #type = "chafa";
+      #source = "~/Pictures/nixos.png";
+      height = 24;
+      width = 56;
 
       #source = "~/Pictures/thinkpad.txt";
       color = {
