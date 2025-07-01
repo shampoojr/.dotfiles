@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
 programs.librewolf = {
-enable = false;
+enable = true;
 };
 
 programs.firefox = {

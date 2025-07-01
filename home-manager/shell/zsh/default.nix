@@ -23,7 +23,7 @@
       initContent = ''
 
         if [[ -o interactive ]]; then
-            ponysay --pony rainbowsalute  -- shampoojr is coolest | fastfetch --file-raw -
+        fastfetch
         fi
 
       '';

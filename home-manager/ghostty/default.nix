@@ -10,7 +10,7 @@
 
       bold-is-bright = true;
       font-family = "'FiraCode Nerd Font Bold', 'Fira Code Symbols'";
-      font-size = 14;
+      font-size = 21;
       font-style = true;
       font-style-bold = true;
       font-style-bold-italic = false;
