@@ -88,7 +88,7 @@
           paddingLeft = 10;
           range = [
             1
-            6
+            8
           ];
         }
       ];
