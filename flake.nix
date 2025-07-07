@@ -1,8 +1,9 @@
 {
   inputs = {
     # Nix Version
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -57,17 +58,21 @@
 
   };
 
-  outputs = inputs @ { self, nixpkgs, ... }: {
+  outputs = inputs @ { self, nixpkgs-unstable, nixpkgs, ... }: 
+  let
+  system = "x64_86-linux";
+  pkgs = import nixpkgs.legacyPackages.${system};
+  in{
       nixosConfigurations = {
+        system = "x86_64-linux";
         nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
           modules = [
             {
              # nixpkgs.overlays = [inputs.hyprpanel.overlay];
               _module.args = {inherit inputs;};
             }
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
-            inputs.home-manager.nixosModules.home-manager
+            #inputs.home-manager.nixosModules.home-manager
             ./configuration.nix
           ];
         };
