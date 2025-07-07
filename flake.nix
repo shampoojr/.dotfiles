@@ -1,8 +1,8 @@
 {
   inputs = {
     # Nix Version
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-master";
     # Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -13,11 +13,11 @@
     };
 
     # Home-manager
+    # home-manager = {
+    #   url = "github:nix-community/home-manager/release-25.05";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
@@ -59,7 +59,7 @@
 
   outputs = inputs @ { self, nixpkgs, ... }: {
       nixosConfigurations = {
-        shampoojr = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             {
@@ -69,7 +69,6 @@
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
             inputs.home-manager.nixosModules.home-manager
             ./configuration.nix
-
           ];
         };
       };
