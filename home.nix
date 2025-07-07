@@ -8,4 +8,5 @@
   imports = [./home-manager/imports];
   nixpkgs.config.allowUnfree = true;
   programs.home-manager.enable = true;
+  extraSpecialArgs = {inherit inputs;};
 }

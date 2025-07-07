@@ -1,7 +1,6 @@
 {imports, ...}:{
   imports = [
-    ../hypr
-    ../hyprpanel
-
-  ]
+    ./hypr
+    ./hyprpanel
+  ];
 }
