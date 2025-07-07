@@ -63,7 +63,7 @@
           system = "x86_64-linux";
           modules = [
             {
-              nixpkgs.overlays = [inputs.hyprpanel.overlay];
+             # nixpkgs.overlays = [inputs.hyprpanel.overlay];
               _module.args = {inherit inputs;};
             }
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
