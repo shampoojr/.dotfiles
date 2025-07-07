@@ -72,7 +72,7 @@
               _module.args = {inherit inputs;};
             }
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
-            #inputs.home-manager.nixosModules.home-manager
+            inputs.home-manager.nixosModules.home-manager
             .hosts/laptop/configuration.nix
           ];
         };
