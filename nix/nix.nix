@@ -9,12 +9,14 @@
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     channel.enable = false;
     extraOptions = ''warn-drity = false'';
-  };
-  settings = {
+
+      settings = {
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [
       "https://cache.nixos.org?priority=10"
     ];
   };
+  };
+
 }
