@@ -3,10 +3,7 @@
   config.var = {
     hotsname = "shampoojr";
     username = "shampoojr";
-    configDirectory = 
-      "/home/" 
-    + config.var.username
-    + "/.dotfiles/nix";
+    configDirectory = "/home/" + config.var.username + "/.config/.dotfiles";
 
     options = {
       var = lib.mkOption {

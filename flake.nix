@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Hardware
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     # Darwin
     nix-darwin = {
@@ -22,6 +22,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
 
     # Nixvim
     # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
@@ -58,18 +60,18 @@
 
   };
 
-  outputs = inputs @ { nixpkgs, ... }: 
-  let
-  system = "x64_86-linux";
-  in{
+  outputs =
+    inputs@{ nixpkgs, ... }:
+    {
       nixosConfigurations = {
-        system = "x86_64-linux";
-        shampoojr = nixpkgs.lib.nixosSystem {
+        shampoojr = 
+          nixpkgs.lib.nixosSystem {
           modules = [
             {
-             # nixpkgs.overlays = [inputs.hyprpanel.overlay];
-              _module.args = {inherit inputs;};
-            }
+              # nixpkgs.overlays = [inputs.hyprpanel.overlay];
+              _module.args = { inherit inputs; };
+              }
+            
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
             inputs.home-manager.nixosModules.home-manager
             ./hosts/laptop/configuration.nix

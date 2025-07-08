@@ -1,6 +1,8 @@
 {config, ...}:{
   imports = [
     ../../nix/nix.nix
+    ../../nix/utils.nix
+    ../../nix/users.nix
 
     ./variables.nix
     ./hardware-configuration.nix

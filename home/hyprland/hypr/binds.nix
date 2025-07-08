@@ -19,6 +19,8 @@ let
   mouse = "mouse:";
   right = "${mouse}273";
   left = "${mouse}272";
+  sink = "@DEFAULT_AUDIO_SINK@";
+  source = "@DEFAULT_AUDIO_SOURCE@"
 
 in
 {
@@ -101,14 +103,14 @@ in
     ];
 
     bindle = [
-      ",${audio}RaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-      ",${audio}LowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",${audio}Mute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",${audio}MicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+      ",${audio}RaiseVolume, exec, wpctl set-volume -l 1 ${sink}  5%+"
+      ",${audio}LowerVolume, exec, wpctl set-volume ${sink} 5%-"
+      ",${audio}Mute, exec, wpctl set-mute ${sink}  toggle"
+      ",${audio}MicMute, exec, wpctl set-mute ${source} toggle"
       ",${mon}Up, exec, brightnessctl s 10%+"
       ",${mon}Down, exec, brightnessctl s 10%-"
-      ",${audio}MicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ",${audio}Mute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+      ",${audio}MicMute, exec, wpctl set-mute ${source} toggle"
+      ",${audio}Mute, exec, wpctl set-mute ${sink} toggle"
     ];
 
     bindl = [
