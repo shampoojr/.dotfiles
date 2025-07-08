@@ -58,10 +58,9 @@
 
   };
 
-  outputs = inputs @ { self, nixpkgs-unstable, nixpkgs, ... }: 
+  outputs = inputs @ { nixpkgs, ... }: 
   let
   system = "x64_86-linux";
-  pkgs = nixpkgs.legacyPackages.${system};
   in{
       nixosConfigurations = {
         system = "x86_64-linux";
@@ -73,7 +72,7 @@
             }
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t590
             inputs.home-manager.nixosModules.home-manager
-            .hosts/laptop/configuration.nix
+            ./hosts/laptop/configuration.nix
           ];
         };
       };
