@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  
+
   system = {
     autoUpgrade.enable = true;
     autoUpgrade.allowReboot = true;
@@ -136,49 +136,58 @@
     plasma6.excludePackages = with pkgs.kdePackages; [
     ];
 
-    systemPackages = (with pkgs; ([
-      brightnessctl
-      cbonsai
-      dmenu
-      figlet
-      gcc
-      git
-      gnumake
-      grim
-      hyprpolkitagent
-      hyprutils
-      kdePackages.polkit-kde-agent-1
-      libnotify
-      lolcat
-      lshw
-      lxqt.lxqt-policykit
-      networkmanager_dmenu
-      networkmanagerapplet
-      nh
-      nix-index
-      nodejs
-      pavucontrol
-      playerctl
-      pokeget-rs
-      pv
-      python313
-      python3Packages.gpustat
-      sbctl
-      slurp
-      toilet
-      w3m
-      gnome-photos
-      wirelesstools
-      wl-clipboard
-      xdg-desktop-portal-gnome
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-wlr
-    ])
+    systemPackages = (
+      with pkgs;
+      ([
+        brightnessctl
+        cbonsai
+        dmenu
+        figlet
+        gcc
+        git
+        gnumake
+        grim
+        hyprpolkitagent
+        hyprutils
+        libnotify
+        lolcat
+        lshw
+        networkmanager_dmenu
+        networkmanagerapplet
+        nh
+        nix-index
+        nodejs
+        pavucontrol
+        playerctl
+        pokeget-rs
+        pv
+        python313
+        sbctl
+        slurp
+        toilet
+        w3m
+        gnome-photos
+        wirelesstools
+        wl-clipboard
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-wlr
+      ])
 
-    ++ (with kdePackages; [
+      ++ (with kdePackages; [
+        polkit-kde-agent-1
         discover
-    ]));
+      ])
+
+      ++ (with python3Packages; [
+        gpustat
+      ])
+      
+      ++ (with lxqt; [
+        lxqt-policykit
+      ])
+    );
   };
 
   system.stateVersion = "25.05";
