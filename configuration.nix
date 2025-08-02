@@ -20,10 +20,17 @@
   };
 
   #Nix Flakes
-  nix.settings.experimental-features = [
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 30d";
+    };
+    settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+  };
 
   # Bluetooth
   hardware.bluetooth.enable = true;
@@ -66,9 +73,6 @@
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Login
-  displayManager.sddm.enable = true;
-
   # Programs
   programs = {
 
@@ -93,6 +97,9 @@
 
   # Services
   services = {
+    
+    # Login
+    displayManager.sddm.enable = true;
 
     # Xserver
     xserver = {
@@ -196,7 +203,6 @@
         lolcat
         lshw
         networkmanagerapplet
-        nh
         nodejs
         pavucontrol
         playerctl

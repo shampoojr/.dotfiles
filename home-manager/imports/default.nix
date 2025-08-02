@@ -15,6 +15,5 @@
     ../editor
     ../discord
     ../nix-helper
-
   ];
 }
