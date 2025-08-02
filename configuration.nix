@@ -64,7 +64,6 @@
 
   # Timezone
   time.timeZone = "Europe/Oslo";
-
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Programs
@@ -226,6 +225,7 @@
       ++ (with python3Packages; [
         gpustat
       ])
+      
       # Packages from lxqt
       ++ (with lxqt; [
         lxqt-policykit
