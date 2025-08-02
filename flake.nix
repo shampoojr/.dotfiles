@@ -1,0 +1,85 @@
+{
+  description = "NixOS configuration";
+
+  inputs = {
+    # Nixpkgs
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Home-Manager
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Hyprland
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hypr-dynamic-cursors = {
+      url = "github:VirtCode/hypr-dynamic-cursors";
+      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
+    };
+
+    # Spicetify
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+    };
+
+    # Zen browser
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      spicetify-nix,
+      nixvim,
+      zen-browser,
+      ...
+    }@inputs:
+    let
+      username = "shampoojr";
+      hostname = "nixos";
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
+    in
+    {
+      nixosConfigurations = {
+        "${hostname}" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+          modules = [
+            ./configuration.nix
+          ];
+        };
+      };
+
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit inputs system;
+        };
+        modules = [
+          ./home.nix
+        ];
+      };
+    };
+}
