@@ -139,6 +139,7 @@
     systemPackages = (
       with pkgs;
       ([
+        hardinfo2
         brightnessctl
         cbonsai
         dmenu
