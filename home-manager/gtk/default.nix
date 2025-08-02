@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     dconf
   ];
-  
+
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
@@ -19,6 +19,17 @@
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
       };
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = {
+      name = "adwaita";
+    };
+
+    style = {
+      name = "adwaita-dark";
     };
   };
 

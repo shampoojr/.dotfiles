@@ -8,7 +8,7 @@
           yzhang.markdown-all-in-one
           jnoortheen.nix-ide
           bbenoist.nix
-          tgosystems.togglebracketguides
+          #tgosystems.togglebracketguides
           mhutchie.git-graph
           github.github-vscode-theme
           pkief.material-icon-theme

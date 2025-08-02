@@ -17,6 +17,11 @@
 
   programs = {
 
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     oh-my-posh = {
       enable = true;
       useTheme = "atomicBit";

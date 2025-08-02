@@ -12,6 +12,9 @@
     ../nixvim
     ../spotify
     ../mpv
-    ../editor/vscode
+    ../editor
+    ../discord
+    ../nix-helper
+
   ];
 }

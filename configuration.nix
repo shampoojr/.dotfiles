@@ -66,6 +66,9 @@
   time.timeZone = "Europe/Oslo";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # Login
+  displayManager.sddm.enable = true;
+
   # Programs
   programs = {
 
@@ -104,9 +107,6 @@
         variant = "winkeys";
       };
     };
-
-    # Login
-    displayManager.sddm.enable = true;
 
     # Audio
     pulseaudio.enable = false;
@@ -153,10 +153,7 @@
 
       # User Packages
       packages = with pkgs; [
-        fastfetch
-        gh
         nixfmt-rfc-style
-        vesktop
       ];
     };
   };
@@ -172,6 +169,15 @@
 
     # Plasma6 Exclusions
     plasma6.excludePackages = with pkgs.kdePackages; [
+      kcalc
+      kcharselect
+      kcolorchooser
+      kolourpaint
+      ksystemlog
+      plasma-browser-integration
+      kdepim-runtime
+      konsole
+      oxygen
     ];
 
     # System Packages
@@ -181,21 +187,16 @@
         hardinfo2
         brightnessctl
         cbonsai
-        dmenu
         figlet
         gcc
-        git
         gnumake
         grim
-        hyprpolkitagent
         hyprutils
         libnotify
         lolcat
         lshw
-        networkmanager_dmenu
         networkmanagerapplet
         nh
-        nix-index
         nodejs
         pavucontrol
         playerctl
@@ -217,18 +218,12 @@
 
       # Packages from kde
       ++ (with kdePackages; [
-        polkit-kde-agent-1
         discover
       ])
 
       # Packages from Pypi
       ++ (with python3Packages; [
         gpustat
-      ])
-      
-      # Packages from lxqt
-      ++ (with lxqt; [
-        lxqt-policykit
       ])
     );
   };
