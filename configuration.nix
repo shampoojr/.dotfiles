@@ -124,7 +124,6 @@
         gh
         nixfmt-rfc-style
         vesktop
-        vscode
       ];
     };
   };
