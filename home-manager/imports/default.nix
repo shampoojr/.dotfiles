@@ -11,5 +11,6 @@
     ../obs
     ../nixvim
     ../spotify
+    ../mpv
   ];
 }
