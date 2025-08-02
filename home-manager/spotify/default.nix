@@ -15,13 +15,16 @@
     in
     {
       enable = true;
+      
       enabledExtensions = with spicePkgs.extensions; [
         fullAlbumDate
         oneko
       ];
+
       enabledCustomApps = with spicePkgs.apps; [
         marketplace
       ];
+
       enabledSnippets = with spicePkgs.snippets; [
       ];
 

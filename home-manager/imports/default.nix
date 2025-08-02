@@ -12,5 +12,6 @@
     ../nixvim
     ../spotify
     ../mpv
+    ../editor/vscode
   ];
 }
