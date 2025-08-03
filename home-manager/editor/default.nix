@@ -1,5 +1,6 @@
 {impots, ...}:{
   imports = [
     ./vscode
+    ./nixvim
   ];
 }

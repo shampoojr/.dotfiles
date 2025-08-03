@@ -26,10 +26,11 @@
       dates = "daily";
       options = "--delete-older-than 30d";
     };
+
     settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Bluetooth
@@ -97,9 +98,12 @@
 
   # Services
   services = {
-    
+
     # Login
     displayManager.sddm.enable = true;
+
+    # Keyring
+    gnome.gnome-keyring.enable = true;
 
     # Xserver
     xserver = {
@@ -191,6 +195,7 @@
     systemPackages = (
       with pkgs;
       ([
+        seahorse
         hardinfo2
         brightnessctl
         cbonsai
