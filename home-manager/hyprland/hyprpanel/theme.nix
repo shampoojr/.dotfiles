@@ -28,6 +28,7 @@
             shadow = "0px 0px 3px 1px #16161e";
             shadowMargins = "5px 5px";
             buttons = {
+              enableBorders = true;
               seperator = {
                 margins = "0.15em";
                 width = "0.1em";
@@ -83,14 +84,8 @@
                 spacing = "0.5em";
                 enableBorder = true;
               };
-              enableBorders = true;
-              workspaces = {
-                smartHightlights = true;
-              };
             };
-            cards = "#1e1e2e";
           };
-
           font = {
             name = "FiraCode NF";
             size = "16px";
