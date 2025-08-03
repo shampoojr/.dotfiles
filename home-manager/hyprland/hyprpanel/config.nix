@@ -10,15 +10,12 @@
         restartCommand = "hyprpanel -q; hyprpanel";
         useLazyLoading = false;
       };
-      menus = {
-        transition = "crossfade";
-        transitionTime = "200";
-      };
+
       bar = {
         autoHide = "never";
         launcher = {
           autoDetectIcon = true;
-          icon = "󱄅";
+          #icon = "󱄅";
           scrollUp = "";
           scrollDown = "";
           rightClick = "";
@@ -32,19 +29,13 @@
           scrollDown = "";
           rightClick = "";
           middleClick = "";
-          # format = [
-          #   "%a"
-          #   "%d"
-          #   "%b"
-          #   "%H:"
-          #   "%M:"
-          #   "%S"
-          # ];
+          format = "%a %d %b %H:%M:%S";
         };
 
         systray = {
           ignore = [
-            "bluetooth"
+            "blueman"
+            "nm-applet"
           ];
           customIcons = [ ];
         };
@@ -96,7 +87,9 @@
             ];
             middle = [ "media" ];
             right = [
+              "systray"
               "volume"
+              "bluetooth"
               "clock"
               "notification"
             ];
@@ -115,6 +108,18 @@
       };
 
       menus = {
+        clock = {
+          time = {
+            military = true;
+            hideSeconds = true;
+          };
+          weather = {
+            interval = "5000";
+            unit = "metric";
+          };
+        };
+        transition = "crossfade";
+        transitionTime = "200";
         dashboard = {
           stats.enable_gpu = true;
           powermenu.avatar.image = "/home/shampoojr/Pictures/Robloxchar.png";
@@ -136,6 +141,9 @@
 
       theme = {
         bar = {
+          location = "top";
+          floating = true;
+          transparent = true;
           menus = {
             menu = {
               dashboard = {
@@ -153,18 +161,15 @@
               power.scaling = "90";
               popover.scaling = "100";
             };
-
             border.location = "none";
             enableShadows = false;
             shadow = "0px 0px 3px 1px #16161e";
             shadowMargins = "5px 5px";
             buttons = {
-
               seperator = {
                 margins = "0.15em";
                 width = "0.1em";
               };
-
               systray = {
                 spacing = "0.5em";
                 enableBorder = true;
@@ -216,7 +221,6 @@
                 spacing = "0.5em";
                 enableBorder = true;
               };
-
               enableBorders = true;
               workspaces = {
                 smartHightlights = true;
@@ -224,9 +228,6 @@
             };
             cards = "#1e1e2e";
           };
-          location = "top";
-          floating = true;
-          transparent = true;
 
           font = {
             name = "FiraCode NF";
@@ -239,20 +240,6 @@
             location = "right";
             active_monitor = false;
             monitor = 2;
-          };
-        };
-
-        clock = {
-
-          time = {
-
-            military = true;
-            hideSeconds = true;
-          };
-
-          weather = {
-            interval = "5000";
-            unit = "metric";
           };
         };
       };
