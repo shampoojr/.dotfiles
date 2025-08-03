@@ -6,7 +6,7 @@ let
 in
 {
   imports = [
-    ./config.nix
+    #./config.nix
   ];
   programs.hyprpanel = {
     enable = true;

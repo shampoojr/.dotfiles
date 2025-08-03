@@ -1,24 +1,97 @@
-    programs.hyprpanel = {
+{ imports, ... }:
+{
+  programs.hyprpanel = {
     settings = {
+      scalingPriority = "hyprland";
+      tear = false;
+      terminal = "$TERM";
+      hyprpanel = {
+        restartAgs = true;
+        restartCommand = "hyprpanel -q; hyprpanel";
+        useLazyLoading = false;
+      };
+      menus = {
+        transition = "crossfade";
+        transitionTime = "200";
+      };
       bar = {
+        autoHide = "never";
         launcher = {
           autoDetectIcon = true;
           icon = "󱄅";
+          scrollUp = "";
+          scrollDown = "";
+          rightClick = "";
+          middleClick = "";
+        };
+
+        clock = {
+          showIcon = true;
+          showTime = true;
+          scrollUp = "";
+          scrollDown = "";
+          rightClick = "";
+          middleClick = "";
+          # format = [
+          #   "%a"
+          #   "%d"
+          #   "%b"
+          #   "%H:"
+          #   "%M:"
+          #   "%S"
+          # ];
+        };
+
+        systray = {
+          ignore = [
+            "bluetooth"
+          ];
+          customIcons = [ ];
+        };
+
+        notifications = {
+          scrollUp = "";
+          scrollDown = "";
+          rightClick = "";
+          middleClick = "";
+          hideCountWhenZero = true;
+          show_total = true;
+        };
+
+        media = {
+          format = "{artist: - }{title}";
+          truncation_size = "30";
+          show_active_only = true;
         };
 
         workspaces = {
-          monitor_specific = true;
+          applicationIconMap = { };
+          applicationIconOncePerWorkspace = true;
+          icons = {
+            active = "";
+            occupied = "";
+            available = "";
+          };
+          ignored = "";
+          monitorSpecific = false;
           numbered_active_indicator = "color";
+          reverse_scroll = false;
+          scrollspeed = "5";
           show_icons = false;
           show_numbered = true;
-          workspaces = "5";
+          showAllActive = true;
+          showApplicationIcons = false;
+          showWsIcons = false;
+          spacing = "1";
+          workspaceMask = false;
+          workspaces = "9";
         };
 
         layouts = {
-          "0" = {
+          "*" = {
             left = [
               "dashboard"
-              "workspace"
+              "workspaces"
               "windowtitle"
             ];
             middle = [ "media" ];
@@ -29,31 +102,14 @@
             ];
           };
 
-          "1" = {
-            left = [
-              "dashboard"
-              "workspace"
-              "windowtitle"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "clock"
-              "notification"
-            ];
+          "HDMI-A-2" = {
+            extends = "*";
           };
-          "2" = {
-            left = [
-              "dashboard"
-              "workspace"
-              "windowtitle"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "clock"
-              "notification"
-            ];
+          "DP-4" = {
+            extends = "*";
+          };
+          "DP-5" = {
+            extends = "*";
           };
         };
       };
@@ -81,56 +137,102 @@
       theme = {
         bar = {
           menus = {
+            menu = {
+              dashboard = {
+                scaling = "100";
+                confirmation_scaling = "100";
+              };
+              tooltip.scaling = "100";
+              media.scaling = "100";
+              volume.scaling = "100";
+              network.scaling = "100";
+              bluetooth.scaling = "100";
+              battery.scaling = "100";
+              clock.scaling = "100";
+              notifications.scaling = "100";
+              power.scaling = "90";
+              popover.scaling = "100";
+            };
+
             border.location = "none";
+            enableShadows = false;
+            shadow = "0px 0px 3px 1px #16161e";
+            shadowMargins = "5px 5px";
             buttons = {
+
+              seperator = {
+                margins = "0.15em";
+                width = "0.1em";
+              };
+
               systray = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               media = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               battery = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               notification = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               dashboard = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               workspaces = {
+                smartHighlight = true;
+                spacing = "0.5em";
+                fontsize = "1.2em";
                 enableBorder = true;
+                numbered_inactive_padding = "0.2em";
+                numbered_active_highlight_padding = "0.2em";
+                numbered_active_highlight_border = "0.2em";
+                pill = {
+                  radius = "1.9em * 0.6";
+                  height = "4em";
+                  width = "4em";
+                  active_width = "1.2em";
+                };
               };
               windowtitle = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               volume = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               network = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
               bluetooth = {
+                spacing = "0.5em";
                 enableBorder = true;
               };
 
-
-              enableBorders = false;
+              enableBorders = true;
               workspaces = {
                 smartHightlights = true;
               };
             };
             cards = "#1e1e2e";
-
           };
-
+          location = "top";
           floating = true;
           transparent = true;
 
-          # font = {
-          #   name = "FiraCode NF";
-          #   size = "16px";
-          # };
+          font = {
+            name = "FiraCode NF";
+            size = "16px";
+            weight = "700";
+          };
 
           osd = {
             orientation = "vertical";
@@ -141,14 +243,7 @@
         };
 
         clock = {
-          format = [
-            "%a"
-            "%b"
-            "%d"
-            "%H:"
-            "%M:"
-            "%S"
-          ];
+
           time = {
 
             military = true;
@@ -162,4 +257,5 @@
         };
       };
     };
-    }
+  };
+}
