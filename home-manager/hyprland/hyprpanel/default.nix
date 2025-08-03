@@ -5,7 +5,8 @@
   lib,
   ...
 }:let
-  api_key = import ../../../variables.nix {inherit lib;};
+  key = import ../../../variables.nix {inherit lib;};
+  #location = import ../../../variables.nix {inherit lib;};
   in
 {
   programs.hyprpanel = {
@@ -138,9 +139,7 @@
 
         weather = {
           interval = "5000";
-          location = <location>;
           unit = "metric";
-          key = "${api_key}";
         };
       };
     };
