@@ -52,6 +52,7 @@
       ...
     }@inputs:
     let
+      lib = nixpkgs.lib;
       username = "shampoojr";
       system = "x86_64-linux";
       laptop = "LT590";
@@ -64,8 +65,8 @@
       };
     in
     {
-      nixosConfigurations = {
-        "${laptop}" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations = rec {
+        "${laptop}" = lib.nixosSystem {
           specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/laptop/configuration.nix
@@ -73,7 +74,7 @@
         };
       };
       nixosConfigurations = {
-        "${computer}" = nixpkgs.lib.nixosSystem {
+        "${computer}" = lib.nixosSystem {
           specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/desktop/configuration.nix
