@@ -10,7 +10,6 @@
     ../kitty
     ../mpv
     ../nix-helper
-    ../nixvim
     ../obs
     ../packages
     ../shell

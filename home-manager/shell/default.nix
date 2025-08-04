@@ -13,6 +13,7 @@
     ./fzf
     ./fastfetch
     ./zsh
+    ./cava
   ];
 
   programs = {
