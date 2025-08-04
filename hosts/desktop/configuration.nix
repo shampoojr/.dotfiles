@@ -66,7 +66,7 @@
 
   # Network
   networking = {
-    hostName = "nixos";
+    hostName = "MSI";
     networkmanager.enable = true;
   };
 

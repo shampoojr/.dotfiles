@@ -78,7 +78,6 @@
           workspaces = "9";
         };
 
-
       };
 
       menus = {

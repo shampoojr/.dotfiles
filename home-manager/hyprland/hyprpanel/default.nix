@@ -11,7 +11,8 @@
     ./config.nix
     ./layouts.nix
   ];
+
   programs.hyprpanel = {
     enable = true;
-    };
+  };
 }

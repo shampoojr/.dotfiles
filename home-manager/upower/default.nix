@@ -1,0 +1,3 @@
+{...}:{
+  upower.enable = true;
+}
