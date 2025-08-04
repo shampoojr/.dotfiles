@@ -1,7 +1,6 @@
 { ... }:
 {
   programs.hyprpanel = {
-    settings = {
       settings = {
         bar.layouts = {
           "*" = {
@@ -22,9 +21,34 @@
               "clock"
               "notifications"
             ];
+            "eDP-1" = {
+              left = [
+                "dashboard"
+                "workspaces"
+                "windowtitle"
+                "cava"
+              ];
+              middle = [ "media" ];
+              right = [
+                "systray"
+                "volume"
+                "bluetooth"
+                "clock"
+                "notification"
+              ];
+            };
+
+            "HDMI-A-2" = {
+              extends = "*";
+            };
+            "DP-4" = {
+              extends = "*";
+            };
+            "DP-5" = {
+              extends = "*";
+            };
           };
         };
       };
     };
-  };
 }

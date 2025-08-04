@@ -9,7 +9,7 @@
   imports = [
     ./theme.nix
     ./config.nix
-    ./layouts
+    ./layouts.nix
   ];
   programs.hyprpanel = {
     enable = true;
