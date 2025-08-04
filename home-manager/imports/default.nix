@@ -14,6 +14,5 @@
     ../packages
     ../shell
     ../spotify
-    ../upower
   ];
 }

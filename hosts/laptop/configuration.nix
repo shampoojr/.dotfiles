@@ -27,9 +27,9 @@
       options = "--delete-older-than 30d";
     };
     settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Bluetooth
@@ -40,15 +40,15 @@
   hardware = {
 
     # Graphics
-  #  graphics.enable = true;
- #   nvidia = {
- #     modesetting.enable = true;
- #     nvidiaSettings = true;
- #     open = true;
- #     powerManagement.enable = false;
- #     powerManagement.finegrained = false;
- #   };
- };
+    #  graphics.enable = true;
+    #   nvidia = {
+    #     modesetting.enable = true;
+    #     nvidiaSettings = true;
+    #     open = true;
+    #     powerManagement.enable = false;
+    #     powerManagement.finegrained = false;
+    #   };
+  };
 
   # Boot
   boot = {
@@ -58,17 +58,17 @@
 
     # Bootloader
     loader = {
-	efi = {
-	canTouchEfiVariables = true;
-	efiSysMountPoint = "/boot/efi";
-};
-grub = {
-efiSupport = true;
-device = "nodev";
-};
-     # systemd-boot.enable = true;
-     # efi.canTouchEfiVariables = true;
-	#efiSysMountPoint = "/boot/efi";
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+      grub = {
+        efiSupport = true;
+        device = "nodev";
+      };
+      # systemd-boot.enable = true;
+      # efi.canTouchEfiVariables = true;
+      #efiSysMountPoint = "/boot/efi";
     };
   };
 
@@ -106,14 +106,36 @@ device = "nodev";
 
   # Services
   services = {
-    
+    upower.enable = true;
+
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 20;
+
+        #Optional helps save long term battery health
+        START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
+        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+      };
+    };
+
     # Login
     displayManager.sddm.enable = true;
 
     # Xserver
     xserver = {
       enable = true;
-#      videoDrivers = [ "nvidia" ];
+      #      videoDrivers = [ "nvidia" ];
 
       excludePackages = with pkgs; [ xterm ];
 

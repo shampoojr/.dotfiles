@@ -2,10 +2,13 @@
 {
 
   programs.hyprpanel = {
-
+    enable = true;
     settings = {
+      
       theme = {
         bar = {
+          bar.buttons.systray.enableBorder = true;
+          
           location = "top";
           floating = true;
           transparent = true;

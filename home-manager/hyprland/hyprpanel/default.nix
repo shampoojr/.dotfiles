@@ -7,9 +7,8 @@
 }:
 {
   imports = [
-    ./theme.nix
+    #./theme.nix
     ./config.nix
-    ./layouts.nix
   ];
 
   programs.hyprpanel = {

@@ -78,6 +78,34 @@
           workspaces = "9";
         };
 
+        layouts = {
+          "*" = {
+            left = [
+              "dashboard"
+              "workspaces"
+              "windowtitle"
+              "cava"
+            ];
+            middle = [ "media" ];
+            right = [
+              "systray"
+              "volume"
+              "bluetooth"
+              "clock"
+              "notification"
+            ];
+          };
+
+          "HDMI-A-2" = {
+            extends = "*";
+          };
+          "DP-4" = {
+            extends = "*";
+          };
+          "DP-5" = {
+            extends = "*";
+          };
+        };
       };
 
       menus = {
