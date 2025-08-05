@@ -1,4 +1,4 @@
-{impots, ...}:{
+{ ... }:{
   imports = [
     ./vscode
     ./nixvim

@@ -1,10 +1,4 @@
-{
-  config,
-  hypr,
-  inputs,
-  pkgs,
-  ...
-}:
+{ ... }:
 let
   base = "";
   primary = "";

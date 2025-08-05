@@ -1,12 +1,4 @@
-{
-  lib,
-  pkgs,
-  config,
-  inputs,
-  flake,
-  system,
-  ...
-}:
+{ system, pkgs, inputs, ... }:
 {
 
   imports = [
@@ -32,10 +24,6 @@
       uv
       gimp
     ])
-
-    # ++ (with config.programs; [
-    #   spicetify.spicedSpotify.packages."${system}".default
-    # ])
 
     ++ (with inputs; [
       zen-browser.packages."${system}".default
