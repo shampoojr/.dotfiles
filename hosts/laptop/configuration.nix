@@ -19,13 +19,15 @@
     polkit.enable = true;
   };
 
-  #Nix Flakes
+  
   nix = {
     gc = {
       automatic = true;
       dates = "daily";
       options = "--delete-older-than 30d";
     };
+
+    # Nix Flakes
     settings.experimental-features = [
       "nix-command"
       "flakes"

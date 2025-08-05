@@ -1,17 +1,16 @@
 {
+  imports,
   inputs,
   pkgs,
-  config,
-  imports,
   ...
 }:
 {
   imports = [
+    #./config.nix
     #./theme.nix
-    ./config.nix
   ];
-
   programs.hyprpanel = {
     enable = true;
+    package = inputs.hyprpanel.packages.${pkgs.system}.default;
   };
 }

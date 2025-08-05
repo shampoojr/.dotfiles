@@ -1,18 +1,12 @@
 { ... }:
 {
-
   programs.hyprpanel = {
-    enable = true;
     settings = {
-      
       theme = {
+        bar.buttons.clock.enableBorder = true;
         bar = {
-          bar.buttons.systray.enableBorder = true;
-          
-          location = "top";
-          floating = true;
-          transparent = true;
           buttons = {
+            enableBorders = true;
             seperator = {
               margins = "0.15em";
               width = "0.1em";
@@ -68,15 +62,10 @@
               spacing = "0.5em";
               enableBorder = true;
             };
-            clock = {
-              spacing = "0.5em";
-              enableBorder = true;
-            };
-            notifications = {
-              spacing = "0.5em";
-              enableBorder = true;
-            };
           };
+          location = "top";
+          floating = true;
+          transparent = true;
           menus = {
             menu = {
               dashboard = {
@@ -94,11 +83,11 @@
               power.scaling = "90";
               popover.scaling = "100";
             };
+            
             border.location = "none";
             enableShadows = false;
             shadow = "0px 0px 3px 1px #16161e";
             shadowMargins = "5px 5px";
-
           };
           font = {
             name = "FiraCode NF";

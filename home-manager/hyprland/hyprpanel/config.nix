@@ -1,4 +1,4 @@
-{ imports, ... }:
+{ ... }:
 {
   programs.hyprpanel = {
     settings = {
@@ -90,6 +90,8 @@
             right = [
               "systray"
               "volume"
+              "battery"
+              "network"
               "bluetooth"
               "clock"
               "notification"

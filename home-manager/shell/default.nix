@@ -1,8 +1,4 @@
 {
-  config,
-  zsh,
-  home-manager,
-  pkgs,
   imports,
   ...
 }:
@@ -31,6 +27,6 @@
     zoxide = {
       enable = true;
     };
-    
+
   };
 }
