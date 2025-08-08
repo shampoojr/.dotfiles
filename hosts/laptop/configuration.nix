@@ -19,7 +19,7 @@
     polkit.enable = true;
   };
 
-  
+  # Garbage Collector
   nix = {
     gc = {
       automatic = true;
@@ -38,19 +38,27 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Hardware
-  hardware = {
+  # services.xserver.videoDrivers = [ "modesetting" "nvidia" ]; 
+  # # Hardware
+  # hardware = {
+  #   # Graphics
+  #   graphics.enable = true;
+  #   nvidia = {
+  #     package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #     open = false;
+  #     nvidiaSettings = true;
+  #     modesetting.enable = true;
+  #     prime = {
+  #       sync.enable = true;
 
-    # Graphics
-    #  graphics.enable = true;
-    #   nvidia = {
-    #     modesetting.enable = true;
-    #     nvidiaSettings = true;
-    #     open = true;
-    #     powerManagement.enable = false;
-    #     powerManagement.finegrained = false;
-    #   };
-  };
+  #       # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+  #       nvidiaBusId = "PCI:60:0:0";
+
+  #       # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+  #       intelBusId = "PCI:0:0:2";
+  #     };
+  #   };
+  # };
 
   # Boot
   boot = {
@@ -68,9 +76,6 @@
         efiSupport = true;
         device = "nodev";
       };
-      # systemd-boot.enable = true;
-      # efi.canTouchEfiVariables = true;
-      #efiSysMountPoint = "/boot/efi";
     };
   };
 
@@ -108,6 +113,22 @@
 
   # Services
   services = {
+
+    
+    auto-cpufreq = {
+      enable = true;
+      settings = {
+        battery = {
+          governor = "powersave";
+          turbo = "never";
+        };
+        charger = {
+          governor = "performance";
+          turbo = "auto";
+        };
+      };
+    };
+
     upower.enable = true;
 
     tlp = {
@@ -173,6 +194,7 @@
   # Fonts
   fonts.packages = with pkgs.nerd-fonts; [
     fira-code
+    jetbrains-mono
     symbols-only
   ];
 
@@ -224,6 +246,7 @@
     systemPackages = (
       with pkgs;
       ([
+        jp2a
         hardinfo2
         brightnessctl
         cbonsai

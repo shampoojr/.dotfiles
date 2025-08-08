@@ -12,6 +12,12 @@
       };
 
       bar = {
+        windowtitle = {
+          title_map = [
+            ["vesktop" "" "Discord"]
+            ["org.vinegarhq.sober" "" "Roblox"]
+          ];
+        };
         autoHide = "never";
         launcher = {
           autoDetectIcon = true;
@@ -69,13 +75,13 @@
           reverse_scroll = false;
           scrollspeed = "5";
           show_icons = false;
-          show_numbered = true;
+          show_numbered = false;
           showAllActive = true;
           showApplicationIcons = false;
           showWsIcons = false;
           spacing = "1";
           workspaceMask = false;
-          workspaces = "9";
+          workspaces = "5";
         };
 
         layouts = {

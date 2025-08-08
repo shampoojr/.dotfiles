@@ -40,10 +40,10 @@
               numbered_active_highlight_padding = "0.2em";
               numbered_active_highlight_border = "0.2em";
               pill = {
-                radius = "1.9em * 0.6";
-                height = "4em";
-                width = "4em";
-                active_width = "1.2em";
+                # radius = "1.9em * 0.6";
+                # height = "4em";
+                # width = "4em";
+                # active_width = "1.2em";
               };
             };
             windowtitle = {

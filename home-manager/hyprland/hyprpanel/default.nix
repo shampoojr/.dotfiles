@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-    #./config.nix
-    #./theme.nix
+    ./config.nix
+    ./theme.nix
   ];
   programs.hyprpanel = {
     enable = true;
