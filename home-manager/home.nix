@@ -2,15 +2,17 @@
   config,
   pkgs,
   input,
+  username,
   ...
 }:
 {
-  imports = [ ./home-manager/imports ];
-  home.username = "shampoojr";
-  home.homeDirectory = "/home/shampoojr";
-  home.stateVersion = "25.05"; # Please read the comment before changing.
-  home.packages = with pkgs; [ ];
-  home.file = { };
-  home.sessionVariables = { };
+  imports = [ ./imports ];
+  home = {
+    username = "${username}";
+    homeDirectory = "/home/shampoojr";
+    stateVersion = "25.05"; # Please read the comment before changing.
+    file = { };
+    sessionVariables = { };
+  };
   programs.home-manager.enable = true;
 }

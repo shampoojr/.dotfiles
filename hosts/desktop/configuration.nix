@@ -1,153 +1,19 @@
-{ config, pkgs, ... }:
+{ config, pkgs, computer, ... }:
 
 {
 
   # Imports
   imports = [
     ./hardware-configuration.nix
-    ../../rules/udev
+    ../hardware/rules/udev
+    ../config.nix
   ];
-
-  # Auto Update
-  system = {
-    autoUpgrade.enable = true;
-    autoUpgrade.allowReboot = true;
-  };
-
-  # Polkit
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-  };
-
-  #Nix Flakes
-  nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 30d";
-    };
-
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-  };
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
-  # Hardware
-  hardware = {
-
-    # Graphics
-    graphics.enable = true;
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-    };
-  };
-
-  # Boot
-  boot = {
-
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
-
-    # Bootloader
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
 
   # Network
   networking = {
-    hostName = "MSI";
+    hostName = "${computer}";
     networkmanager.enable = true;
   };
-
-  # Timezone
-  time.timeZone = "Europe/Oslo";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  # Programs
-  programs = {
-
-    # Steam
-    steam.enable = true;
-
-    # Hyprland
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
-
-    # ZSH
-    zsh.enable = true;
-
-    # File Manager
-    thunar = {
-      enable = true;
-    };
-  };
-
-  # Services
-  services = {
-
-    # Login
-    displayManager.sddm.enable = true;
-
-    # Keyring
-    gnome.gnome-keyring.enable = true;
-
-    # Xserver
-    xserver = {
-      enable = true;
-      videoDrivers = [ "nvidia" ];
-
-      excludePackages = with pkgs; [ xterm ];
-
-      # Keyboard layout
-      xkb = {
-        layout = "no";
-        variant = "winkeys";
-      };
-    };
-
-    # Audio
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
-    # Printing
-    printing.enable = true;
-
-    # Flatpak
-    flatpak.enable = true;
-
-    # Image previews
-    gvfs.enable = true;
-    tumbler.enable = true;
-  };
-
-  console.keyMap = "no";
-
-  # Fonts
-  fonts.packages = with pkgs.nerd-fonts; [
-    fira-code
-    symbols-only
-  ];
 
   # Users
   users = {
@@ -166,84 +32,46 @@
 
       # User Packages
       packages = with pkgs; [
-        nixfmt-rfc-style
+
       ];
     };
   };
 
-  # Unfree
-  nixpkgs.config.allowUnfree = true;
+  # Hardware
+  hardware = {
 
-  # Enviroment
-  environment = {
+    # Graphics
+    graphics.enable = true;
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      prime = {
+        sync.enable = true;
 
-    # Shell
-    shells = with pkgs; [ zsh ];
+        # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+        nvidiaBusId = "PCI:01:0:0";
 
-    # Plasma6 Exclusions
-    plasma6.excludePackages = with pkgs.kdePackages; [
-      kcalc
-      kcharselect
-      kcolorchooser
-      kolourpaint
-      ksystemlog
-      plasma-browser-integration
-      kdepim-runtime
-      konsole
-      oxygen
-    ];
-
-    # System Packages
-    systemPackages = (
-      with pkgs;
-      ([
-        wootility
-        unzip
-        seahorse
-        hardinfo2
-        brightnessctl
-        cbonsai
-        figlet
-        gcc
-        gnumake
-        grim
-        hyprutils
-        libnotify
-        lolcat
-        lshw
-        networkmanagerapplet
-        nodejs
-        pavucontrol
-        playerctl
-        pokeget-rs
-        pv
-        python313
-        sbctl
-        slurp
-        toilet
-        w3m
-        gnome-photos
-        wirelesstools
-        wl-clipboard
-        xdg-desktop-portal-gnome
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-wlr
-      ])
-
-      # Packages from kde
-      ++ (with kdePackages; [
-        discover
-      ])
-
-      # Packages from Pypi
-      ++ (with python3Packages; [
-        gpustat
-      ])
-    );
+        # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+        amdBusId = "PCI:14:0:0";
+      };
+    };
   };
 
-  # System stateVersion
-  system.stateVersion = "25.05";
+  # Boot
+  boot = {
+
+    # Kernel
+    kernelPackages = pkgs.linuxPackages_zen;
+
+    # Bootloader
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
 }

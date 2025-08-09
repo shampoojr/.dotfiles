@@ -71,7 +71,14 @@
     {
       nixosConfigurations = rec {
         "${laptop}" = lib.nixosSystem {
-          specialArgs = { inherit inputs system; };
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              laptop
+              ;
+          };
           modules = [
             ./hosts/laptop/configuration.nix
           ];
@@ -79,7 +86,14 @@
       };
       nixosConfigurations = {
         "${computer}" = lib.nixosSystem {
-          specialArgs = { inherit inputs system; };
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              computer
+              ;
+          };
           modules = [
             ./hosts/desktop/configuration.nix
           ];
@@ -89,7 +103,12 @@
       homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit inputs system;
+          inherit
+            inputs
+            system
+            username
+            pkgs
+            ;
         };
         modules = [
           ./home-manager/home.nix
