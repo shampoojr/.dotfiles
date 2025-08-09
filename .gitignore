@@ -1,1 +1,2 @@
-"variables.nix"
+"/hosts/variables.nix"
+"/home-manager/hyprland/hyprpanel/variables.nix"
