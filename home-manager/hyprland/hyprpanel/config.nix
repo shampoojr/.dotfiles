@@ -1,5 +1,6 @@
-{ ... }:
-{
+{ ... }:let
+#inherit (import ../../../variables.nix) apikey;
+in{
   programs.hyprpanel = {
     settings = {
       scalingPriority = "hyprland";
@@ -123,6 +124,7 @@
             hideSeconds = true;
           };
           weather = {
+            #weather_api_key = "${apikey}";
             interval = "5000";
             unit = "metric";
           };

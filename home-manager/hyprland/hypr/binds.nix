@@ -45,7 +45,7 @@ in
     };
 
     bind = [
-      "${mod}, Tab, exec, overview:toggle"
+      "${mod}, Tab, exec, hyprctl dispatch overview:toggle"
       "${mod}, E, exec, ${fileManager}"
       "${mod}, R, exec, ${menu}"
       "${mod}, W, exec, ${browser}"
@@ -54,6 +54,7 @@ in
       "${mod}, F, exec, hyprctl dispatch fullscreenstate 3 0"
       "${mod}, space, togglefloating"
       "${modShift}, Q, killactive"
+      "ALT, F4, killactive"
 
       "${mod}, p, exec, hyprpicker -a --format=rgb"
 
@@ -100,8 +101,8 @@ in
       "${mod}, mouse_up, ${ws}, e-1"
 
       # screenshot
-      ", PRINT, exec, hyprshot -m output -o /home/shampoojr/Pictures/Screenshots"
-      "${shift}, PRINT, exec, hyprshot -m region -o /home/shampoojr/Pictures/Screenshots"
+      ", PRINT, exec, hyprshot -z -m output -o /home/shampoojr/Pictures/Screenshots"
+      "${shift}, PRINT, exec, hyprshot -z -m region -o /home/shampoojr/Pictures/Screenshots"
     ];
 
     bindm = [
