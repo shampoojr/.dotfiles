@@ -92,7 +92,7 @@
           inherit inputs system;
         };
         modules = [
-          ./home.nix
+          ./home-manager/home.nix
         ];
       };
     };
