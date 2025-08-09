@@ -1,4 +1,9 @@
-{ lib, inputs, pkgs, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
@@ -9,7 +14,7 @@
     in
     {
       enable = true;
-      
+
       enabledExtensions = with spicePkgs.extensions; [
         fullAlbumDate
         oneko
@@ -23,6 +28,6 @@
       ];
 
       theme = spicePkgs.themes.text;
-      #colorScheme = "mocha";
+
     };
 }

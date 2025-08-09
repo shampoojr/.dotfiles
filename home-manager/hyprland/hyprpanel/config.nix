@@ -94,13 +94,13 @@
             ];
             middle = [ "media" ];
             right = [
+              "custom/gputemp"
               "systray"
               "volume"
-              "battery"
               "network"
               "bluetooth"
               "clock"
-              "notification"
+              "notifications"
             ];
           };
 

@@ -5,6 +5,7 @@
   # Imports
   imports = [
     ./hardware-configuration.nix
+    ../../rules/udev
   ];
 
   # Auto Update
@@ -43,6 +44,7 @@
     # Graphics
     graphics.enable = true;
     nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       modesetting.enable = true;
       nvidiaSettings = true;
       open = true;
@@ -195,6 +197,8 @@
     systemPackages = (
       with pkgs;
       ([
+        wootility
+        unzip
         seahorse
         hardinfo2
         brightnessctl

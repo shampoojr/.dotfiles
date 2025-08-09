@@ -1,9 +1,5 @@
-{ ... }:
+{ pkgs, inputs, ... }:
 let
-  base = "";
-  primary = "";
-  secondary = "";
-  text = "";
 in
 {
   imports = [
@@ -32,9 +28,20 @@ in
   };
   wayland.windowManager.hyprland = {
     plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      inputs.hyprland-plugins.packages.${pkgs.system}.xtra-dispatchers
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
+      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
     ];
     enable = true;
     settings = {
+
+      plugin = {
+      };
+
       exec-once = [
         "systemctl --user start hyprpolkitagent"
       ];
@@ -70,7 +77,7 @@ in
       monitor = [
         "eDP-1,1920x1080@60,0x0,1"
         "HDMI-A-2,1920x1080@60,0x0,1"
-        "DP-4,1920x1080@60,0x0,1"
+        "DP-4,1920x1080@60,5360x0,1"
         "DP-5,3440x1440@165,1920x0,1"
       ];
       env = [

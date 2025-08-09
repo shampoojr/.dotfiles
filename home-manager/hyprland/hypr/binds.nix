@@ -1,5 +1,6 @@
 { ... }:
 let
+  
   editor = "code";
   fileManager = "thunar";
   terminal = "ghostty";
@@ -44,7 +45,7 @@ in
     };
 
     bind = [
-      "${mod}, Tab, exec, hyprctl dispatch overview:toggle"
+      "${mod}, Tab, exec, overview:toggle"
       "${mod}, E, exec, ${fileManager}"
       "${mod}, R, exec, ${menu}"
       "${mod}, W, exec, ${browser}"
