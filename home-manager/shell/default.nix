@@ -1,0 +1,33 @@
+{
+  imports,
+  ...
+}:
+{
+  imports = [
+    #./cava
+    ./eza
+    ./fzf
+    ./fastfetch
+    ./zsh
+    ./cava
+    ./tmux
+  ];
+
+  programs = {
+
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
+    oh-my-posh = {
+      enable = true;
+      useTheme = "atomicBit";
+    };
+
+    zoxide = {
+      enable = true;
+    };
+
+  };
+}

@@ -1,6 +1,6 @@
 {...}:{
-  programs.tmux = {
-    enable = true;
-    clock24 = true;
-  };
+programs.tmux = {
+  enable = true;
+  clock24 = true;
+};
 }
