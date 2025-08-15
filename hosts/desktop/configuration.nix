@@ -56,7 +56,7 @@
         nvidiaBusId = "PCI:01:0:0";
 
         # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-        amdBusId = "PCI:14:0:0";
+        amdgpuBusId = "PCI:14:0:0";
       };
     };
   };

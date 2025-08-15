@@ -2,7 +2,6 @@
   config,
   pkgs,
   computer,
-  config,
   ...
 }:
 {
@@ -43,7 +42,6 @@
 
   # Programs
   programs = {
-
     # Steam
     steam.enable = true;
 
@@ -60,6 +58,23 @@
     # File Manager
     thunar = {
       enable = true;
+    };
+  };
+  services.dbus.enable = true;
+  xdg = {
+
+    mime.defaultApplications = {
+      "text/html" = "zen-beta";
+      "x-scheme-handler/http" = "zen-beta";
+      "x-scheme-handler/https" = "zen-beta";
+      "x-scheme-handler/about" = "zen-beta";
+      "x-scheme-handler/unknown" = "zen-beta";
+      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
+    };
+    portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
   };
 
@@ -111,30 +126,9 @@
   # Fonts
   fonts.packages = with pkgs.nerd-fonts; [
     fira-code
+    jetbrains-mono
     symbols-only
   ];
-
-  # Users
-  users = {
-
-    # Default Shell
-    defaultUserShell = pkgs.zsh;
-
-    # Local User
-    users.shampoojr = {
-      isNormalUser = true;
-      description = "shampoojr";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-      ];
-
-      # User Packages
-      packages = with pkgs; [
-        
-      ];
-    };
-  };
 
   # Unfree
   nixpkgs.config.allowUnfree = true;
@@ -162,6 +156,9 @@
     systemPackages = (
       with pkgs;
       ([
+        krita
+        jp2a
+        playerctl
         nixfmt-rfc-style
         wootility
         unzip
