@@ -156,6 +156,7 @@
     systemPackages = (
       with pkgs;
       ([
+        dconf
         krita
         jp2a
         playerctl
