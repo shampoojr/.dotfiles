@@ -14,5 +14,5 @@
     ./treesitter.nix
     ./visual-whitespace.nix
     ./web-devicons.nix
-  ]
+  ];
 }
