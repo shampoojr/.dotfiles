@@ -1,21 +1,29 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  services.hypridle = {
+  programs.hyprlock = {
     enable = true;
-    package = pkgs.hypridle;
-    importantPrefixes = [
-    ];
+    importantPrefixes = [ ];
+    extraConfig = '''';
     settings = {
       general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignsore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
+        disable_loading_bar = true;
+        hide_cursor = true;
+        no_fade_in = true;
       };
-      listener = {
-        timeout = "20";
-        on-timeout = "notify-send 'You are locked!'";
-        on-resume = "notify-send 'Welcome Back!'";
-      }
+      input-field = [
+        {
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          monitor = "DP-5";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          position = "0, -80";
+          shadow_passes = 2;
+          size = "200, 50";
+        }
+      ];
     };
   };
 }

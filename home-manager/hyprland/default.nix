@@ -3,5 +3,6 @@
     ./hypr
     ./hyprpanel
     ./hyprlock
+    ./hypridle
   ];
 }
