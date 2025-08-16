@@ -62,6 +62,10 @@
     # File Manager
     thunar = {
       enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
     };
   };
   services.dbus.enable = true;
@@ -94,9 +98,10 @@
     # Xserver
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
 
       excludePackages = with pkgs; [ xterm ];
+
+      videoDrivers = [ "nvidia" ];
 
       # Keyboard layout
       xkb = {
@@ -160,6 +165,7 @@
     systemPackages = (
       with pkgs;
       ([
+        zip
         dconf
         krita
         jp2a
@@ -202,6 +208,7 @@
       # Packages from kde
       ++ (with kdePackages; [
         discover
+        
       ])
 
       # Packages from Pypi

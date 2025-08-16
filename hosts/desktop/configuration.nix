@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../hardware/rules/udev
     ../config.nix
+    #../hardware/secureboot
   ];
 
   # Network

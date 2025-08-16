@@ -1,4 +1,6 @@
-{ pkgs, lib, ... }:
+{ inputs, pkgs, lib, ... }:let 
+  lanzaboote = import inputs.lanzaboote;
+in
 {
   imports = [ lanzaboote.nixosModules.lanzaboote ];
 
