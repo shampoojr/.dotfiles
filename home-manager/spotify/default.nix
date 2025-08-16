@@ -1,9 +1,4 @@
-{
-  lib,
-  inputs,
-  pkgs,
-  ...
-}:
+{ lib, inputs, pkgs, ... }:
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
@@ -14,20 +9,15 @@
     in
     {
       enable = true;
-
       enabledExtensions = with spicePkgs.extensions; [
         fullAlbumDate
         oneko
       ];
-
       enabledCustomApps = with spicePkgs.apps; [
         marketplace
       ];
-
       enabledSnippets = with spicePkgs.snippets; [
       ];
-
       theme = spicePkgs.themes.text;
-
     };
 }
