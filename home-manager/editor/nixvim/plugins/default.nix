@@ -1,12 +1,12 @@
 {
   imports = [
-    ./highlightcolor.nix
+    ./highlight-colors.nix
     ./lazy.nix
     ./lint.nix
     ./lualine.nix
     ./mini.nix
     ./neocord.nix
-    ./neotree.nix
+    ./neo-tree.nix
     ./nix.nix
     ./nui.nix
     ./snack.nix

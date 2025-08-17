@@ -2,7 +2,6 @@
   programs.nixvim.plugins = {
     visual-whitespace = {
       enable = true;
-      autoLoad = true;
       settings = {
         enabled = true;
         lead = true;
