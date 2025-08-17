@@ -19,7 +19,7 @@
         reload_style_on_change = true;
         spacing = 10;
         start_hidden = false;
-        width = 3440;
+        width = 1920;
 
         modules-left = [
           "hyprland/workspaces"

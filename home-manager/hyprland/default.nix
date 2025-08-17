@@ -4,6 +4,7 @@
     #./hyprpanel
     ./hyprlock
     ./hypridle
+    ./hyprpolkit
     ./bar
   ];
 }
