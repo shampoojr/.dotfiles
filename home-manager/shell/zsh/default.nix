@@ -10,6 +10,10 @@
       enableCompletion = true;
       syntaxHighlighting.enable = true;
 
+      sessionVariables = {
+        XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
+      };
+
       shellAliases = {
         hflake = "home-manager switch --flake .";
         sflake = "sudo nixos-rebuild switch --flake .";
