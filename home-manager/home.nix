@@ -12,7 +12,9 @@
     homeDirectory = "/home/shampoojr";
     stateVersion = "25.05"; # Please read the comment before changing.
     file = { };
-    sessionVariables = { };
+    sessionVariables = {
+      XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
+    };
   };
   programs.home-manager.enable = true;
 }
