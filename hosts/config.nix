@@ -72,17 +72,24 @@
   xdg = {
 
     mime.defaultApplications = {
-      "text/html" = "zen-beta";
+      #"text/html" = "zen-beta";
       "x-scheme-handler/http" = "zen-beta";
       "x-scheme-handler/https" = "zen-beta";
       "x-scheme-handler/about" = "zen-beta";
-      "x-scheme-handler/unknown" = "zen-beta";
+      #"x-scheme-handler/unknown" = "zen-beta";
       "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
     };
     portal = {
       enable = true;
       wlr.enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config = {
+        common = {
+          default = [
+            "kde"
+          ];
+        };
+      };
+      extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     };
   };
 
@@ -165,55 +172,62 @@
     systemPackages = (
       with pkgs;
       ([
-        zip
-        dconf
-        krita
-        jp2a
-        playerctl
-        nixfmt-rfc-style
-        wootility
-        unzip
-        seahorse
-        hardinfo2
+        alsa-utils
         brightnessctl
         cbonsai
+        dconf
         figlet
         gcc
+        gnome-photos
         gnumake
         grim
+        grimblast
+        hardinfo2
         hyprutils
+        jp2a
+        krita
         libnotify
         lolcat
         lshw
         networkmanagerapplet
+        nixfmt-rfc-style
         nodejs
         pavucontrol
+        playerctl
         playerctl
         pokeget-rs
         pv
         python313
         sbctl
+        seahorse
         slurp
         toilet
+        unzip
         w3m
-        gnome-photos
         wirelesstools
         wl-clipboard
+        wootility
         xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
         xdg-desktop-portal-wlr
+        zip
       ])
 
       # Packages from kde
       ++ (with kdePackages; [
         discover
+        xdg-desktop-portal-kde
         
       ])
 
       # Packages from Pypi
-      ++ (with python3Packages; [
+      ++ (with python313Packages; [
         gpustat
+        pip
+        # mido
+        # rtmidi
+        # keyboard
       ])
     );
   };
