@@ -1,5 +1,7 @@
 {
   programs.nixvim.plugins = {
-    lualine.enable = true;
+    lualine = {
+      enable = true;
+    };
   };
 }

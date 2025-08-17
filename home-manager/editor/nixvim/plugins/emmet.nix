@@ -1,6 +1,6 @@
 {
   programs.nixvim.plugins = {
-    lint = {
+    emmet = {
       enable = true;
     };
   };

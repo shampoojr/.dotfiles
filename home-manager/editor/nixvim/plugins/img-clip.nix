@@ -1,6 +1,6 @@
 {
   programs.nixvim.plugins = {
-    lint = {
+    img-clip = {
       enable = true;
     };
   };

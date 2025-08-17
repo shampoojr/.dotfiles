@@ -9,6 +9,9 @@
   programs = {
     nixvim = {
       enable = true;
+      globals = {
+        mapleader = "|";
+      };
       colorschemes.catppuccin.enable = true;
     };
   };

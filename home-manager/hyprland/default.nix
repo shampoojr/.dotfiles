@@ -1,8 +1,9 @@
 { ... }:{
   imports = [
     ./hypr
-    ./hyprpanel
+    #./hyprpanel
     ./hyprlock
     ./hypridle
+    ./bar
   ];
 }

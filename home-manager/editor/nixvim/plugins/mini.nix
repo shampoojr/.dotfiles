@@ -1,5 +1,6 @@
 {
   programs.nixvim.plugins = {
+
     mini = {
       enable = true;
       modules = {
@@ -9,6 +10,14 @@
             comment_line = "<leader>/";
             comment_visual = "<leader>/";
             textobject = "<leader>/";
+          };
+        };
+
+        tabline = {
+          enable = true;
+          settings = {
+            show_icons = false;
+            tabpage_section = "right";
           };
         };
 
