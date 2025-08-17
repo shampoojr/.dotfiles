@@ -5,8 +5,8 @@
     ./lint.nix
     ./lualine.nix
     ./mini.nix
-    ./neocord.nix
     ./neo-tree.nix
+    ./neocord.nix
     ./nix.nix
     ./nui.nix
     ./snack.nix
@@ -14,5 +14,9 @@
     ./treesitter.nix
     ./visual-whitespace.nix
     ./web-devicons.nix
+    ./twilight.nix
+    ./toggleterm.nix
+    ./cmp.nix
+    ./transparent
   ];
 }

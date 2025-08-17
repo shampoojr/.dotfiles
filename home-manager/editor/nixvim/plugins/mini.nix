@@ -20,7 +20,7 @@
         };
 
         tabline = {
-          enable = true;
+          enable = false;
           settings = {
             show_icons = false;
             tabpage_section = "right";
