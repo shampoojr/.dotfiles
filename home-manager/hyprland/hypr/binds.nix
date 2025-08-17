@@ -14,6 +14,9 @@ let
   modShift = "${mod} + ${shift}";
   modControl = "${mod} + ${control}";
   modAlt = "${mod} + ${alt}";
+  ctrlShift = "${control} + ${shift}";
+  ctrlAlt = "${control} + ${alt}";
+  shiftAlt = "${shift} + ${alt}";
   shift = "SHIFT";
   control = "CONTROL";
   alt = "ALT";
@@ -101,8 +104,9 @@ in
       "${mod}, mouse_up, ${ws}, e-1"
 
       # screenshot
-      ", PRINT, exec, hyprshot -z -m output -o /home/shampoojr/Pictures/Screenshots"
-      "${shift}, PRINT, exec, hyprshot -z -m region -o /home/shampoojr/Pictures/Screenshots"
+      ", PRINT, exec, grimblast --notify --freeze save area"
+      "${shift}, PRINT, exec, grimblast --notify --freeze --cursor save output"
+      "${ctrlShift}, PRINT, exec, grimblast --notify --freeze --cursor save screen"
     ];
 
     bindm = [
