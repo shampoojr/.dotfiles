@@ -15,14 +15,12 @@
       gh
       hyprpaper
       hyprpicker
-      hyprshot
       mpdris2
       neo-cowsay
       playerctl
       ponysay
       rofi
       uv
-      gimp
     ])
 
     ++ (with inputs; [
