@@ -87,9 +87,22 @@
           modules = [
             ./hosts/laptop/configuration.nix
 
-            lanzaboote.nixosModules.lanzaboote
-
-            (
+          ];
+        };
+      };
+      nixosConfigurations = {
+        "${computer}" = lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              computer
+              ;
+          };
+          modules = [
+            ./hosts/desktop/configuration.nix
+                                  (
               { pkgs, lib, ... }:
               {
 
@@ -108,23 +121,7 @@
                   enable = true;
                   pkiBundle = "/var/lib/sbctl";
                 };
-              }
-            )
-          ];
-        };
-      };
-      nixosConfigurations = {
-        "${computer}" = lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              system
-              username
-              computer
-              ;
-          };
-          modules = [
-            ./hosts/desktop/configuration.nix
+              })
           ];
         };
       };
