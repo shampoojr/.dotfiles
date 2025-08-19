@@ -1,12 +1,6 @@
 { pkgs, ... }:
 {
   services.udev.extraRules = ''
-    ACTION=="remove",\
-    ENV{ID_BUS}=="usb",\
-    ENV{ID_MODEL_ID}=="0407",\
-    ENV{ID_VENDOR_ID}=="1050",\
-    ENV{ID_VENDOR}=="Yubico",\
-    RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
 
     # Wooting One Legacy
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="ff01", MODE:="0660", GROUP="input", TAG+="uaccess"
@@ -24,3 +18,10 @@
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="31e3", MODE:="0660", GROUP="input", TAG+="uaccess" 
     SUBSYSTEM=="usb", ATTRS{idVendor}=="31e3", MODE:="0660", GROUP="input", TAG+="uaccess"'';
 }
+
+    #  ACTION=="remove",\
+    #  ENV{ID_BUS}=="usb",\
+    #  ENV{ID_MODEL_ID}=="0407",\
+    #  ENV{ID_VENDOR_ID}=="1050",\
+    #  ENV{ID_VENDOR}=="Yubico",\
+    #  RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"

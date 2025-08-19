@@ -132,6 +132,7 @@
       konsole
       oxygen
     ];
+  };
 
   # System stateVersion
   system.stateVersion = "25.05";

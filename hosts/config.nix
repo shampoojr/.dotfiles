@@ -14,10 +14,10 @@
 
   # Polkit
   security = {
-    pam.services = {
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
-    };
+    # pam.services = {
+    #   login.u2fAuth = true;
+    #   sudo.u2fAuth = true;
+    # };
     rtkit.enable = true;
     polkit.enable = true;
   };
