@@ -4,11 +4,6 @@
     mini = {
       enable = true;
 
-      ai = {
-        enable = true;
-
-      };
-
       modules = {
         comment = {
           mappings = {

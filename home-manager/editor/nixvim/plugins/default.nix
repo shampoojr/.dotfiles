@@ -17,6 +17,6 @@
     ./twilight.nix
     ./toggleterm.nix
     ./cmp.nix
-    ./transparent
+    ./transparent.nix
   ];
 }
