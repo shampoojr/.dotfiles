@@ -225,14 +225,11 @@
       ++ (with python313Packages; [
         gpustat
         pip
-        # mido
-        # rtmidi
-        # keyboard
       ])
     );
   };
 
   # System stateVersion
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 
 }
