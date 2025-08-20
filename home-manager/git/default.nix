@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs = {
     gh = {
@@ -6,11 +6,18 @@
     };
     git = {
       enable = true;
+      package = pkgs.gitFull;
       userName = "shampoojr";
       userEmail = "shampoojr@outlook.com";
       extraConfig = {
         init.defaultBranch = "main";
-        safe.directory = "/etc/nixos";
+      };
+      lfs.enable = true;
+      aliases = {
+        ci = "commit";
+        co = "checkout";
+        ga = "git add";
+        s = "status";
       };
     };
   };
