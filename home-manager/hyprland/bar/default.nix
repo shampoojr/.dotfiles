@@ -4,16 +4,19 @@
     enable = true;
 
     settings = {
-      waybar = {
+
+      main = {
         exclusive = true;
         fixed-center = true;
         height = 45;
+        id = "main";
+        output = "eDP-1";
         layer = "top";
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
         margin-top = 0;
-        mode = "dock";
+        mode = "float";
         name = "waybar";
         position = "top";
         reload_style_on_change = true;
@@ -195,7 +198,7 @@
         text = "#FFFFFF";
       in
       ''
-        
+
       '';
   };
 }
