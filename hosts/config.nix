@@ -41,7 +41,10 @@
   services.blueman.enable = true;
 
   # Timezone
-  time.timeZone = "Europe/Oslo";
+  time = {
+    timeZone = "Europe/Oslo";
+    hardwareClockInLocalTime = true;
+  };
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Programs
@@ -140,11 +143,19 @@
   console.keyMap = "no";
 
   # Fonts
-  fonts.packages = with pkgs.nerd-fonts; [
-    fira-code
-    jetbrains-mono
-    symbols-only
-  ];
+  fonts.packages = (
+    with pkgs;
+    [
+      font-awesome
+    ]
+
+    ++ (with nerd-fonts; [
+      fira-code
+      fira-code-symbols
+      jetbrains-mono
+      symbols-only
+    ])
+  );
 
   # Unfree
   nixpkgs.config.allowUnfree = true;
@@ -218,7 +229,7 @@
       ++ (with kdePackages; [
         discover
         xdg-desktop-portal-kde
-        
+
       ])
 
       # Packages from Pypi
