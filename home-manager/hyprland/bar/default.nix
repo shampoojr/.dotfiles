@@ -8,9 +8,13 @@
       main = {
         exclusive = true;
         fixed-center = true;
+<<<<<<< HEAD
         height = 45;
         id = "main";
         output = "eDP-1";
+=======
+        height = 25;
+>>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
         layer = "top";
         margin-bottom = 0;
         margin-left = 0;
@@ -48,6 +52,9 @@
             "1" = [ ];
             "2" = [ ];
             "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+            "6" = [ ];
           };
 
         };
@@ -198,7 +205,34 @@
         text = "#FFFFFF";
       in
       ''
+<<<<<<< HEAD
 
+=======
+        *{
+        border:none;
+        border-radius: 0;
+        min-height:24px;
+        }
+
+        window.DP-5 {
+        	font-size: 20px;
+        	font-weight: 800;
+        }
+
+        window#waybar {
+        	background: rgba(0,0,0,1);
+        }
+
+        #workspaces {
+        background: #444;
+        border-radius: 2rem;
+        border: 1px solid white;
+        }
+
+        #workspace button {
+        background:transparent;
+        }
+>>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
       '';
   };
 }

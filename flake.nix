@@ -102,7 +102,14 @@
           };
           modules = [
             ./hosts/desktop/configuration.nix
+<<<<<<< HEAD
                                   (
+=======
+
+            lanzaboote.nixosModules.lanzaboote
+
+            (
+>>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
               { pkgs, lib, ... }:
               {
 
@@ -121,7 +128,12 @@
                   enable = true;
                   pkiBundle = "/var/lib/sbctl";
                 };
+<<<<<<< HEAD
               })
+=======
+              }
+            )
+>>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
           ];
         };
       };
