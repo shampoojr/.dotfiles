@@ -1,9 +1,6 @@
 {
   programs.nixvim.plugins = {
-    cmp = {
-      enable = true;
-    };
-    cmp-tabby = {
+    auto-save = {
       enable = true;
     };
   };
