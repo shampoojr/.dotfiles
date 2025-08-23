@@ -6,5 +6,6 @@
     ./hypridle
     ./hyprpolkit
     ./bar
+    ./hyprpolkit
   ];
 }

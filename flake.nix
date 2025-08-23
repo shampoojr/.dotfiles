@@ -104,6 +104,23 @@
           modules = [
             ./hosts/desktop/configuration.nix
              lanzaboote.nixosModules.lanzaboote
+          ];
+        };
+      };
+      nixosConfigurations = {
+        "${computer}" = lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              computer
+              ;
+          };
+          modules = [
+            ./hosts/desktop/configuration.nix
+
+            lanzaboote.nixosModules.lanzaboote
 
             (
               { pkgs, lib, ... }:

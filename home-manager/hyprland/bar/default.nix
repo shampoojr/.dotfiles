@@ -8,13 +8,7 @@
       main = {
         exclusive = true;
         fixed-center = true;
-<<<<<<< HEAD
         height = 45;
-        id = "main";
-        output = "eDP-1";
-=======
-        height = 25;
->>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
         layer = "top";
         margin-bottom = 0;
         margin-left = 0;
@@ -205,9 +199,7 @@
         text = "#FFFFFF";
       in
       ''
-<<<<<<< HEAD
 
-=======
         *{
         border:none;
         border-radius: 0;
@@ -232,7 +224,6 @@
         #workspace button {
         background:transparent;
         }
->>>>>>> bf9a303 (Idk what i just did hope it doesnt break everything)
       '';
   };
 }
