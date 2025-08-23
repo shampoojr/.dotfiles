@@ -5,5 +5,6 @@
     ./hyprlock
     ./hypridle
     ./bar
+    ./hyprpolkit
   ];
 }
