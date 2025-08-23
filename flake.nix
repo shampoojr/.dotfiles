@@ -87,6 +87,7 @@
           modules = [
             ./hosts/laptop/configuration.nix
 
+           
           ];
         };
       };
@@ -102,7 +103,9 @@
           };
           modules = [
             ./hosts/desktop/configuration.nix
-                                  (
+             lanzaboote.nixosModules.lanzaboote
+
+            (
               { pkgs, lib, ... }:
               {
 
@@ -121,7 +124,8 @@
                   enable = true;
                   pkiBundle = "/var/lib/sbctl";
                 };
-              })
+              }
+            )
           ];
         };
       };
