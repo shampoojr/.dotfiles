@@ -4,6 +4,10 @@
       "HYPRCURSOR_SIZE,24"
       "XCURSOR_SIZE,24"
     ];
+    device = {
+      name = "logitech-usb-receiver";
+      sensitivity = "0";
+    };
     cursor = {
       default_monitor = "";
       enable_hyprcursor = true;
