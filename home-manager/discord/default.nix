@@ -1,6 +1,6 @@
 { ... }:
 {
-  programs.vesktop = {
-    enable = true;
-  };
+imports = [
+  ./vesktop
+];
 }
