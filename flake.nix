@@ -86,7 +86,6 @@
           };
           modules = [
             ./hosts/laptop/configuration.nix
-
           ];
         };
       };
@@ -102,7 +101,7 @@
           };
           modules = [
             ./hosts/desktop/configuration.nix
-                                  (
+            (
               { pkgs, lib, ... }:
               {
 
@@ -121,7 +120,8 @@
                   enable = true;
                   pkiBundle = "/var/lib/sbctl";
                 };
-              })
+              }
+            )
           ];
         };
       };
