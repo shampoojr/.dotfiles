@@ -10,7 +10,9 @@
       userName = "shampoojr";
       userEmail = "shampoojr@outlook.com";
       extraConfig = {
-        init.defaultBranch = "main";
+        init = {
+          defaultBranch = "main";
+        };
       };
       lfs.enable = true;
       aliases = {
