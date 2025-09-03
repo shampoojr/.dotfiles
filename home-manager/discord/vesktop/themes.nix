@@ -1,0 +1,10 @@
+{ ... }:
+{
+  programs.vesktop = {
+    vencord = {
+      themes = {
+                
+      };
+    };
+  };
+}
