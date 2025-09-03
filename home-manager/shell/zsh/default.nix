@@ -15,8 +15,8 @@
       };
 
       shellAliases = {
-        hflake = "home-manager switch --flake .";
-        sflake = "sudo nixos-rebuild switch --flake .";
+        hm = "nh home switch";
+        os = "nh os switch";
       };
 
       initContent = ''
@@ -33,6 +33,5 @@
       # };
 
     };
-    
   };
 }
