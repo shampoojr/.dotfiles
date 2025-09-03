@@ -11,7 +11,6 @@
       btop
       dconf
       eww
-      freecad
       gh
       hyprpaper
       hyprpicker
