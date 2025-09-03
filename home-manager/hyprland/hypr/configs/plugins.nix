@@ -5,7 +5,7 @@
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprtrails
       inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
       inputs.hyprland-plugins.packages.${pkgs.system}.borders-plus-plus
-      inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+      #inputs.Hyprspace.packages.${pkgs.system}.Hyprspace # Not updated
     ];
     settings = {
       plugins = {
