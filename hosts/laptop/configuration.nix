@@ -1,4 +1,11 @@
-{ config, pkgs, laptop, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  laptop,
+  username,
+  ...
+}:
 
 {
 
@@ -8,9 +15,14 @@
     ../config.nix
   ];
 
-  services.xserver.videoDrivers = [ "modesetting" "nvidia" ]; 
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "nvidia"
+  ];
+
   # Hardware
   hardware = {
+
     # Graphics
     graphics.enable = true;
     nvidia = {
@@ -18,15 +30,23 @@
       open = false;
       nvidiaSettings = true;
       modesetting.enable = true;
-      # prime = {
-      #   sync.enable = true;
+      powerManagement.finegrained = false;
+      powerManagement.enable = false;
+      prime = {
+        offload = {
+          enable = false;
+          enableOffloadCmd = false;
+        };
+        sync.enable = true;
+        reverseSync.enable = true;
+        allowExternalGpu = true;
 
-      #   # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-      #   nvidiaBusId = "PCI:01:0:0";
+        # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+        nvidiaBusId = "PCI:60:0:0";
 
-      #   # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-      #   intelBusId = "PCI:14:0:0";
-      # };
+        # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+        intelBusId = "PCI:0:2:0";
+      };
     };
   };
 
@@ -58,7 +78,6 @@
   # Services
   services = {
 
-    
     auto-cpufreq = {
       enable = true;
       settings = {
@@ -74,27 +93,6 @@
     };
 
     upower.enable = true;
-
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 20;
-
-        #Optional helps save long term battery health
-        START_CHARGE_THRESH_BAT0 = 40; # 40 and below it starts to charge
-        STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-
-      };
-    };
   };
 
   # Users
@@ -104,7 +102,7 @@
     defaultUserShell = pkgs.zsh;
 
     # Local User
-    users.shampoojr = {
+    users.${username} = {
       isNormalUser = true;
       description = "shampoojr";
       extraGroups = [
@@ -112,25 +110,5 @@
         "wheel"
       ];
     };
-  };
-
-  # Unfree
-  nixpkgs.config.allowUnfree = true;
-
-  # Enviroment
-  environment = {
-
-    # Plasma6 Exclusions
-    plasma6.excludePackages = with pkgs.kdePackages; [
-      kcalc
-      kcharselect
-      kcolorchooser
-      kolourpaint
-      ksystemlog
-      plasma-browser-integration
-      kdepim-runtime
-      konsole
-      oxygen
-    ];
   };
 }
