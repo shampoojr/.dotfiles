@@ -13,5 +13,7 @@
     ../shell
     ../spotify
     ../terminal
+    ../waybar
+    ../dunst
   ];
 }
