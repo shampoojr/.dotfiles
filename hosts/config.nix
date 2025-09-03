@@ -14,22 +14,12 @@
 
   # Polkit
   security = {
-    # pam.services = {
-    #   login.u2fAuth = true;
-    #   sudo.u2fAuth = true;
-    # };
     rtkit.enable = true;
     polkit.enable = true;
   };
 
   #Nix Flakes
   nix = {
-    gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 30d";
-    };
-
     settings.experimental-features = [
       "nix-command"
       "flakes"
@@ -172,6 +162,7 @@
     systemPackages = (
       with pkgs;
       ([
+        mesa
         alsa-utils
         brightnessctl
         cbonsai
@@ -218,13 +209,11 @@
       ++ (with kdePackages; [
         discover
         xdg-desktop-portal-kde
-        
       ])
 
       # Packages from Pypi
       ++ (with python313Packages; [
         gpustat
-        pip
       ])
     );
   };
