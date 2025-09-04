@@ -3,7 +3,7 @@
   programs.vesktop = {
     settings = {
       tray = true;
-      discordBranch = "stable";
+      discordBranch = "ptb";
       hardwareAcceleration = true;
       hardwareVideoAcceleraton = true;
       arRPC = false;
