@@ -59,7 +59,7 @@ in
       "${modShift}, Q, killactive"
       "ALT, F4, killactive"
 
-      "${mod}, p, exec, hyprpicker -a --format=rgb"
+      "${mod}, p, exec, hyprpicker -a --format=hex"
 
       "${mod}, left, movefocus, l"
       "${mod}, right, movefocus, r"
