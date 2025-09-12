@@ -22,7 +22,7 @@
 
     oh-my-posh = {
       enable = true;
-      useTheme = "atomicBit";
+      useTheme = "star";
     };
 
     zoxide = {
