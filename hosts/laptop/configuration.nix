@@ -38,7 +38,7 @@
           enableOffloadCmd = false;
         };
         sync.enable = true;
-        reverseSync.enable = true;
+        reverseSync.enable = false;
         allowExternalGpu = true;
 
         # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
