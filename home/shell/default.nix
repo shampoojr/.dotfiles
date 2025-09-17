@@ -1,20 +1,9 @@
-{
-  imports,
-  ...
-}:
-{
+{imports, ...}: {
   imports = [
-    #./cava
-    ./eza
-    ./fzf
-    ./fastfetch
-    ./zsh
-    ./cava
-    ./tmux
+    ../tui
   ];
 
   programs = {
-
     nix-index = {
       enable = true;
       enableZshIntegration = true;
@@ -28,6 +17,5 @@
     zoxide = {
       enable = true;
     };
-
   };
 }
