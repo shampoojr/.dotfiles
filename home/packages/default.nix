@@ -1,6 +1,9 @@
-{ system, pkgs, inputs, ... }:
 {
-
+  system,
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./programs.nix
   ];
@@ -8,7 +11,6 @@
   home.packages =
     (with pkgs; [
       asciiquarium
-      btop
       dconf
       eww
       gh
@@ -20,9 +22,10 @@
       ponysay
       rofi
       uv
+      prismlauncher
+      #zen-browser
     ])
-
     ++ (with inputs; [
-      zen-browser.packages."${system}".default
+      #zen-browser.packages."${system}".default
     ]);
 }
