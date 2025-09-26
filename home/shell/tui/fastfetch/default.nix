@@ -1,17 +1,16 @@
-{ ... }:
-{
+{...}: {
   programs.fastfetch = {
     enable = true;
     settings = {
       logo = {
-        #type = "command-raw";
-        #source = "cowsay hello";
+        type = "command-raw";
+        source = "ponysay --pony rainbow_dash -o";
         #type = "chafa";
         #source = "~/Pictures/nixos.png";
         #height = 12;
         #width = 28;
         #source = "~/Pictures/thinkpad.txt";
-        
+
         color = {
           "1" = "blue";
           "2" = "cyan";
@@ -26,7 +25,6 @@
         {
           type = "title";
           format = "          {user-name-colored}{at-symbol-colored}{host-name-colored}";
-
         }
         "break"
         {
