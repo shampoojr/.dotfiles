@@ -1,4 +1,9 @@
-{ config, pkgs, computer, ... }:
+{
+  config,
+  pkgs,
+  computer,
+  ...
+}:
 
 {
 
@@ -69,9 +74,19 @@
     kernelPackages = pkgs.linuxPackages_zen;
 
     # Bootloader
+
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = false;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+      grub = {
+        efiSupport = true;
+        device = "nodev";
+      };
     };
   };
 

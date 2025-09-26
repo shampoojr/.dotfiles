@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.fastfetch = {
     enable = true;
     settings = {
@@ -11,12 +12,12 @@
         #width = 28;
         #source = "~/Pictures/thinkpad.txt";
 
-        color = {
-          "1" = "blue";
-          "2" = "cyan";
-          "3" = "red";
-          "4" = "white";
-        };
+        # color = {
+        #   "1" = "blue";
+        #   "2" = "cyan";
+        #   "3" = "red";
+        #   "4" = "white";
+        # };
       };
       display = {
         separator = ": 󰁕 ";

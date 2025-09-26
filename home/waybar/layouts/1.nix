@@ -1,7 +1,38 @@
+{ ... }:
+let
+  # Colors
+  blue = "#89b4fa";
+  green = "#a6e3a1";
+  pink = "#f5c2e7";
+  red = "#f38ba8";
+  rosewater = "#f5e0dc";
+  flamingo = "#f2cdcd";
+  mauve = "#cba6f7";
+  maroon = "#eba0ac";
+  peach = "#fab387";
+  sky = "#89dceb";
+  sapphire = "#74c7ec";
+  lavender = "#b4befe";
+  teal = "#94e2d5";
+  yellow = "#f9e2af";
+
+  #
+  base = "#1e1e2e";
+  text = "#cdd6f4";
+  subtext0 = "#a6adc8";
+  subtext1 = "#bac2de";
+  overlay0 = "#6c7086";
+  overlay1 = "#7f849c";
+  overlay2 = "#9399b2";
+  surface0 = "#313244";
+  surface1 = "#45475a";
+  surface2 = "#585b70";
+  mantle = "#181825";
+  crust = "#11111b";
+in
 {
   programs.waybar = {
     settings = {
-
       "1" = {
         exclusive = true;
         fixed-center = true;
@@ -10,7 +41,7 @@
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        margin-top = 0;
+        margin-top = 5;
         mode = "dock";
         output = "DP-5";
         name = "waybar";
@@ -19,10 +50,10 @@
         spacing = 10;
         start_hidden = false;
         width = 3440;
+        id = "main";
 
         modules-left = [
           "hyprland/workspaces"
-          "cava"
         ];
 
         modules-center = [
@@ -31,8 +62,6 @@
 
         modules-right = [
           "network"
-          "backlight"
-          "battery"
           "pulseaudio"
           "clock"
         ];
@@ -44,9 +73,7 @@
             "3" = [ ];
             "4" = [ ];
             "5" = [ ];
-            "6" = [ ];
           };
-
         };
 
         mpris = {
@@ -59,48 +86,26 @@
             paused = "⏸";
             stopped = "";
           };
+
           dynamic-seperator = [
             "-"
           ];
+
           dynamic-order = [
             "title"
             "artist"
           ];
+
           player-icons = {
             default = " ";
-            spotify = " ";
-            firefox = " ";
+            spotify = "";
+            firefox = "";
           };
         };
 
         "hyprland/window" = {
           rewrite = {
 
-          };
-        };
-
-        battery = {
-          bat = "BAT0";
-          interval = "1";
-          format = "{capacity}% {icon}";
-          format-charging = "{capacity}% {icon}󱐋";
-          format-icons = {
-            #"charging" = [
-            #""
-            #];
-
-            default = [
-              "󰁺"
-              "󰁻"
-              "󰁼"
-              "󰁽"
-              "󰁾"
-              "󰁿"
-              "󰂀"
-              "󰂁"
-              "󰂂"
-              "󰁹"
-            ];
           };
         };
 
@@ -136,44 +141,26 @@
             "▇"
             "█"
           ];
+
           actions = {
             on-click-right = "mode";
           };
         };
 
-        backlight = {
-          format = "{percent}% {icon}";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-        };
-
         network = {
-          format-wifi = " ";
-          format-ethernet = " ";
-          format-disconnected = " ";
+          format-wifi = "";
+          format-ethernet = "󰈀";
+          format-disconnected = "";
           tooltip = false;
           tooltip-format-disconnected = "Error";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)  ";
-          tooltip-format-ethernet = "{ifname} 🖧 ";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-ethernet = "{ifname} 🖧";
         };
 
         pulseaudio = {
           format = "{volume}% {icon} ";
           format-bluetooth = "{volume}% {icon} ";
-          format-source-muted = "";
+          format-muted = "";
           format-icons = {
             headphones = "";
             handsfree = "";
@@ -188,11 +175,14 @@
               ""
             ];
           };
+
           scroll-step = "5";
           on-click-right = "pavucontrol";
         };
+        clock = {
+          format = "{:%H:%M}";
+        };
       };
-
     };
   };
 }

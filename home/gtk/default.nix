@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     dconf
   ];
@@ -30,7 +31,7 @@
     theme = {
       name = "catppuccin-mocha-pink-compact"; # Choose your preferred variant
       package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"]; # Customize accents as needed
+        accents = [ "pink" ]; # Customize accents as needed
         size = "compact"; # Adjust size if desired
         variant = "mocha"; # Select the theme variant
       };

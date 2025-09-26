@@ -59,107 +59,112 @@
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    spicetify-nix,
-    nixvim,
-    nixos-hardware,
-    zen-browser,
-    lanzaboote,
-    alejandra,
-    catppuccin,
-    ...
-  } @ inputs: let
-    lib = nixpkgs.lib;
-    username = "shampoojr";
-    system = "x86_64-linux";
-    laptop = "LT590";
-    computer = "MSI";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      spicetify-nix,
+      nixvim,
+      nixos-hardware,
+      zen-browser,
+      lanzaboote,
+      alejandra,
+      catppuccin,
+      ...
+    }@inputs:
+    let
+      lib = nixpkgs.lib;
+      username = "shampoojr";
+      system = "x86_64-linux";
+      laptop = "LT590";
+      computer = "MSI";
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
       };
-    };
-  in {
-    nixosConfigurations = rec {
-      "${laptop}" = lib.nixosSystem {
-        specialArgs = {
+    in
+    {
+      nixosConfigurations = rec {
+        "${laptop}" = lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              laptop
+              ;
+          };
+          modules = [
+            ./hosts/laptop/configuration.nix
+            catppuccin.nixosModules.catppuccin
+            nixos-hardware.nixosModules.lenovo-thinkpad-t590
+            #lanzaboote.nixosModules.lanzaboote
+
+            #{ environment.systemPackages = [ alejandra.defaultPackage.${system} ]; }
+            # (
+            #   {
+            #     pkgs,
+            #     lib,
+            #     ...
+            #   }: {
+            #     environment.systemPackages = [
+            #       # For debugging and troubleshooting Secure Boot.
+            #       pkgs.sbctl
+            #     ];
+
+            #     # Lanzaboote currently replaces the systemd-boot module.
+            #     # This setting is usually set to true in configuration.nix
+            #     # generated at installation time. So we force it to false
+            #     # for now.
+            #     boot.loader.systemd-boot.enable = lib.mkForce false;
+
+            #     boot.lanzaboote = {
+            #       enable = true;
+            #       pkiBundle = "/var/lib/sbctl";
+            #     };
+            #   }
+            # )
+          ];
+        };
+      };
+      nixosConfigurations = {
+        "${computer}" = lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              system
+              username
+              computer
+              ;
+          };
+          modules = [
+            ./hosts/desktop/configuration.nix
+            catppuccin.nixosModules.catppuccin
+          ];
+        };
+      };
+
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
           inherit
             inputs
             system
             username
-            laptop
+            pkgs
             ;
         };
         modules = [
-          ./hosts/laptop/configuration.nix
-          catppuccin.nixosModules.catppuccin
-          nixos-hardware.nixosModules.lenovo-thinkpad-t590
-          #lanzaboote.nixosModules.lanzaboote
-
-          #{ environment.systemPackages = [ alejandra.defaultPackage.${system} ]; }
-          # (
-          #   {
-          #     pkgs,
-          #     lib,
-          #     ...
-          #   }: {
-          #     environment.systemPackages = [
-          #       # For debugging and troubleshooting Secure Boot.
-          #       pkgs.sbctl
-          #     ];
-
-          #     # Lanzaboote currently replaces the systemd-boot module.
-          #     # This setting is usually set to true in configuration.nix
-          #     # generated at installation time. So we force it to false
-          #     # for now.
-          #     boot.loader.systemd-boot.enable = lib.mkForce false;
-
-          #     boot.lanzaboote = {
-          #       enable = true;
-          #       pkiBundle = "/var/lib/sbctl";
-          #     };
-          #   }
-          # )
+          ./home/home.nix
+          catppuccin.homeModules.catppuccin
         ];
       };
     };
-    nixosConfigurations = {
-      "${computer}" = lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            system
-            username
-            computer
-            ;
-        };
-        modules = [
-          ./hosts/desktop/configuration.nix
-          catppuccin.nixosModules.catppuccin
-        ];
-      };
-    };
-
-    homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit
-          inputs
-          system
-          username
-          pkgs
-          ;
-      };
-      modules = [
-        ./home/home.nix
-        catppuccin.homeModules.catppuccin
-      ];
-    };
-  };
 }

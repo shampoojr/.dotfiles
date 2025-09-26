@@ -18,6 +18,7 @@
         spacing = 10;
         start_hidden = false;
         width = 1920;
+        id = "laptop";
 
         modules-left = [
           "hyprland/workspaces"
