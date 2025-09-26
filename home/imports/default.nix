@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ../discord
     ../editor
@@ -15,5 +14,6 @@
     ../terminal
     ../waybar
     ../dunst
+    ../browser
   ];
 }
