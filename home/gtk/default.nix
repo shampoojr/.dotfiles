@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   home.packages = with pkgs; [
     dconf
   ];
@@ -21,17 +19,6 @@
     };
   };
 
-  qt = {
-    enable = true;
-    platformTheme = {
-      name = "adwaita";
-    };
-
-    style = {
-      name = "adwaita-dark";
-    };
-  };
-
   gtk = {
     enable = true;
 
@@ -41,8 +28,14 @@
     };
 
     theme = {
-      package = pkgs.gnome-themes-extra;
-      name = "Adwaita-dark";
+      name = "catppuccin-mocha-pink-compact"; # Choose your preferred variant
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["pink"]; # Customize accents as needed
+        size = "compact"; # Adjust size if desired
+        variant = "mocha"; # Select the theme variant
+      };
+      # package = pkgs.gnome-themes-extra;
+      # name = "Adwaita-dark";
     };
 
     font = {
@@ -50,5 +43,4 @@
       size = 11;
     };
   };
-
 }
