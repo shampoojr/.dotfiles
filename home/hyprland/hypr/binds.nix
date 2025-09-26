@@ -1,10 +1,8 @@
-{ ... }:
-let
-  
+{...}: let
   editor = "code";
   fileManager = "thunar";
-  terminal = "ghostty";
-  browser = "zen";
+  terminal = "kitty";
+  browser = "firefox";
   menu = "rofi -show drun";
 
   audio = "XF86Audio";
@@ -29,10 +27,7 @@ let
   sws = "special${ws}";
   mt = "moveto";
   mtws = "${mt}${ws}";
-
-in
-{
-
+in {
   wayland.windowManager.hyprland.settings = {
     binds = {
       pass_mouse_when_bound = false;
@@ -104,9 +99,6 @@ in
       "${mod}, mouse_up, ${ws}, e-1"
 
       # screenshot
-      ", PRINT, exec, grimblast --notify --freeze save area"
-      "${shift}, PRINT, exec, grimblast --notify --freeze --cursor save output"
-      "${ctrlShift}, PRINT, exec, grimblast --notify --freeze --cursor save screen"
     ];
 
     bindm = [
@@ -126,6 +118,10 @@ in
     ];
 
     bindl = [
+      ", PRINT, exec, grimblast --notify --freeze save area"
+      "${shift}, PRINT, exec, grimblast --notify --freeze --cursor save output"
+      "${ctrlShift}, PRINT, exec, grimblast --notify --freeze --cursor save screen"
+
       ", ${audio}Next, exec, ${media} next"
       ", ${audio}Pause, exec, ${media} play-pause"
       ", ${audio}Play, exec, ${media} play-pause"
