@@ -4,6 +4,9 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    catppuccin.url = "github:catppuccin/nix";
 
     # Home-Manager
     home-manager.url = "github:nix-community/home-manager";
@@ -30,6 +33,10 @@
       url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprgrass = {
+      url = "github:horriblename/hyprgrass";
+      inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
 
     # Spicetify
     spicetify-nix = {
@@ -44,101 +51,115 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      spicetify-nix,
-      nixvim,
-      zen-browser,
-      lanzaboote,
-      ...
-    }@inputs:
-    let
-      lib = nixpkgs.lib;
-      username = "shampoojr";
-      system = "x86_64-linux";
-      laptop = "LT590";
-      computer = "MSI";
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    spicetify-nix,
+    nixvim,
+    nixos-hardware,
+    zen-browser,
+    lanzaboote,
+    alejandra,
+    catppuccin,
+    ...
+  } @ inputs: let
+    lib = nixpkgs.lib;
+    username = "shampoojr";
+    system = "x86_64-linux";
+    laptop = "LT590";
+    computer = "MSI";
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
       };
-    in
-    {
-      nixosConfigurations = rec {
-        "${laptop}" = lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              system
-              username
-              laptop
-              ;
-          };
-          modules = [
-            ./hosts/laptop/configuration.nix
-          ];
-        };
-      };
-      nixosConfigurations = {
-        "${computer}" = lib.nixosSystem {
-          specialArgs = {
-            inherit
-              inputs
-              system
-              username
-              computer
-              ;
-          };
-          modules = [
-            ./hosts/desktop/configuration.nix
-            (
-              { pkgs, lib, ... }:
-              {
-
-                environment.systemPackages = [
-                  # For debugging and troubleshooting Secure Boot.
-                  pkgs.sbctl
-                ];
-
-                # Lanzaboote currently replaces the systemd-boot module.
-                # This setting is usually set to true in configuration.nix
-                # generated at installation time. So we force it to false
-                # for now.
-                boot.loader.systemd-boot.enable = lib.mkForce false;
-
-                boot.lanzaboote = {
-                  enable = true;
-                  pkiBundle = "/var/lib/sbctl";
-                };
-              }
-            )
-          ];
-        };
-      };
-
-      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
+    };
+  in {
+    nixosConfigurations = rec {
+      "${laptop}" = lib.nixosSystem {
+        specialArgs = {
           inherit
             inputs
             system
             username
-            pkgs
+            laptop
             ;
         };
         modules = [
-          ./home/home.nix
+          ./hosts/laptop/configuration.nix
+          catppuccin.nixosModules.catppuccin
+          nixos-hardware.nixosModules.lenovo-thinkpad-t590
+          #lanzaboote.nixosModules.lanzaboote
+
+          #{ environment.systemPackages = [ alejandra.defaultPackage.${system} ]; }
+          # (
+          #   {
+          #     pkgs,
+          #     lib,
+          #     ...
+          #   }: {
+          #     environment.systemPackages = [
+          #       # For debugging and troubleshooting Secure Boot.
+          #       pkgs.sbctl
+          #     ];
+
+          #     # Lanzaboote currently replaces the systemd-boot module.
+          #     # This setting is usually set to true in configuration.nix
+          #     # generated at installation time. So we force it to false
+          #     # for now.
+          #     boot.loader.systemd-boot.enable = lib.mkForce false;
+
+          #     boot.lanzaboote = {
+          #       enable = true;
+          #       pkiBundle = "/var/lib/sbctl";
+          #     };
+          #   }
+          # )
         ];
       };
     };
+    nixosConfigurations = {
+      "${computer}" = lib.nixosSystem {
+        specialArgs = {
+          inherit
+            inputs
+            system
+            username
+            computer
+            ;
+        };
+        modules = [
+          ./hosts/desktop/configuration.nix
+          catppuccin.nixosModules.catppuccin
+        ];
+      };
+    };
+
+    homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit
+          inputs
+          system
+          username
+          pkgs
+          ;
+      };
+      modules = [
+        ./home/home.nix
+        catppuccin.homeModules.catppuccin
+      ];
+    };
+  };
 }
