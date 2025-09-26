@@ -1,6 +1,8 @@
-{imports, ...}: {
+{ imports, ... }:
+{
   imports = [
-    ../tui
+    ./tui
+    ./zsh
   ];
 
   programs = {
