@@ -3,12 +3,10 @@
   pkgs,
   lib,
   laptop,
+  alejandra,
   username,
   ...
-}:
-
-{
-
+}: {
   # Imports
   imports = [
     ./hardware-configuration.nix
@@ -18,20 +16,27 @@
   services.xserver.videoDrivers = [
     "modesetting"
     "nvidia"
+    #"intel"
   ];
 
   # Hardware
   hardware = {
-
     # Graphics
-    graphics.enable = true;
+    graphics = {
+      enable = true;
+    };
+
+    # CPU
+    cpu.intel.updateMicrocode = false;
+
+    # Nvidia
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       open = false;
       nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement.finegrained = false;
-      powerManagement.enable = false;
+      powerManagement.enable = true;
       prime = {
         offload = {
           enable = false;
@@ -39,10 +44,10 @@
         };
         sync.enable = true;
         reverseSync.enable = false;
-        allowExternalGpu = true;
+        allowExternalGpu = false;
 
         # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-        nvidiaBusId = "PCI:60:0:0";
+        nvidiaBusId = "PCI:6:0:0";
 
         # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
         intelBusId = "PCI:0:2:0";
@@ -52,10 +57,12 @@
 
   # Boot
   boot = {
-
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
-
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      # "module_blacklist=i915"
+    ];
     # Bootloader
     loader = {
       efi = {
@@ -63,6 +70,7 @@
         efiSysMountPoint = "/boot/efi";
       };
       grub = {
+        theme = pkgs.catppuccin-grub;
         efiSupport = true;
         device = "nodev";
       };
@@ -74,20 +82,30 @@
     hostName = "${laptop}";
     networkmanager.enable = true;
   };
+  powerManagement.powertop.enable = true;
+
+  security = {
+    pam = {
+      services = {
+        sddm = {
+          enableGnomeKeyring = true;
+        };
+      };
+    };
+  };
 
   # Services
   services = {
-
     auto-cpufreq = {
       enable = true;
       settings = {
         battery = {
-          governor = "powersave";
-          turbo = "never";
+          governor = "performance";
+          turbo = "always";
         };
         charger = {
           governor = "performance";
-          turbo = "auto";
+          turbo = "always";
         };
       };
     };
@@ -97,7 +115,6 @@
 
   # Users
   users = {
-
     # Default Shell
     defaultUserShell = pkgs.zsh;
 
