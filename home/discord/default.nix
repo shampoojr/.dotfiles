@@ -1,9 +1,8 @@
-{ ... }:
-{
-imports = [
-  ./vesktop
-];
+{...}: {
+  imports = [
+    ./vesktop
+  ];
   programs.vesktop = {
-    enable = true;
+    enable = false;
   };
 }
