@@ -4,14 +4,13 @@
   input,
   username,
   ...
-}:
-{
-  imports = [ ./imports ];
+}: {
+  imports = [./imports];
   home = {
     username = "${username}";
     homeDirectory = "/home/shampoojr";
     stateVersion = "25.11"; # Please read the comment before changing.
-    file = { };
+    file = {};
     sessionVariables = {
       XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
     };
