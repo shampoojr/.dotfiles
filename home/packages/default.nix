@@ -1,4 +1,9 @@
-{ system, pkgs, inputs, ... }:
+{
+  system,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 
   imports = [
@@ -7,19 +12,48 @@
 
   home.packages =
     (with pkgs; [
-      asciiquarium
-      btop
-      dconf
-      eww
-      gh
+
+      nix-output-monitor
       hyprpaper
       hyprpicker
+
+      # Players
       mpdris2
-      neo-cowsay
       playerctl
-      ponysay
+
+      # Utils
       rofi
       uv
+      glow
+      gh
+      eww
+      dconf
+
+      # Fun
+      ponysay
+      neo-cowsay
+      asciiquarium
+
+      # System monitor
+      sysstat
+      btop
+      ethtool
+      lm_sensors
+      pciutils
+      usbutils
+
+      # FileManager
+      ranger
+      nnn
+
+      # Archives
+      zip
+      xz
+      unzip
+      p7zip
+
+      #IconThemes
+      papirus-icon-theme
     ])
 
     ++ (with inputs; [

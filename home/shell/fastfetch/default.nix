@@ -4,20 +4,20 @@
     enable = true;
     settings = {
       logo = {
-        #type = "command-raw";
-        #source = "cowsay hello";
+        type = "command-raw";
+        source = "pokeget pikachu --form pop-star --hide-name";
         #type = "chafa";
         #source = "~/Pictures/nixos.png";
         #height = 12;
         #width = 28;
         #source = "~/Pictures/thinkpad.txt";
-        
-        color = {
-          "1" = "blue";
-          "2" = "cyan";
-          "3" = "red";
-          "4" = "white";
-        };
+
+        # color = {
+        #   "1" = "blue";
+        #   "2" = "cyan";
+        #   "3" = "red";
+        #   "4" = "white";
+        # };
       };
       display = {
         separator = ": 󰁕 ";

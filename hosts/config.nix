@@ -75,7 +75,7 @@
       config = {
         common = {
           default = [
-            "kde"
+            "gtk"
           ];
         };
       };

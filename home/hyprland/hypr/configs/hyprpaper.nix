@@ -7,11 +7,13 @@
         splash = false;
         splash_offset = 2.0;
         preload = [
-          "~/Pictures/anime-girl-girly-pink-fantasy.jpg"
+          "~/Pictures/wallpapers/windows-error.jpg"
+          "~/Pictures/wallpapers/rainbow-cat.png"
+          "~/Pictures/wallpapers/nix-black-4k.png"
           "~/Pictures/wallpaper/NixBlack.jpg"
         ];
         wallpaper = [
-          "DP-5,~/Pictures/anime-girl-girly-pink-fantasy.jpg"
+          ",~/Pictures/wallpapers/nix-black-4k.png"
           "eDP-1,~/Pictures/wallpaper/NixBlack.jpg"
         ];
       };

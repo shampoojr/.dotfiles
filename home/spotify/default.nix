@@ -1,4 +1,9 @@
-{ lib, inputs, pkgs, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [
     inputs.spicetify-nix.homeManagerModules.default
@@ -19,5 +24,6 @@
       enabledSnippets = with spicePkgs.snippets; [
       ];
       theme = spicePkgs.themes.text;
+      colorScheme = "CatppuccinMocha";
     };
 }

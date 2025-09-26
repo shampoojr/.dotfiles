@@ -4,20 +4,34 @@
       let
 
         # Colors
-        red = "#FF0000";
-        green = "#00FF00";
-        blue = "#0000FF";
-        yellow = "#FFFF00";
-        cyan = "#00FFFF";
-        pink = "#FF00FF";
-
-        # Non-colors
-        black = "#000000";
-        white = "#FFFFFF";
+        blue = "#89b4fa";
+        green = "#a6e3a1";
+        pink = "#f5c2e7";
+        red = "#f38ba8";
+        rosewater = "#f5e0dc";
+        flamingo = "#f2cdcd";
+        mauve = "#cba6f7";
+        maroon = "#eba0ac";
+        peach = "#fab387";
+        sky = "#89dceb";
+        sapphire = "#74c7ec";
+        lavender = "#b4befe";
+        teal = "#94e2d5";
+        yellow = "#f9e2af";
 
         #
-        background = "#000";
-        foreground = "#f8f8f2";
+        base = "#1e1e2e";
+        text = "#cdd6f4";
+        subtext0 = "#a6adc8";
+        subtext1 = "#bac2de";
+        overlay0 = "#6c7086";
+        overlay1 = "#7f849c";
+        overlay2 = "#9399b2";
+        surface0 = "#313244";
+        surface1 = "#45475a";
+        surface2 = "#585b70";
+        mantle = "#181825";
+        crust = "#11111b";
 
         # Workspaces
         workspace_background = "";
@@ -38,21 +52,22 @@
       ''
         @keyframes blink {
             to {
-                background: #000;
-                color: #FFF;
+                background: ${base};
+                color: ${surface0};
             }
         }
 
         @keyframes batteryCritical {
             to {
-                color: #FFF;
+                color: ${surface0};
                 background: transparent;
-                border-color: #4b4b4b;
+                border-color: ${mantle};
             }
         }
 
 
         * {
+            color: ${surface0};
             font-family: "Symbols Nerd Font";
             border: none;
             border-radius: 0;
@@ -68,14 +83,16 @@
         }
 
         button {
+            padding: 10px;
             box-shadow: inset 0 -3px transparent;
             border: none;
             border-radius: 0;
         }
 
         button:hover {
+            padding: 10px;
             background: inherit;
-            box-shadow: inset 0 -3px #ffffff;
+            box-shadow: inset 0 -3px ${surface0};
         }
 
         window {
@@ -92,24 +109,23 @@
             border-style: solid;
             border-radius: 14px;
             background: transparent;
-            color: #FFF;
         }
 
         #battery.charging,
         #battery.plugged {
-            border-color: #FF0;
+            border-color: ${yellow};
         }
 
         #battery.good:not(charging) {
-            border-color: #0F0;
+            border-color: ${green};
         }
 
         #battery.warning:not(charging) {
-            border-color: #FF0;
+            border-color: ${yellow};
         }
 
         #battery.critical:not(charging) {
-            border-color: #F00;
+            border-color: ${red};
             animation-name: batteryCritical;
             animation-duration: 0.5s;
             animation-timing-function: steps(12);
@@ -118,11 +134,39 @@
         }
 
         #workspaces {
-            background: transparent;
+            background: ${teal};
             border-radius: 14px;
             border-width: 3px;
-            border-style: solid;
         }
+
+        #mpris {
+            background: ${yellow};
+            border-radius: 14px;
+            border-width: 3px;
+
+        }
+
+        #clock {
+            background: ${blue};
+            border-radius: 14px;
+            border-width: 3px;
+
+        }
+
+        #pulseaudio {
+            background: ${green};
+            border-radius: 14px;
+            border-width: 3px;
+
+        }
+
+        #network {
+            background: ${pink};
+            border-radius: 14px;
+            border-width: 3px;
+
+        }
+
 
         #workspaces button #workspaces.presistent {
             background: transparent;
@@ -139,14 +183,10 @@
         #temperature,
         #backlight,
         #language {
-            border-radius: 14px;
-            border-width: 3px;
-            border-style: solid;
             opacity: 1;
             padding: 1px 12px;
             margin: 1px 3px 1px 0;
         }
-
       '';
   };
 }

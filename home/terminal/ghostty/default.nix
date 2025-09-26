@@ -29,7 +29,7 @@
 
       background-opacity = 1;
       minimum-contrast = 1;
-      theme = "catppuccin-frappe";
+      theme = "Catppuccin Mocha";
     };
 
     themes = {
