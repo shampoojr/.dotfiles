@@ -1,12 +1,9 @@
 { ... }:
 {
-imports = [
-  ./vesktop
-];
-<<<<<<< HEAD:home/discord/default.nix
+  imports = [
+    ./vesktop
+  ];
   programs.vesktop = {
     enable = false;
   };
-=======
->>>>>>> main:home-manager/discord/default.nix
 }
