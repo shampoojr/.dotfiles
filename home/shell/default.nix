@@ -3,6 +3,7 @@
   imports = [
     ./tui
     ./zsh
+    ./terminal
   ];
 
   programs = {

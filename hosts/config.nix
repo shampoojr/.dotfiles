@@ -5,7 +5,8 @@
   system,
   inputs,
   ...
-}: {
+}:
+{
   # Auto Update
   system = {
     autoUpgrade.enable = true;
@@ -21,8 +22,8 @@
   #Nix Flakes
   nix = {
     settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
       experimental-features = [
         "nix-command"
         "flakes"
@@ -76,98 +77,24 @@
       enable = true;
       wlr.enable = true;
       config = {
-        hyprland = {
-          default = [
-            "gtk"
-            "hyprland"
-          ];
-        };
         common = {
           default = [
             "gtk"
           ];
         };
       };
-      extraPortals =
-        (with pkgs; [
-          xdg-desktop-portal-gnome
-          xdg-desktop-portal-gtk
-          xdg-desktop-portal-hyprland
-          xdg-desktop-portal-wlr
-        ])
-        ++ (with pkgs.kdePackages; [
-          xdg-desktop-portal-kde
-        ]);
-    };
-  };
-
-  # Services
-  services = {
-    # Login
-    displayManager.sddm = {
-      enable = true;
-      extraPackages = with pkgs; [
-        sddm-astronaut
+      extraPortals = with pkgs.kdePackages; [
+        xdg-desktop-portal-kde
       ];
-      package = pkgs.kdePackages.sddm;
-      theme = "sddm-astronaut-theme";
     };
-
-    # Keyring
-    gnome.gnome-keyring.enable = true;
-
-    # Xserver
-    xserver = {
-      enable = true;
-
-      excludePackages = with pkgs; [xterm];
-
-      videoDrivers = ["nvidia"];
-
-      # Keyboard layout
-      xkb = {
-        layout = "no";
-        variant = "winkeys";
-      };
-    };
-
-    # Audio
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-
-    # Printing
-    printing.enable = true;
-
-    # Flatpak
-    flatpak.enable = true;
-
-    # Image previews
-    gvfs.enable = true;
-    tumbler.enable = true;
   };
 
+
+  # TTY keymap
   console.keyMap = "no";
-
-  # Fonts
-  fonts.packages = with pkgs.nerd-fonts; [
-    fira-code
-    jetbrains-mono
-    symbols-only
-    droid-sans-mono
-  ];
-
-  # Unfree
-  nixpkgs.config.allowUnfree = true;
 
   # Enviroment
   environment = {
-    # Shell
-    shells = with pkgs; [zsh];
 
     # Plasma6 Exclusions
     plasma6.excludePackages = with pkgs.kdePackages; [

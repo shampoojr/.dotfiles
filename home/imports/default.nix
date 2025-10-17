@@ -1,19 +1,8 @@
-{...}: {
+{ ... }:
+{
   imports = [
-    ../discord
-    ../editor
-    ../git
-    ../gtk
-    ../hyprland
-    ../mpv
-    ../nix-helper
-    ../obs
-    ../packages
+    ../apps
+    ../DE
     ../shell
-    ../spotify
-    ../terminal
-    ../waybar
-    ../dunst
-    ../browser
   ];
 }

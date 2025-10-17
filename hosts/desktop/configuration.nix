@@ -1,4 +1,9 @@
-{ config, pkgs, computer, ... }:
+{
+  config,
+  pkgs,
+  computer,
+  ...
+}:
 
 {
 
@@ -7,6 +12,7 @@
     ./hardware-configuration.nix
     ../hardware/rules/udev
     ../config.nix
+    ../modules
     #../hardware/secureboot
   ];
 
@@ -41,6 +47,9 @@
   # Hardware
   hardware = {
 
+    # Disables AMD Graphics
+    cpu.amd.updateMicrocode = false;
+
     # Graphics
     graphics.enable = true;
     nvidia = {
@@ -51,10 +60,16 @@
       powerManagement.enable = false;
       powerManagement.finegrained = false;
       prime = {
+        offload = {
+          enable = false;
+          enableOffloadCmd = false;
+        };
         sync.enable = true;
+        reverseSync.enable = false;
+        allowExternalGpu = false;
 
         # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-        nvidiaBusId = "PCI:01:0:0";
+        nvidiaBusId = "PCI:1:0:0";
 
         # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
         amdgpuBusId = "PCI:14:0:0";
@@ -67,6 +82,10 @@
 
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      # "module_blacklist=i915"
+    ];
 
     # Bootloader
     loader = {
