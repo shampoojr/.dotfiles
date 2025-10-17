@@ -4,7 +4,7 @@
     settings = {
       logo = {
         type = "command-raw";
-        source = "ponysay --pony rainbow_dash -o";
+        source = "ponysay --pony rainbowgala -o";
         #type = "chafa";
         #source = "~/Pictures/nixos.png";
         #height = 12;

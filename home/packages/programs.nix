@@ -1,10 +1,9 @@
-{ ... }:
-{
+{...}: {
   programs = {
     direnv = {
       enable = true;
     };
-    
+
     java = {
       enable = true;
     };

@@ -54,10 +54,22 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    };
 
     alejandra = {
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-software-center = {
+      url = "github:snowfallorg/nix-software-center";
+    };
+    nixos-conf-editor = {
+      url = "github:snowfallorg/nixos-conf-editor";
+    };
+    nix-search-tv = {
+      url = "github:3timeslazy/nix-search-tv";
     };
   };
 
@@ -72,6 +84,10 @@
     lanzaboote,
     alejandra,
     catppuccin,
+    quickshell,
+    nix-search-tv,
+    nix-software-center,
+    nixos-conf-editor,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;

@@ -4,12 +4,12 @@
       "laptop" = {
         exclusive = true;
         fixed-center = true;
-        height = 45;
+        height = 40;
         layer = "top";
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
-        margin-top = 0;
+        margin-top = 5;
         mode = "dock";
         output = "eDP-1";
         name = "waybar";
@@ -28,6 +28,7 @@
         ];
 
         modules-right = [
+          "idle_inhibitor"
           "network"
           "backlight"
           "battery"
@@ -37,18 +38,21 @@
 
         "hyprland/workspaces" = {
           persistent-workspaces = {
-            "1" = [ ];
-            "2" = [ ];
-            "3" = [ ];
-            "4" = [ ];
-            "5" = [ ];
-            "6" = [ ];
+            "*" = [1 2 3 4 5];
+          };
+        };
+
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
           };
         };
 
         mpris = {
           format = "{player_icon} {dynamic} {status_icon} ";
-          tooltip = true;
+          tooltip = false;
           interval = 1;
           dynamic-len = 40;
           status-icons = {
@@ -68,23 +72,14 @@
 
           player-icons = {
             default = " ";
-            spotify = "<span color='#1ED760'></span>";
-            firefox = "<span color='#FF0033'></span>";
+            # spotify = "";
+            # firefox = "";
           };
         };
 
         "hyprland/window" = {
           rewrite = {
-
           };
-        };
-
-        upower = {
-          native_path = "/org/freedesktop/UPower/devices/battery_BAT0";
-          icon-size = 24;
-          hide-if-empty = true;
-          tooltip = true;
-          tooltip-spacing = 20;
         };
 
         battery = {
@@ -97,20 +92,20 @@
           };
           format = "{capacity}% {icon}";
           format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% <span color='#ffff00'>󱐋</span>";
+          format-charging = "{capacity}% <span color='#f9e2af'>󰂄</span>";
           format-plugged = "{capacity}% ";
           format-icons = {
             default = [
-              "<span color='#FF4C4C'>󰁺</span>"
-              "<span color='#FF6F4C'>󰁻</span>"
-              "<span color='#FF914C'>󰁼</span>"
-              "<span color='#FFB24C'>󰁽</span>"
-              "<span color='#FFDB4C'>󰁾</span>"
-              "<span color='#D4FF4C'>󰁿</span>"
-              "<span color='#A8FF4C'>󰂀</span>"
-              "<span color='#7CFF4C'>󰂁</span>"
-              "<span color='#50FF4C'>󰂂</span>"
-              "<span color='#4CFF4C'>󰁹</span>"
+              "<span color='#f38ba8'>󰁺</span>"
+              "<span color='#f6b8a3'>󰁻</span>"
+              "<span color='#f9d2ab'>󰁼</span>"
+              "<span color='#f9e2af'>󰁽</span>"
+              "<span color='#d4debb'>󰁾</span>"
+              "<span color='#b0e0c0'>󰁿</span>"
+              "<span color='#b3e2a0'>󰂀</span>"
+              "<span color='#a1e2b8'>󰂁</span>"
+              "<span color='#9de3b5'>󰂂</span>"
+              "<span color='#a6e3a1'>󰁹</span>"
             ];
           };
         };
@@ -155,27 +150,27 @@
 
         backlight = {
           format = "{percent}% {icon}";
-          tooltip = true;
-          tooltip-format = "{precent}%";
+          tooltip = false;
+          tooltip-format = "{percent}%";
           format-icons = [
-            "<span color='#3B2A2A'></span>"
-            "<span color='#4D3B3B'></span>"
-            "<span color='#6A4D4D'></span>"
-            "<span color='#7A5C5C'></span>"
-            "<span color='#A67D7D'></span>"
-            "<span color='#C6AFAF'></span>"
-            "<span color='#D6C6C6'></span>"
-            "<span color='#E6D9D9'></span>"
-            "<span color='#EDEFEF'></span>"
-            "<span color='#F2F2F2'></span>"
-            "<span color='#F7F7F7'></span>"
-            "<span color='#FAFAFA'></span>"
-            "<span color='#FFFFFF'></span>"
+            "<span color='#45475a'></span>"
+            "<span color='#4a4e65'></span>"
+            "<span color='#4f5269'></span>"
+            "<span color='#585a6b'></span>"
+            "<span color='#606f77'></span>"
+            "<span color='#6a6d7e'></span>"
+            "<span color='#757d8b'></span>"
+            "<span color='#7e8091'></span>"
+            "<span color='#9194a4'></span>"
+            "<span color='#a4a7b7'></span>"
+            "<span color='#b7b9ca'></span>"
+            "<span color='#c1c4d1'></span>"
+            "<span color='#cdd6f4'></span>"
           ];
         };
 
         network = {
-          format-wifi = "";
+          format-wifi = "<span color='#89b4fa'></span>";
           format-ethernet = "";
           format-disconnected = "";
           tooltip = false;
@@ -186,47 +181,33 @@
 
         pulseaudio = {
           format = "{volume}% {icon} ";
-          format-bluetooth = "{volume}% {icon} <span color='#09a5ff'></span>";
-          format-muted = "<span color='#FF4C4C'></span>";
+          format-bluetooth = "{volume}% {icon} <span color='#89b4fa'></span>";
+          format-muted = "<span color='#f38ba8'></span>";
           format-icons = {
-            headphones = "";
-            handsfree = "";
-            headset = "";
-            phone = "";
-            phone-muted = "";
-            portable = "";
-            car = "";
             default = [
-              ""
-              ""
-              ""
+              "<span color='#f38ba8'></span>"
+              "<span color='#f6b1a0'></span>"
+              "<span color='#f9c5a6'></span>"
+              "<span color='#f9d2ab'></span>"
+              "<span color='#f9e2af'></span>"
+              "<span color='#d4debb'></span>"
+              "<span color='#b0e0c0'></span>"
+              "<span color='#a4e2b5'></span>"
+              "<span color='#9fe2b3'></span>"
+              "<span color='#94e3af'></span>"
+              "<span color='#8ee3a7'></span>"
+              "<span color='#a6e3a1'></span>"
             ];
+            tooltip = false;
           };
-
           scroll-step = "5";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@";
           on-click-right = "pavucontrol";
         };
+
         clock = {
           format = "{:%H:%M}";
-          tooltip-format = "<tt><small>{calendar}</small></tt>";
-          calendar = {
-            mode = "year";
-            mode-mon-col = 3;
-            week-pos = "right";
-            on-scroll = 1;
-            format = {
-              months = "<span color='#ffead3'><b>{}</b></span>";
-              days = "<span color='#ecc6d9'><b>{}</b></span>";
-              weeks = "<span color='#99ffdd'><b>W{}</b></span>";
-              weekdays = "<span color='#ffcc66'><b>{}</b></span>";
-              today = "<span color='#ff6699'><b><u>{}</u></b></span>";
-            };
-            actions = {
-              on-click-right = "mode";
-              on-scroll-up = "shift_up";
-              on-scroll-down = "shift_down";
-            };
-          };
+          tooltip = false;
         };
       };
     };

@@ -6,7 +6,8 @@
       enableGitIntegration = true;
       shellIntegration.enableZshIntegration = true;
       settings = {
-        font_size = 24;
+        font_size = 18;
+        font_family = "FiraCode Nerd Font Bold";
         font_features = "FiraCode-Bold +zero";
         tab_bar_min_tabs = 1;
         tab_bar_edge = "bottom";

@@ -23,9 +23,11 @@
       rofi
       uv
       prismlauncher
+
       #zen-browser
     ])
     ++ (with inputs; [
+      quickshell.packages.${system}.default
       #zen-browser.packages."${system}".default
     ]);
 }

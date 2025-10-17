@@ -1,17 +1,17 @@
 {
   wayland.windowManager.hyprland.settings = {
     general = {
-      "col.active_border" = "rgba(595959ff)";
-      "col.inactive_border" = "rgba(595959aa)";
+      "col.active_border" = "rgba(313244ff)";
+      "col.inactive_border" = "rgba(181825ff)";
       allow_tearing = false;
-      border_size = 1;
-      extend_border_grab_area = 0;
+      border_size = 3;
+      extend_border_grab_area = 3;
       gaps_in = 5;
       gaps_out = 10;
       gaps_workspaces = 0;
       hover_icon_on_border = true;
       layout = "master";
-      no_border_on_floating = true;
+      no_border_on_floating = false;
       no_focus_fallback = true;
       resize_corner = 0;
       resize_on_border = true;

@@ -66,9 +66,9 @@
   xdg = {
     mime.defaultApplications = {
       #"text/html" = "zen-beta";
-      "x-scheme-handler/http" = "zen-beta";
-      "x-scheme-handler/https" = "zen-beta";
-      "x-scheme-handler/about" = "zen-beta";
+      "x-scheme-handler/http" = "nvim.desktop";
+      "x-scheme-handler/https" = "nvim.desktop";
+      "x-scheme-handler/about" = "nvim.desktop";
       #"x-scheme-handler/unknown" = "zen-beta";
       "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
     };
@@ -76,13 +76,28 @@
       enable = true;
       wlr.enable = true;
       config = {
+        hyprland = {
+          default = [
+            "gtk"
+            "hyprland"
+          ];
+        };
         common = {
           default = [
             "gtk"
           ];
         };
       };
-      extraPortals = [pkgs.kdePackages.xdg-desktop-portal-kde];
+      extraPortals =
+        (with pkgs; [
+          xdg-desktop-portal-gnome
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-hyprland
+          xdg-desktop-portal-wlr
+        ])
+        ++ (with pkgs.kdePackages; [
+          xdg-desktop-portal-kde
+        ]);
     };
   };
 
@@ -143,6 +158,7 @@
     fira-code
     jetbrains-mono
     symbols-only
+    droid-sans-mono
   ];
 
   # Unfree
@@ -218,6 +234,7 @@
             playerctl
             pokeget-rs
             pv
+            openal
             python313
             sbctl
             seahorse
@@ -228,11 +245,8 @@
             wirelesstools
             wl-clipboard
             wootility
-            xdg-desktop-portal-gnome
-            xdg-desktop-portal-gtk
-            xdg-desktop-portal-hyprland
-            xdg-desktop-portal-wlr
             zip
+            nix-health
           ]
           # Packages from kde
           ++ (with kdePackages; [
@@ -244,9 +258,22 @@
           ++ (with python313Packages; [
             gpustat
           ])
+          ++ (with gnome; [
+            drum-machine
+            keypunch
+            letterpress
+            komikku
+            resources
+            #gaphor
+            graphs
+            cartridges
+          ])
       )
       ++ (with inputs; [
         alejandra.packages."${system}".default
+        nix-software-center.packages.${system}.nix-software-center
+        nixos-conf-editor.packages.${system}.nixos-conf-editor
+        nix-search-tv.packages."${system}".default
       ]);
   };
 
