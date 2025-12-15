@@ -128,4 +128,6 @@
       ];
     };
   };
+  # System stateVersion
+  system.stateVersion = "24.05";
 }

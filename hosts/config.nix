@@ -207,6 +207,8 @@
                 withVencord = true;
               }
             )
+            cosmic-files
+            cosmic-icons
             mesa-demos
             mesa
             alsa-utils
@@ -245,31 +247,44 @@
             wirelesstools
             wl-clipboard
             wootility
+            freecad
             zip
             nix-health
+            guvcview
           ]
+          ++ (with qt6; [
+            qtbase
+            qt5compat
+            qtdeclarative
+          ])
           # Packages from kde
           ++ (with kdePackages; [
             discover
             xdg-desktop-portal-kde
             qtmultimedia
+            qtsvg
+            qt5compat
+            qtimageformats
+            #qtdeclarative
           ])
           # Packages from Pypi
           ++ (with python313Packages; [
             gpustat
           ])
           ++ (with gnome; [
-            drum-machine
-            keypunch
-            letterpress
-            komikku
-            resources
-            #gaphor
-            graphs
-            cartridges
+            # drum-machine
+            # keypunch
+            # letterpress
+            # komikku
+            # resources
+            # gaphor
+            # graphs
+            # cartridges
+            loupe
           ])
       )
       ++ (with inputs; [
+        quickshell.packages.${system}.default
         alejandra.packages."${system}".default
         nix-software-center.packages.${system}.nix-software-center
         nixos-conf-editor.packages.${system}.nixos-conf-editor
@@ -277,6 +292,5 @@
       ]);
   };
 
-  # System stateVersion
-  system.stateVersion = "25.11";
+
 }

@@ -3,14 +3,25 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs = {
+      url = "github:Nixos/nixpkgs/nixos-unstable";
+    };
 
-    catppuccin.url = "github:catppuccin/nix";
+    # Hardware
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
 
     # Home-Manager
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Hyprland
     hyprland = {
@@ -35,7 +46,12 @@
     };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland"; # IMPORTANT
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    # catppuccin Theme
+    catppuccin = {
+      url = "github:catppuccin/nix";
     };
 
     # Spicetify
@@ -44,30 +60,44 @@
     };
 
     # Zen browser
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+    };
 
+    # Nvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # SecureBoot
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # QuickShell
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
     };
 
+    # Formatter
     alejandra = {
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Nix Software Center
     nix-software-center = {
       url = "github:snowfallorg/nix-software-center";
     };
+
+    # Nix Config GUI
     nixos-conf-editor = {
       url = "github:snowfallorg/nixos-conf-editor";
     };
+
+    # Nix Search
     nix-search-tv = {
       url = "github:3timeslazy/nix-search-tv";
     };
@@ -102,7 +132,8 @@
       };
     };
   in {
-    nixosConfigurations = rec {
+    # Laptop
+    nixosConfigurations = {
       "${laptop}" = lib.nixosSystem {
         specialArgs = {
           inherit
@@ -116,35 +147,11 @@
           ./hosts/laptop/configuration.nix
           catppuccin.nixosModules.catppuccin
           nixos-hardware.nixosModules.lenovo-thinkpad-t590
-          #lanzaboote.nixosModules.lanzaboote
-
-          #{ environment.systemPackages = [ alejandra.defaultPackage.${system} ]; }
-          # (
-          #   {
-          #     pkgs,
-          #     lib,
-          #     ...
-          #   }: {
-          #     environment.systemPackages = [
-          #       # For debugging and troubleshooting Secure Boot.
-          #       pkgs.sbctl
-          #     ];
-
-          #     # Lanzaboote currently replaces the systemd-boot module.
-          #     # This setting is usually set to true in configuration.nix
-          #     # generated at installation time. So we force it to false
-          #     # for now.
-          #     boot.loader.systemd-boot.enable = lib.mkForce false;
-
-          #     boot.lanzaboote = {
-          #       enable = true;
-          #       pkiBundle = "/var/lib/sbctl";
-          #     };
-          #   }
-          # )
         ];
       };
     };
+
+    # Computer
     nixosConfigurations = {
       "${computer}" = lib.nixosSystem {
         specialArgs = {
@@ -162,6 +169,7 @@
       };
     };
 
+    # Home Manager / User
     homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = {
