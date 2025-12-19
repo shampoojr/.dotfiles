@@ -99,7 +99,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
-                useGlabalPkgs = true;
+                useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = specialArgs;
