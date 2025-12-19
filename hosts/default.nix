@@ -1,9 +1,9 @@
 {inputs, ...}: {
-  computer = {
+  MSI = {
     system = "x86_64-linux";
-    modules = [./computer/configuration.nix];
+    modules = [./desktop/configuration.nix];
   };
-  laptop = {
+  LT590 = {
     system = "x86_64-linux";
     modules = [./laptop/configuration.nix];
   };

@@ -84,6 +84,7 @@
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
+    system = "x86_64-linux";
     specialArgs = {inherit inputs;};
     hosts = import ./hosts/default.nix {inherit inputs;};
     mkHost = _: attrs: let

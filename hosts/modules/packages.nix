@@ -1,10 +1,9 @@
 {
   inputs,
-  system,
   pkgs,
+  system,
   ...
-}:
-{
+}: {
   # Fonts
   fonts.packages = with pkgs.nerd-fonts; [
     fira-code
@@ -19,7 +18,7 @@
   # Enviroment
   environment = {
     # Shell
-    shells = with pkgs; [ zsh ];
+    shells = with pkgs; [zsh];
 
     # Plasma6 Exclusions
     plasma6.excludePackages = with pkgs.kdePackages; [
@@ -38,105 +37,102 @@
     systemPackages =
       (
         with pkgs;
-        [
-          # (
-          #   pkgs.catppuccin-sddm.override {
-          #     flavor = "mocha";
-          #     accent = "mauve";
-          #     font = "Firacode Nerd Font";
-          #     fontSize = "9";
-          #     #background = "${./wallpaper.png}";
-          #     loginBackground = true;
-          #   }
-          # )
-          (pkgs.sddm-astronaut.override {
-            embeddedTheme = "pixel_sakura";
-          })
-          (discord.override {
-            withVencord = true;
-          })
-          lsp-plugins
-          bottles
-          lact
-          mesa-demos
-          mesa
-          alsa-utils
-          brightnessctl
-          cbonsai
-          dconf
-          figlet
-          gcc
-          gnome-photos
-          gnumake
-          grim
-          grimblast
-          hardinfo2
-          hyprutils
-          jp2a
-          krita
-          libnotify
-          lolcat
-          lshw
-          networkmanagerapplet
-          nixfmt-rfc-style
-          nodejs
-          pavucontrol
-          playerctl
-          playerctl
-          pokeget-rs
-          pv
-          openal
-          python313
-          sbctl
-          seahorse
-          slurp
-          toilet
-          unzip
-          w3m
-          vmware-workstation
-          wirelesstools
-          wl-clipboard
-          wootility
-          zip
-          nix-health
-          power-profiles-daemon
-          auto-cpufreq
-          xdg-desktop-portal-gnome
-          xdg-desktop-portal-gtk
-          xdg-desktop-portal-hyprland
-          xdg-desktop-portal-wlr
-        ]
-        # Packages from kde
-        ++ (with kdePackages; [
-          discover
-          xdg-desktop-portal-kde
-          qtmultimedia
-          powerdevil
-
-        ])
-        # Packages from Pypi
-        ++ (with python313Packages; [
-          gpustat
-          nvidia-ml-py
-        ])
-        ++ (with gnome; [
-          drum-machine
-          keypunch
-          letterpress
-          komikku
-          resources
-          #gaphor
-          graphs
-          cartridges
-          boatswain
-
-        ])
+          [
+            # (
+            #   pkgs.catppuccin-sddm.override {
+            #     flavor = "mocha";
+            #     accent = "mauve";
+            #     font = "Firacode Nerd Font";
+            #     fontSize = "9";
+            #     #background = "${./wallpaper.png}";
+            #     loginBackground = true;
+            #   }
+            # )
+            (pkgs.sddm-astronaut.override {
+              embeddedTheme = "pixel_sakura";
+            })
+            (discord.override {
+              withVencord = true;
+            })
+            lsp-plugins
+            bottles
+            lact
+            mesa-demos
+            mesa
+            alsa-utils
+            brightnessctl
+            cbonsai
+            dconf
+            figlet
+            gcc
+            gnome-photos
+            gnumake
+            grim
+            grimblast
+            hardinfo2
+            hyprutils
+            jp2a
+            krita
+            libnotify
+            lolcat
+            lshw
+            networkmanagerapplet
+            nixfmt-rfc-style
+            nodejs
+            pavucontrol
+            playerctl
+            playerctl
+            pokeget-rs
+            pv
+            openal
+            python313
+            sbctl
+            seahorse
+            slurp
+            toilet
+            unzip
+            w3m
+            vmware-workstation
+            wirelesstools
+            wl-clipboard
+            wootility
+            zip
+            nix-health
+            power-profiles-daemon
+            auto-cpufreq
+            xdg-desktop-portal-gnome
+            xdg-desktop-portal-gtk
+            xdg-desktop-portal-hyprland
+            xdg-desktop-portal-wlr
+          ]
+          # Packages from kde
+          ++ (with kdePackages; [
+            discover
+            xdg-desktop-portal-kde
+            qtmultimedia
+            powerdevil
+          ])
+          # Packages from Pypi
+          ++ (with python313Packages; [
+            gpustat
+            nvidia-ml-py
+          ])
+          ++ (with gnome; [
+            drum-machine
+            keypunch
+            letterpress
+            komikku
+            resources
+            #gaphor
+            graphs
+            cartridges
+            boatswain
+          ])
       )
       ++ (with inputs; [
-        alejandra.packages."${system}".default
-        nix-software-center.packages.${system}.nix-software-center
-        nixos-conf-editor.packages.${system}.nixos-conf-editor
-        nix-search-tv.packages."${system}".default
+        quickshell.packages.${pkgs.system}.default
+        alejandra.packages.${pkgs.system}.default
+        nix-search-tv.packages.${pkgs.system}.default
       ]);
   };
 }

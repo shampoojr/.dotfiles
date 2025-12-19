@@ -2,9 +2,6 @@
   config,
   pkgs,
   lib,
-  laptop,
-  alejandra,
-  username,
   ...
 }: {
   # Imports

@@ -1,12 +1,14 @@
-{ pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   # Services
   services = {
-
     #OC
     lact = {
       enable = true;
-      settings = { };
+      settings = {};
     };
     # Login
     displayManager.sddm = {
@@ -25,16 +27,15 @@
     xserver = {
       enable = true;
 
-      excludePackages = with pkgs; [ xterm ];
+      excludePackages = with pkgs; [xterm];
 
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = ["nvidia"];
 
       # Keyboard layout
       xkb = {
         layout = "no";
         variant = "winkeys";
       };
-
     };
 
     # Audio

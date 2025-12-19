@@ -1,12 +1,9 @@
 {
   config,
   pkgs,
-  computer,
-  system,
   inputs,
   ...
-}:
-{
+}: {
   # Auto Update
   system = {
     autoUpgrade.enable = true;
@@ -22,8 +19,8 @@
   #Nix Flakes
   nix = {
     settings = {
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
       experimental-features = [
         "nix-command"
         "flakes"
@@ -89,135 +86,6 @@
     };
   };
 
-
   # TTY keymap
   console.keyMap = "no";
-
-  # Enviroment
-  environment = {
-
-    # Plasma6 Exclusions
-    plasma6.excludePackages = with pkgs.kdePackages; [
-      kcalc
-      kcharselect
-      kcolorchooser
-      kolourpaint
-      ksystemlog
-      plasma-browser-integration
-      kdepim-runtime
-      konsole
-      oxygen
-    ];
-
-    # System Packages
-    systemPackages =
-      (
-        with pkgs;
-          [
-            # (
-            #   pkgs.catppuccin-sddm.override {
-            #     flavor = "mocha";
-            #     accent = "mauve";
-            #     font = "Firacode Nerd Font";
-            #     fontSize = "9";
-            #     #background = "${./wallpaper.png}";
-            #     loginBackground = true;
-            #   }
-            # )
-            (
-              pkgs.sddm-astronaut.override {
-                embeddedTheme = "pixel_sakura";
-              }
-            )
-            (
-              discord.override {
-                withVencord = true;
-              }
-            )
-            cosmic-files
-            cosmic-icons
-            mesa-demos
-            mesa
-            alsa-utils
-            brightnessctl
-            cbonsai
-            dconf
-            figlet
-            gcc
-            gnome-photos
-            gnumake
-            grim
-            grimblast
-            hardinfo2
-            hyprutils
-            jp2a
-            krita
-            libnotify
-            lolcat
-            lshw
-            networkmanagerapplet
-            nixfmt-rfc-style
-            nodejs
-            pavucontrol
-            playerctl
-            playerctl
-            pokeget-rs
-            pv
-            openal
-            python313
-            sbctl
-            seahorse
-            slurp
-            toilet
-            unzip
-            w3m
-            wirelesstools
-            wl-clipboard
-            wootility
-            freecad
-            zip
-            nix-health
-            guvcview
-          ]
-          ++ (with qt6; [
-            qtbase
-            qt5compat
-            qtdeclarative
-          ])
-          # Packages from kde
-          ++ (with kdePackages; [
-            discover
-            xdg-desktop-portal-kde
-            qtmultimedia
-            qtsvg
-            qt5compat
-            qtimageformats
-            #qtdeclarative
-          ])
-          # Packages from Pypi
-          ++ (with python313Packages; [
-            gpustat
-          ])
-          ++ (with gnome; [
-            # drum-machine
-            # keypunch
-            # letterpress
-            # komikku
-            # resources
-            # gaphor
-            # graphs
-            # cartridges
-            loupe
-          ])
-      )
-      ++ (with inputs; [
-        quickshell.packages.${system}.default
-        alejandra.packages."${system}".default
-        nix-software-center.packages.${system}.nix-software-center
-        nixos-conf-editor.packages.${system}.nixos-conf-editor
-        nix-search-tv.packages."${system}".default
-      ]);
-  };
-
-
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
     profiles = {
@@ -13,6 +12,12 @@
           pkief.material-icon-theme
           zhuangtongfa.material-theme
           enkia.tokyo-night
+          kamadorueda.alejandra
+          catppuccin.catppuccin-vsc-icons
+          catppuccin.catppuccin-vsc
+          mhutchie.git-graph
+          jnoortheen.nix-ide
+          codezombiech.gitignore
         ];
       };
     };
