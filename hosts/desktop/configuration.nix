@@ -3,28 +3,23 @@
   pkgs,
   computer,
   ...
-}:
-
-{
-
+}: {
   # Imports
   imports = [
     ./hardware-configuration.nix
     ../hardware/rules/udev
     ../config.nix
     ../modules
-    #../hardware/secureboot
   ];
 
   # Network
   networking = {
-    hostName = "${computer}";
+    hostName = "MSI";
     networkmanager.enable = true;
   };
 
   # Users
   users = {
-
     # Default Shell
     defaultUserShell = pkgs.zsh;
 
@@ -40,7 +35,6 @@
 
       # User Packagesq
       packages = with pkgs; [
-
       ];
     };
   };
@@ -50,7 +44,6 @@
 
   # Hardware
   hardware = {
-
     wooting = {
       enable = true;
     };
@@ -109,5 +102,4 @@
       };
     };
   };
-
 }

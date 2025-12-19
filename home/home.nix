@@ -2,16 +2,14 @@
   config,
   pkgs,
   input,
-  username,
   ...
-}:
-{
-  imports = [ ./imports ];
+}: {
+  imports = [./imports];
   home = {
-    username = "${username}";
+    username = shampoojr;
     homeDirectory = "/home/shampoojr";
     stateVersion = "25.11"; # Please read the comment before changing.
-    file = { };
+    file = {};
     sessionVariables = {
       GTK_USE_PORTAL = "1";
       NIXOS_OZONE_WL = "1";

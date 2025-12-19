@@ -103,6 +103,7 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = specialArgs;
+                users.shampoojr = {imports = [./home/home.nix];};
               };
             }
           ];
