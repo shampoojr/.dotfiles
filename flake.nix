@@ -18,11 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Hyprland
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -59,20 +54,9 @@
       url = "github:Gerg-L/spicetify-nix";
     };
 
-    # Zen browser
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-    };
-
     # Nvim
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # SecureBoot
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -87,16 +71,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix Software Center
-    nix-software-center = {
-      url = "github:snowfallorg/nix-software-center";
-    };
-
-    # Nix Config GUI
-    nixos-conf-editor = {
-      url = "github:snowfallorg/nixos-conf-editor";
-    };
-
     # Nix Search
     nix-search-tv = {
       url = "github:3timeslazy/nix-search-tv";
@@ -107,83 +81,33 @@
     self,
     nixpkgs,
     home-manager,
-    spicetify-nix,
-    nixvim,
-    nixos-hardware,
-    zen-browser,
-    lanzaboote,
-    alejandra,
-    catppuccin,
-    quickshell,
-    nix-search-tv,
-    nix-software-center,
-    nixos-conf-editor,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
-    username = "shampoojr";
-    system = "x86_64-linux";
-    laptop = "LT590";
-    computer = "MSI";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
+    specialArgs = {inherit inputs;};
+    hosts = import ./hosts/default.nix {inherit inputs;};
+    mkHost = _: attrs: let
+      system = attrs.system or "x86_64-linux";
+      hostModules = attrs.modules or [];
+    in
+      lib.nixosSystem {
+        inherit system;
+        specialArgs = specialArgs;
+        modules =
+          hostModules
+          ++ [
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlabalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = specialArgs;
+              };
+            }
+          ];
       };
-    };
   in {
-    # Laptop
-    nixosConfigurations = {
-      "${laptop}" = lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            system
-            username
-            laptop
-            ;
-        };
-        modules = [
-          ./hosts/laptop/configuration.nix
-          catppuccin.nixosModules.catppuccin
-          nixos-hardware.nixosModules.lenovo-thinkpad-t590
-        ];
-      };
-    };
-
-    # Computer
-    nixosConfigurations = {
-      "${computer}" = lib.nixosSystem {
-        specialArgs = {
-          inherit
-            inputs
-            system
-            username
-            computer
-            ;
-        };
-        modules = [
-          ./hosts/desktop/configuration.nix
-          catppuccin.nixosModules.catppuccin
-        ];
-      };
-    };
-
-    # Home Manager / User
-    homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit
-          inputs
-          system
-          username
-          pkgs
-          ;
-      };
-      modules = [
-        ./home/home.nix
-        catppuccin.homeModules.catppuccin
-      ];
-    };
+    nixosConfigurations = lib.mapAttrs mkHost hosts;
   };
 }
