@@ -31,6 +31,8 @@
       cpu_graph_upper = "Auto";
       cpu_graph_lower = "Auto";
       show_gpu_info = "Auto";
+      gpu_support = true;
+      
       cpu_invert_lower = true;
       cpu_single_graph = false;
       cpu_bottom = false;

@@ -1,12 +1,12 @@
 { ... }:
 {
   imports = [
-    spotify
-    packages
-    obs
-    mpv
-    editor
-    discord
-    browser
+    ./spotify
+    ./packages
+    ./obs
+    ./mpv
+    ./editor
+    ./discord
+    ./browser
   ];
 }

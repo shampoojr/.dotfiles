@@ -1,9 +1,9 @@
 { ... }:
 {
   imports = [
-    dunst
-    gtk
-    hyprland
-    waybar
+    ./dunst
+    ./gtk
+    ./hyprland
+    ./waybar
   ];
 }

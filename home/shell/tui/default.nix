@@ -1,11 +1,12 @@
 {
   imports = [
-    #./cava
-    ./eza
-    ./fzf
-    ./fastfetch
-    ./cava
-    ./tmux
     ./btop
+    ./cava
+    ./eza
+    ./fastfetch
+    ./fzf
+    ./git
+    ./nix-helper
+    ./tmux
   ];
 }

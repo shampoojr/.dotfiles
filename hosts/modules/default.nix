@@ -2,6 +2,6 @@
   imports = [
     ./packages.nix
     ./services.nix
-    ./display
+    #./display
   ];
 }

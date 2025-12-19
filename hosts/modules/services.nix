@@ -1,6 +1,13 @@
+{ pkgs, ... }:
 {
   # Services
   services = {
+
+    #OC
+    lact = {
+      enable = true;
+      settings = { };
+    };
     # Login
     displayManager.sddm = {
       enable = true;

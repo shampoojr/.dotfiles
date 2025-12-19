@@ -35,17 +35,25 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "wooting"
       ];
 
-      # User Packages
+      # User Packagesq
       packages = with pkgs; [
 
       ];
     };
   };
 
+  # Virt
+  virtualisation.vmware.host.enable = true;
+
   # Hardware
   hardware = {
+
+    wooting = {
+      enable = true;
+    };
 
     # Disables AMD Graphics
     cpu.amd.updateMicrocode = false;
@@ -79,18 +87,26 @@
 
   # Boot
   boot = {
-
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "nvidia-drm.modeset=1"
+      "amdgpu.modeset=0"
+      "module_blacklist=amdgpu"
+      "modprobe.blacklist=amdgpu"
       # "module_blacklist=i915"
     ];
-
     # Bootloader
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+      grub = {
+        theme = pkgs.catppuccin-grub;
+        efiSupport = true;
+        device = "nodev";
+      };
     };
   };
 

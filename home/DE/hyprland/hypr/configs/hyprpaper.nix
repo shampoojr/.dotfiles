@@ -21,6 +21,7 @@
         ];
         wallpaper = [
           "eDP-1,~/Pictures/wallpaper/hearts.png"
+          "DP-1,~/Pictures/wallpaper/keyboard-2.png"
         ];
       };
     };

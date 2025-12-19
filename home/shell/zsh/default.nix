@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs = {
     zsh = {
       enable = true;
@@ -13,6 +14,7 @@
       };
 
       shellAliases = {
+        cd = "z";
         hm = "nh home switch";
         os = "nh os switch";
         clear = ''printf "\033[2J\033[3J\033[1;1H"'';

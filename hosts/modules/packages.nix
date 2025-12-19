@@ -1,4 +1,9 @@
-{ inputs, system, ... }:
+{
+  inputs,
+  system,
+  pkgs,
+  ...
+}:
 {
   # Fonts
   fonts.packages = with pkgs.nerd-fonts; [
@@ -50,7 +55,9 @@
           (discord.override {
             withVencord = true;
           })
-
+          lsp-plugins
+          bottles
+          lact
           mesa-demos
           mesa
           alsa-utils
@@ -86,6 +93,7 @@
           toilet
           unzip
           w3m
+          vmware-workstation
           wirelesstools
           wl-clipboard
           wootility
@@ -109,6 +117,7 @@
         # Packages from Pypi
         ++ (with python313Packages; [
           gpustat
+          nvidia-ml-py
         ])
         ++ (with gnome; [
           drum-machine

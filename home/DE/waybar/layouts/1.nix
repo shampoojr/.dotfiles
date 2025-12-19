@@ -1,7 +1,7 @@
 {
   programs.waybar = {
     settings = {
-      "laptop" = {
+      "1" = {
         exclusive = true;
         fixed-center = true;
         height = 40;
@@ -11,13 +11,13 @@
         margin-right = 0;
         margin-top = 5;
         mode = "dock";
-        output = "eDP-1";
+        output = "DP-1";
         name = "waybar";
         position = "top";
         reload_style_on_change = true;
         spacing = 10;
         start_hidden = false;
-        width = 1920;
+        width = 3440;
 
         modules-left = [
           "hyprland/workspaces"
