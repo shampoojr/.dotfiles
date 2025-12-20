@@ -98,7 +98,7 @@
     specialArgs = {inherit inputs;};
 
     hosts = import ./hosts/default.nix {inherit inputs;};
-    users = import ./home/home.nix {inherit inputs;};
+    users = import ./home/default.nix {inherit inputs;};
 
     mkHost = _: attrs:
       lib.nixosSystem {
@@ -111,7 +111,7 @@
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = specialArgs;
-        modules = attrs.modules or [./home/home.nix];
+        modules = attrs.modules or [];
       };
   in {
     nixosConfigurations = lib.mapAttrs mkHost hosts;
