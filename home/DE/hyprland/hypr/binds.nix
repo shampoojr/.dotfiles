@@ -54,6 +54,8 @@ in {
       "${modShift}, Q, killactive"
       "ALT, F4, killactive"
 
+      "${mod}, G, resizeactive, exact 1920 1080"
+
       "${mod}, p, exec, hyprpicker -a --format=hex"
 
       "${mod}, left, movefocus, l"
