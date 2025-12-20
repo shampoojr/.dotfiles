@@ -23,31 +23,6 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    Hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    # catppuccin Theme
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
 
     # Spicetify
     spicetify-nix = {
@@ -84,29 +59,22 @@
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
-
     system = "x86_64-linux";
-    username = "shampoojr";
-
     pkgs = import nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
       };
     };
-
     specialArgs = {inherit inputs;};
-
     hosts = import ./hosts/default.nix {inherit inputs;};
     users = import ./home/default.nix {inherit inputs;};
-
     mkHost = _: attrs:
       lib.nixosSystem {
         inherit (attrs) system;
         specialArgs = specialArgs;
         modules = attrs.modules or [];
       };
-
     mkHome = _: attrs:
       home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
