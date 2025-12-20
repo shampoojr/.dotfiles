@@ -84,32 +84,37 @@
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
+
     system = "x86_64-linux";
+    username = "shampoojr";
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+      };
+    };
+
     specialArgs = {inherit inputs;};
+
     hosts = import ./hosts/default.nix {inherit inputs;};
-    mkHost = _: attrs: let
-      system = attrs.system or "x86_64-linux";
-      hostModules = attrs.modules or [];
-    in
+    users = import ./home/home.nix {inherit inputs;};
+
+    mkHost = _: attrs:
       lib.nixosSystem {
-        inherit system;
+        inherit (attrs) system;
         specialArgs = specialArgs;
-        modules =
-          hostModules
-          ++ [
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                extraSpecialArgs = specialArgs;
-                users.shampoojr = {imports = [./home/home.nix];};
-              };
-            }
-          ];
+        modules = attrs.modules or [];
+      };
+
+    mkHome = _: attrs:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = specialArgs;
+        modules = attrs.modules or [./home/home.nix];
       };
   in {
     nixosConfigurations = lib.mapAttrs mkHost hosts;
+    homeConfigurations = lib.mapAttrs mkHome users;
   };
 }

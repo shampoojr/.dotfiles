@@ -1,11 +1,7 @@
-{
-  config,
-  pkgs,
-  input,
-  ...
-}: {
+{...}: {
   imports = [./imports];
   home = {
+    username = "shampoojr";
     homeDirectory = "/home/shampoojr";
     stateVersion = "25.11"; # Please read the comment before changing.
     file = {};
