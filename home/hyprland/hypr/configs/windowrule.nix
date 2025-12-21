@@ -12,6 +12,7 @@
       "float, class:nm-connection-editor"
       "float, class:org.pulseaudio.pavucontrol"
       "float, class:.blueman-manager-wrapped"
+      "size 3840 2160,noblur,noborder,noshadow,noanim,nodim,keepaspectratio,class:org.vinegarhq.Sober"
     ];
   };
 }

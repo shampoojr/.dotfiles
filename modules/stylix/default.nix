@@ -31,14 +31,4 @@
       base17 = "#f5c2e7"; # pink - bright purple
     };
   };
-  stylix = {
-    enable = true;
-    image = [
-      "~/Pictures/wallpaper/os/nixos/nix-black-4k.png"
-    ];
-    targets = {
-      kitty = {
-      };
-    };
-  };
 }

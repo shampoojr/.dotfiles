@@ -54,7 +54,6 @@
             (discord.override {
               withVencord = true;
             })
-            lsp-plugins
             bottles
             lact
             mesa-demos
@@ -81,7 +80,6 @@
             nodejs
             pavucontrol
             playerctl
-            playerctl
             pokeget-rs
             pv
             openal
@@ -105,6 +103,8 @@
             xdg-desktop-portal-hyprland
             xdg-desktop-portal-wlr
             nix-health
+            gnome-screenshot
+            motrix
           ]
           # Packages from kde
           ++ (with kdePackages; [
@@ -119,21 +119,21 @@
             nvidia-ml-py
           ])
           ++ (with gnome; [
-            drum-machine
-            keypunch
-            letterpress
-            komikku
-            resources
+            #drum-machine
+            #keypunch
+            #letterpress
+            #komikku
+            #resources
             #gaphor
-            graphs
-            cartridges
-            boatswain
+            #graphs
+            #cartridges
+            loupe
           ])
       )
       ++ (with inputs; [
-        quickshell.packages.${pkgs.system}.default
-        alejandra.packages.${pkgs.system}.default
-        nix-search-tv.packages.${pkgs.system}.default
+        #quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
+        alejandra.packages.${system}.default
+        nix-search-tv.packages.${system}.default
       ]);
   };
 }

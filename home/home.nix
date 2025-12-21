@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   imports = [./imports];
   home = {
     username = "shampoojr";
@@ -11,6 +11,7 @@
       __GR_VRR_ALLOWED = "0";
       __GR_GSYNC_ALLOWED = "0";
       XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
+      QS_CONFIG_PATH = "$XDG_CONFIG_HOME/quickshell";
     };
   };
   programs.home-manager.enable = true;

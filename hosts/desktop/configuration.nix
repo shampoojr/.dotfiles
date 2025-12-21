@@ -79,10 +79,19 @@
 
   # Boot
   boot = {
+    initrd = {
+      availableKernelModules = [
+        "nvidia"
+        "nvidia_uvm"
+        "nvidia_modeset"
+        "nvidia_drm"
+      ];
+    };
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "nvidia-drm.modeset=1"
+
       "amdgpu.modeset=0"
       "module_blacklist=amdgpu"
       "modprobe.blacklist=amdgpu"
@@ -90,13 +99,16 @@
     ];
     # Bootloader
     loader = {
+      systemd-boot.enable = false;
       efi = {
-        canTouchEfiVariables = true;
+        canTouchEfiVariables = false;
         efiSysMountPoint = "/boot/efi";
       };
       grub = {
         theme = pkgs.catppuccin-grub;
+        useOSProber = true;
         efiSupport = true;
+        efiInstallAsRemovable = true;
         device = "nodev";
       };
     };

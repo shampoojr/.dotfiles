@@ -1,16 +1,13 @@
-{ ... }:
-{
+{...}: {
   programs = {
     zsh = {
       enable = true;
-
       autosuggestion.enable = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
-
       sessionVariables = {
         XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
-
+        QS_CONFIG_PATH = "$XDG_CONFIG_HOME/quickshell";
       };
 
       shellAliases = {

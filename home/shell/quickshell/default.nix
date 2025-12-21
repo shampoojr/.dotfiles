@@ -1,67 +1,82 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   programs.quickshell = {
-    activateConfig = "Activate_Linux";
+    enable = true;
+    activeConfig = "Activate_Linux";
     configs = {
-        Activate_Linux = pkgs.writeTextDir "Activate_Linux.qml" ''
-          import QtQuick
-import QtQuick.Layouts
-import Quickshell
-import Quickshell.Wayland
+      Activate_Linux = pkgs.writeTextDir "Activate_Linux.qml" ''
+        import QtQuick
+        import QtQuick.Layouts
+        import Quickshell
+        import Quickshell.Wayland
 
-ShellRoot {
-	Variants {
-		// Create the panel once on each monitor.
-		model: Quickshell.screens
+        ShellRoot {
+        	Variants {
+        		// Create the panel once on each monitor.
+        		model: Quickshell.screens
 
-		PanelWindow {
-			id: w
+        		PanelWindow {
+        			id: w
 
-			property var modelData
-			screen: modelData
+        			property var modelData
+        			screen: modelData
 
-			anchors {
-				right: true
-				bottom: true
-			}
+        			anchors {
+        				right: true
+        				bottom: true
+        			}
 
-			margins {
-				right: 50
-				bottom: 50
-			}
+        			margins {
+        				right: 50
+        				bottom: 50
+        			}
 
-			implicitWidth: content.width
-			implicitHeight: content.height
+        			implicitWidth: content.width
+        			implicitHeight: content.height
 
-			color: "transparent"
+        			color: "transparent"
 
-			// Give the window an empty click mask so all clicks pass through it.
-			mask: Region {}
+        			// Give the window an empty click mask so all clicks pass through it.
+        			mask: Region {}
 
-			// Use the wlroots specific layer property to ensure it displays over
-			// fullscreen windows.
-			WlrLayershell.layer: WlrLayer.Overlay
+        			// Use the wlroots specific layer property to ensure it displays over
+        			// fullscreen windows.
+        			WlrLayershell.layer: WlrLayer.Overlay
 
-			ColumnLayout {
-				id: content
+        			ColumnLayout {
+        				id: content
 
-				Text {
-					text: "Activate Linux"
-					color: "#50ffffff"
-					font.pointSize: 22
-				}
+        				Text {
+        					text: "Activate Linux"
+        					color: "#50ffffff"
+        					font.pointSize: 22
+        				}
 
-				Text {
-					text: "Go to Settings to activate Linux"
-					color: "#50ffffff"
-					font.pointSize: 14
-				}
-			}
-		}
-	}
-}
+        				Text {
+        					text: "Go to Settings to activate Linux"
+        					color: "#50ffffff"
+        					font.pointSize: 14
+        				}
+        			}
+        		}
+        	}
+        }
 
-        '';
-      };
+      '';
     };
   };
+
+  xdg.configFile."quickshell/shell.qml".text = ''
+    import QtQuick
+    import Quickshell
+    import "./Activate_Linux"
+    Scope {
+    Activate_Linux {}
+    }
+  '';
 }

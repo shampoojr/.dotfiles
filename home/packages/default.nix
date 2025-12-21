@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./programs.nix
+    ./flatpak.nix
   ];
 
   home.packages =
@@ -27,7 +28,7 @@
       #zen-browser
     ])
     ++ (with inputs; [
-
+      #quickshell.packages.${system}.default
       #zen-browser.packages."${system}".default
     ]);
 }

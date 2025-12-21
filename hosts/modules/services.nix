@@ -5,6 +5,11 @@
 }: {
   # Services
   services = {
+    # Mice
+    ratbagd = {
+      enable = true;
+    };
+
     #OC
     lact = {
       enable = true;
@@ -47,11 +52,11 @@
       pulse.enable = true;
     };
 
-    # Printing
-    printing.enable = true;
-
     # Flatpak
     flatpak.enable = true;
+
+    # Printing
+    printing.enable = true;
 
     # Image previews
     gvfs.enable = true;

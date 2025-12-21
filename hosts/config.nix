@@ -30,6 +30,11 @@
     };
   };
 
+  systemd.user.services."flatpak-org.vinegarhq.Sober".serviceConfig = {
+    memoryMax = "500M";
+    MemoryHigh = "750M";
+  };
+
   # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -87,7 +92,7 @@
       ];
     };
   };
-
+  nixpkgs.config.cudaSupport = true;
   # TTY keymap
   console.keyMap = "no";
 }

@@ -100,7 +100,7 @@ in {
       "${mod}, mouse_down, ${ws}, e+1"
       "${mod}, mouse_up, ${ws}, e-1"
 
-      # screenshot
+      "${mod} ${shiftAlt}, b, exec, qs"
     ];
 
     bindm = [
