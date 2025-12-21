@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Nix-flatpak
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
+
     # Spicetify
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -50,6 +55,12 @@
     nix-search-tv = {
       url = "github:3timeslazy/nix-search-tv";
     };
+
+    # Stylix
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -60,15 +71,9 @@
   } @ inputs: let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config = {
-        allowUnfree = true;
-      };
-    };
-    specialArgs = {inherit inputs;};
+    specialArgs = {inherit inputs system;};
     hosts = import ./hosts/default.nix {inherit inputs;};
-    users = import ./home/default.nix {inherit inputs;};
+    user = import ./home/default.nix {inherit inputs;};
     mkHost = _: attrs:
       lib.nixosSystem {
         inherit (attrs) system;
@@ -77,12 +82,18 @@
       };
     mkHome = _: attrs:
       home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = import nixpkgs {
+          inherit (attrs) system;
+          config = {
+            allowUnfree = true;
+          };
+        };
         extraSpecialArgs = specialArgs;
-        modules = attrs.modules or [];
+        modules =
+          attrs.modules or [];
       };
   in {
     nixosConfigurations = lib.mapAttrs mkHost hosts;
-    homeConfigurations = lib.mapAttrs mkHome users;
+    homeConfigurations = lib.mapAttrs mkHome user;
   };
 }
