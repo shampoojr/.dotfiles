@@ -3,15 +3,10 @@
   config,
   ...
 }: {
+  imports = [./stylix];
   stylix = {
     enable = true;
-    targets = {
-      hyprland = {
-        image = {
-          enable = true;
-        };
-      };
-    };
+    autoEnable = false;
     polarity = "dark";
     image = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/os/nix-black-4k.png";
