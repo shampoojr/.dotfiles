@@ -1,9 +1,8 @@
 {...}: {
   stylix = {
     targets = {
-      dunst = {
+      cava = {
         enable = true;
-        colors.enable = true;
       };
     };
   };

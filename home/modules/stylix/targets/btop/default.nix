@@ -1,9 +1,8 @@
-{...}: {
+{}: {
   stylix = {
     targets = {
-      dunst = {
+      btop = {
         enable = true;
-        colors.enable = true;
       };
     };
   };

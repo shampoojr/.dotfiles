@@ -1,9 +1,11 @@
 {...}: {
   stylix = {
     targets = {
-      dunst = {
+      spicetify = {
         enable = true;
-        colors.enable = true;
+        colors = {
+          enable = true;
+        };
       };
     };
   };
