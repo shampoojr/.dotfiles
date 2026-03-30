@@ -13,6 +13,7 @@
     };
 
     oh-my-posh = {
+      enableZshIntegration = true;
       enable = true;
       useTheme = "star";
     };

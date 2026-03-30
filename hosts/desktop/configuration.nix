@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   # Imports
@@ -10,13 +11,14 @@
     ../config.nix
     ../modules
   ];
-
+  systemd.services.nvidia-powerd.enable = false;
   # Network
   networking = {
     hostName = "MSI";
     networkmanager.enable = true;
+    nameservers = ["192.168.3.105"];
   };
-
+  systemd.services.display-manager.after = ["nvidia-drm-output.target"];
   # Users
   users = {
     # Default Shell
@@ -30,17 +32,26 @@
         "networkmanager"
         "wheel"
         "wooting"
+        "libvirtd"
+        "video"
+        "render"
       ];
+      shell = pkgs.zsh;
 
-      # User Packagesq
+      # User Packages
       packages = with pkgs; [
       ];
     };
   };
 
   # Virt
-  virtualisation.vmware.host.enable = true;
-
+  virtualisation = {
+    libvirtd = {
+      enable = false;
+    };
+    vmware.host.enable = false;
+    spiceUSBRedirection.enable = false;
+  };
   # Hardware
   hardware = {
     wooting = {
@@ -51,22 +62,24 @@
     cpu.amd.updateMicrocode = false;
 
     # Graphics
-    graphics.enable = true;
+    graphics.enable = lib.mkForce true;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.beta;
-      modesetting.enable = true;
-      nvidiaSettings = true;
-      open = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
+      modesetting.enable = lib.mkForce true;
+      nvidiaSettings = lib.mkForce true;
+      dynamicBoost.enable = lib.mkForce false;
+      open = lib.mkForce true;
+      nvidiaPersistenced = lib.mkForce true;
+      powerManagement.enable = lib.mkForce false;
+      powerManagement.finegrained = lib.mkForce false;
       prime = {
         offload = {
-          enable = false;
-          enableOffloadCmd = false;
+          enable = lib.mkForce true;
+          enableOffloadCmd = lib.mkForce true;
         };
-        sync.enable = true;
-        reverseSync.enable = false;
-        allowExternalGpu = false;
+        sync.enable = lib.mkForce false;
+        reverseSync.enable = lib.mkForce false;
+        allowExternalGpu = lib.mkForce false;
 
         # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
         nvidiaBusId = "PCI:1:0:0";
@@ -87,12 +100,13 @@
         "nvidia_drm"
       ];
     };
+    kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
-      "nvidia-drm.modeset=1"
-
-      "amdgpu.modeset=0"
+      "nvidia-drm.fbdev=1"
+      "nvidia.NVreg_RegistryDwords=RMConnectToConnector=1"
       "module_blacklist=amdgpu"
       "modprobe.blacklist=amdgpu"
       # "module_blacklist=i915"
@@ -105,7 +119,7 @@
         efiSysMountPoint = "/boot/efi";
       };
       grub = {
-        theme = pkgs.catppuccin-grub;
+        theme = lib.mkDefault pkgs.catppuccin-grub;
         useOSProber = true;
         efiSupport = true;
         efiInstallAsRemovable = true;

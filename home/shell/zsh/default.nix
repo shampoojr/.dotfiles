@@ -1,6 +1,11 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs = {
     zsh = {
+      dotDir = "${config.home.homeDirectory}";
       enable = true;
       autosuggestion.enable = true;
       enableCompletion = true;
@@ -8,6 +13,17 @@
       sessionVariables = {
         XDG_SCREENSHOTS_DIR = "$HOME/Pictures/Screenshots";
         QS_CONFIG_PATH = "$XDG_CONFIG_HOME/quickshell";
+      };
+
+      history = {
+        size = 10000;
+        ignoreAllDups = true;
+        path = "${config.home.homeDirectory}/.zsh_history";
+        ignorePatterns = [
+          "rm *"
+          "cp *"
+          "pkill *"
+        ];
       };
 
       shellAliases = {

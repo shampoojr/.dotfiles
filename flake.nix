@@ -74,12 +74,18 @@
     specialArgs = {inherit inputs system;};
     hosts = import ./hosts/default.nix {inherit inputs;};
     user = import ./home/default.nix {inherit inputs;};
+
     mkHost = _: attrs:
       lib.nixosSystem {
         inherit (attrs) system;
         specialArgs = specialArgs;
-        modules = attrs.modules or [];
+        modules =
+          attrs.modules or []
+          ++ [
+            {nixpkgs.config.allowUnfree = true;}
+          ];
       };
+
     mkHome = _: attrs:
       home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {

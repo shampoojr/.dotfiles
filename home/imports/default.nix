@@ -5,6 +5,5 @@
     ../DE
     ../shell
     ../packages
-    ../modules
   ];
 }

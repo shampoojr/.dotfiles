@@ -54,7 +54,14 @@
             (discord.override {
               withVencord = true;
             })
-            bottles
+            (pkgs.bottles.override {
+              removeWarningPopup = true;
+            })
+            gnome-boxes
+            ranger
+            davinci-resolve-studio
+            brave
+            vmware-workstation
             lact
             mesa-demos
             mesa
@@ -69,6 +76,7 @@
             grim
             grimblast
             hardinfo2
+            hyprpaper
             hyprutils
             jp2a
             krita
@@ -105,6 +113,7 @@
             nix-health
             gnome-screenshot
             motrix
+            boxes
           ]
           # Packages from kde
           ++ (with kdePackages; [
@@ -129,9 +138,12 @@
             #cartridges
             loupe
           ])
+          ++ (with cudaPackages; [
+            cudatoolkit
+          ])
       )
       ++ (with inputs; [
-        #quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
+        quickshell.packages.${system}.default
         alejandra.packages.${system}.default
         nix-search-tv.packages.${system}.default
       ]);

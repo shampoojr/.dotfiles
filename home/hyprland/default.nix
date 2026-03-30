@@ -9,7 +9,6 @@
     ./hypridle
     ./hyprlock
     ./hyprpolkit
-    ./stylix
     ./waybar
     #./hyprpanel
   ];

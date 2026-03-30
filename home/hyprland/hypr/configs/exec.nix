@@ -3,7 +3,7 @@
     exec-once = [
       "systemctl --user start hyprpolkitagent"
       "waybar"
-      "quickshell"
+      "qs"
     ];
   };
 }

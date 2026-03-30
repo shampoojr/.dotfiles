@@ -6,7 +6,7 @@
   ...
 }: {
   programs.quickshell = {
-    enable = true;
+    enable = false;
     activeConfig = "Activate_Linux";
     configs = {
       Activate_Linux = pkgs.writeTextDir "Activate_Linux.qml" ''
@@ -70,13 +70,4 @@
       '';
     };
   };
-
-  xdg.configFile."quickshell/shell.qml".text = ''
-    import QtQuick
-    import Quickshell
-    import "./Activate_Linux"
-    Scope {
-    Activate_Linux {}
-    }
-  '';
 }

@@ -11,7 +11,6 @@
       gaps_workspaces = 0;
       hover_icon_on_border = true;
       layout = "master";
-      no_border_on_floating = false;
       no_focus_fallback = true;
       resize_corner = 0;
       resize_on_border = true;

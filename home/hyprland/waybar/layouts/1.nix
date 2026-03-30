@@ -119,6 +119,7 @@
             ];
             tooltip = false;
           };
+          tooltip = false;
           scroll-step = "5";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@";
           on-click-right = "pavucontrol";

@@ -1,19 +1,20 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: {
   # Auto Update
   system = {
-    autoUpgrade.enable = true;
-    autoUpgrade.allowReboot = true;
+    autoUpgrade.enable = lib.mkDefault true;
+    autoUpgrade.allowReboot = lib.mkDefault true;
   };
 
   # Polkit
   security = {
-    rtkit.enable = true;
-    polkit.enable = true;
+    rtkit.enable = lib.mkDefault true;
+    polkit.enable = lib.mkDefault true;
   };
 
   #Nix Flakes
@@ -30,14 +31,12 @@
     };
   };
 
-  systemd.user.services."flatpak-org.vinegarhq.Sober".serviceConfig = {
-    memoryMax = "500M";
-    MemoryHigh = "750M";
+  environment.sessionVariables = {
   };
 
   # Bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  hardware.bluetooth.enable = lib.mkDefault true;
+  services.blueman.enable = lib.mkDefault true;
 
   # Timezone
   time.timeZone = "Europe/Oslo";
@@ -45,29 +44,31 @@
 
   # Programs
   programs = {
+    virt-manager.enable = true;
+
     # Steam
-    steam.enable = true;
+    steam.enable = lib.mkDefault true;
 
     # Hyprland
     hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
+      enable = lib.mkDefault true;
+      withUWSM = lib.mkDefault true;
+      xwayland.enable = lib.mkDefault true;
     };
 
     # ZSH
-    zsh.enable = true;
+    zsh.enable = lib.mkDefault true;
 
     # File Manager
     thunar = {
-      enable = true;
+      enable = lib.mkDefault true;
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
       ];
     };
   };
-  services.dbus.enable = true;
+  services.dbus.enable = lib.mkDefault true;
   xdg = {
     mime.defaultApplications = {
       #"text/html" = "zen-beta";
@@ -78,8 +79,8 @@
       "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
     };
     portal = {
-      enable = true;
-      wlr.enable = true;
+      enable = lib.mkDefault true;
+      wlr.enable = lib.mkDefault true;
       config = {
         common = {
           default = [
@@ -92,7 +93,7 @@
       ];
     };
   };
-  nixpkgs.config.cudaSupport = true;
+  nixpkgs.config.cudaSupport = lib.mkDefault true;
   # TTY keymap
   console.keyMap = "no";
 }

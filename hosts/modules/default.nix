@@ -3,6 +3,6 @@
     ./packages.nix
     ./services.nix
     #./display
-    ./stylix
+    #./stylix
   ];
 }

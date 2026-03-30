@@ -76,7 +76,7 @@
 
   # Network
   networking = {
-    hostName = "${laptop}";
+    hostName = "LT590";
     networkmanager.enable = true;
   };
   powerManagement.powertop.enable = true;
@@ -116,7 +116,7 @@
     defaultUserShell = pkgs.zsh;
 
     # Local User
-    users.${username} = {
+    users.shampoojr = {
       isNormalUser = true;
       description = "shampoojr";
       extraGroups = [

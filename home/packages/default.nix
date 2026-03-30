@@ -24,7 +24,6 @@
       rofi
       uv
       prismlauncher
-
       #zen-browser
     ])
     ++ (with inputs; [

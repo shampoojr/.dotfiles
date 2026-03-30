@@ -21,7 +21,6 @@
       middle_click_paste = true;
       mouse_move_enables_dpms = false;
       mouse_move_focuses_monitor = true;
-      new_window_takes_over_fullscreen = 0;
       render_unfocused_fps = 15;
       splash_font_family = "FiraCode Nerd Font Bold";
       swallow_exception_regex = "";
